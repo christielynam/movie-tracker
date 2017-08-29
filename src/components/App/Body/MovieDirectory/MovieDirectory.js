@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class MovieIndex extends Component {
+export default class MovieDirectory extends Component {
   constructor() {
     super();
   }
