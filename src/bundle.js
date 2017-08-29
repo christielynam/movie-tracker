@@ -34,7 +34,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/app/";
+/******/ 	__webpack_require__.p = "/src/";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -65,7 +65,7 @@
 	
 	var _App2 = _interopRequireDefault(_App);
 	
-	var _MovieDirectory = __webpack_require__(186);
+	var _MovieDirectory = __webpack_require__(187);
 	
 	var _MovieDirectory2 = _interopRequireDefault(_MovieDirectory);
 	
@@ -81,7 +81,7 @@
 	
 	// <Provider store={ store } >
 	// </Provider>,
-	_reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.getElementById('root'));
+	_reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.getElementById('main'));
 
 /***/ }),
 /* 2 */
@@ -22223,6 +22223,10 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _movieApi = __webpack_require__(186);
+	
+	var _movieApi2 = _interopRequireDefault(_movieApi);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22241,6 +22245,13 @@
 	  }
 	
 	  _createClass(App, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      console.log('COMPONENT DID MOUNT');
+	      var movieApiObj = new _movieApi2.default();
+	      // movieApiObj.fetchAllMovies();
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -22267,6 +22278,26 @@
 
 /***/ }),
 /* 186 */
+/***/ (function(module, exports) {
+
+	export default class movieApi {
+	  constructor() {
+	
+	  }
+	
+	    
+	  fetchAllMovies() {
+	    //0b1096e689aa8acb28ccef63b3a935c0
+	    return fetch('https://api.themoviedb.org/3/movie/now_playing?api_key=0b1096e689aa8acb28ccef63b3a935c0&language=en-US&page=1')
+	      .then(results => results.json())
+	      .then(movies => {
+	        console.log('MOVIES', movies.results)
+	      })
+	  }
+	}
+
+/***/ }),
+/* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
