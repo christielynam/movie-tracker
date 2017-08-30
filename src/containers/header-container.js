@@ -11,10 +11,9 @@ const mapStateToProps = (state) => {
 
 const dispatchStateToProps = (dispatch) => {
   return {
-    
+
   }
 }
-
 
 
 export default connect(mapStateToProps, mapDispatchToProps)([Header, UserControls, FavoritesButton]);

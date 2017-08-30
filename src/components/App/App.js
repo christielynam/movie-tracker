@@ -12,7 +12,6 @@ export default class App extends Component {
     movieApiObj.fetchAllMovies()
     .then(data => {
       this.props.fetchRecentMovies(data.results)
-
     })
     .then(data => {
       console.log('movie props', this.props.movies)
