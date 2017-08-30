@@ -8,10 +8,9 @@ const testAddUser = () => {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ name: 'nick', password: 'hello', email: 'nick@nick.com' })
+    body: JSON.stringify({ name: 'nickB', password: 'hello', email: 'nickB@nick.com' })
   }).then(res => res.json())
     .then(res => console.log('RESULT OF ADD USER:', res));
-
 }
 
 const CreateUserAccount = () => {

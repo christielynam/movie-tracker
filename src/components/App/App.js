@@ -3,6 +3,7 @@ import movieApi from '../../../utils/movieApi';
 import Body from './Body/Body';
 import Header from './Header/Header';
 import CreateUserAccount from './CreateUserAccount/CreateUserAccount';
+import { Route } from 'react-router';
 
 export default class App extends Component {
   constructor() {
@@ -21,7 +22,7 @@ export default class App extends Component {
     return (
       <div>
         <Header />
-        <CreateUserAccount />
+        <Route exact path='/signup' component={CreateUserAccount} />
         <Body />
       </div>
     )
