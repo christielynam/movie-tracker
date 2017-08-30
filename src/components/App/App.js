@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import movieApi from '../../../utils/movieApi';
 import Body from './Body/Body';
+import Header from './Header/Header'
 
 export default class App extends Component {
   constructor() {
@@ -13,16 +14,12 @@ export default class App extends Component {
     .then(data => {
       this.props.fetchRecentMovies(data)
     })
-    .then(data => {
-      console.log('movie props', this.props.movies)
-    })
   }
 
   render() {
-    const { movies } = this.props
     return (
       <div>
-        <h1>Movie Watcher</h1>
+        <Header />
         <Body />
       </div>
     )

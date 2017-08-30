@@ -1,19 +1,20 @@
 import { connect } from 'react-redux';
-import Header from '../components/App/Header';
-import UserControls from '../components/App/Header/UserControls';
-import FavoritesButton from '../components/App/Header/FavoritesButton';
+import Header from '../components/App/Header/Header';
 
-const mapStateToProps = (state) => {
+
+
+
+const mapStateToProps = (store) => {
   return {
-
+    movies: store.movies
   }
 }
 
-const dispatchStateToProps = (dispatch) => {
-  return {
+// const dispatchStateToProps = (dispatch) => {
+//   return {
+//
+//   }
+// }
 
-  }
-}
 
-
-export default connect(mapStateToProps, mapDispatchToProps)([Header, UserControls, FavoritesButton]);
+export default connect(mapStateToProps, null)(Header);
