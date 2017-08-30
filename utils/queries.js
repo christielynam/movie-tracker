@@ -9,6 +9,7 @@ var connectionString = 'postgres://localhost:5432/users';
 var db = pgp(connectionString);
 
 function getAllUsers(req, res, next) {
+  console.log('GET ALL USERS')
   db.any('select * from users')
     .then(function(data) {
       res.status(200).json({
