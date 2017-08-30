@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
+import MovieCard from './MovieCard/MovieCard'
 
 export default class MovieDirectory extends Component {
   constructor() {
     super();
   }
 
-  componentDidMount() {
-    this.props.fetchRecentMovies([{name: 'Christie'}])
-  }
-
   render() {
+    const { movies } = this.props
+    const movieList = movies.map( movie => {
+      return <MovieCard key = { movie.id } movie = { movie } />
+    })
+
+
     return (
       <div>
-      MOVIES
+        { movieList }
       </div>
     )
   }
