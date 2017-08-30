@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App/App'
-import MovieDirectory from './components/App/Body/MovieDirectory/MovieDirectory';
-// import { Provider } from 'react-redux';
-// import { createStore } from 'redux';
-// import rootReducer from './reducers'
+import AppContainer from './containers/App-container';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import rootReducer from './reducers'
 
-// const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 
-// const store = createStore(rootReducer, devTools);
+const store = createStore(rootReducer, devTools);
 
-// <Provider store={ store } >
-// </Provider>,
 ReactDOM.render(
-    <App />,
+  <Provider store={ store } >
+    <AppContainer />
+  </Provider>,
   document.getElementById('main')
 )

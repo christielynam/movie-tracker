@@ -5,6 +5,10 @@ export default class MovieDirectory extends Component {
     super();
   }
 
+  componentDidMount() {
+    this.props.fetchRecentMovies([{name: 'Christie'}])
+  }
+
   render() {
     return (
       <div>

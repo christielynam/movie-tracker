@@ -7,11 +7,11 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    console.log('COMPONENT DID MOUNT')
+    console.log('props', this.props.fetchRecentMovies)
     let movieApiObj = new movieApi();
     movieApiObj.fetchAllMovies()
     .then(data => {
-      console.log('IN COMPONENT:', data.results)
+      this.props.fetchRecentMovies(data.results)
     })
   }
 
