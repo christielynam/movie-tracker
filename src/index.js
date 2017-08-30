@@ -9,6 +9,7 @@ import { Route } from 'react-router';
 import { ConnectedRouter, routerMiddleware, push } from 'react-router-redux';
 
 
+
 const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 
 const history = createHistory()
@@ -21,8 +22,7 @@ ReactDOM.render(
   <Provider store={ store }>
     <ConnectedRouter history={history}>
       <div>
-        <Route exact path='/' component={AppContainer} />
-        {/* <AppContainer /> */}
+        <Route path='/' component={AppContainer} />
       </div>
     </ConnectedRouter>
   </Provider>,
