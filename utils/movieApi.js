@@ -1,3 +1,5 @@
+var key = require('./key');
+
 class movieApi {
   constructor() {
 
@@ -19,8 +21,7 @@ class movieApi {
 
 
   fetchAllMovies() {
-    //0b1096e689aa8acb28ccef63b3a935c0
-    return fetch('https://api.themoviedb.org/3/movie/now_playing?api_key=0b1096e689aa8acb28ccef63b3a935c0&language=en-US&page=1')
+    return fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${key}`)
       .then(results => results.json())
       .then(movies => {
         return this.cleanMovieData(movies.results)
