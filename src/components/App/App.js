@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import movieApi from '../../../utils/movieApi'
-import Body from './Body/Body'
+import movieApi from '../../../utils/movieApi';
+import Body from './Body/Body';
 
 export default class App extends Component {
   constructor() {
@@ -11,7 +11,7 @@ export default class App extends Component {
     let movieApiObj = new movieApi();
     movieApiObj.fetchAllMovies()
     .then(data => {
-      this.props.fetchRecentMovies(data.results)
+      this.props.fetchRecentMovies(data)
     })
     .then(data => {
       console.log('movie props', this.props.movies)
@@ -23,7 +23,7 @@ export default class App extends Component {
     return (
       <div>
         <h1>Movie Watcher</h1>
-        <Body movies = { movies }/>
+        <Body />
       </div>
     )
   }

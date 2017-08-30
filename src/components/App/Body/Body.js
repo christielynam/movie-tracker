@@ -1,12 +1,12 @@
 import React from 'react';
-import MovieDirectory from './MovieDirectory/MovieDirectory';
+import MovieDirectoryContainer from '../../../containers/MovieDirectoryContainer';
 
 
 
 
-const Body = ({ movies }) => {
+const Body = () => {
   return(
-    <MovieDirectory movies = { movies } />
+    <MovieDirectoryContainer />
   )
 }
 
