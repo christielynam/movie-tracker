@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-export default class UserControls extends Component() {
+export default class UserControls extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
-      username = '',
-      password = ''
+      username: '',
+      password: ''
     }
   }
 
