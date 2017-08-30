@@ -1,6 +1,6 @@
 export const addRecentMovies = (data) => {
   return {
-    type:'ADD_MOVIES',
+    type: 'ADD_MOVIES',
     data
   }
 }

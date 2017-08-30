@@ -1,9 +1,11 @@
 const movies = (state = [], action) => {
   switch (action.type) {
     case 'ADD_MOVIES':
-      return [...state, ...action.data]
+      console.log('ADD MOVIE ACTION CALLED')
+      return [...state, ...action.data];
     default:
-      return state
+      console.log('DOES DEFAULT GET RAN')
+      return state;
   }
 }
 
