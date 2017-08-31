@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 
-export default class UserControls extends Component {
+export default class SignIn extends Component {
   constructor() {
     super();
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      name: '',
     }
   }
 
@@ -18,7 +19,7 @@ export default class UserControls extends Component {
         <input className='password'
                placeholder='Password'
         />
-        <button>Log In</button>
+        <button>Sign In</button>
       </div>
     )
   }

@@ -13,7 +13,7 @@ export default class MovieDirectory extends Component {
     })
 
     return (
-      <div>
+      <div className='movie-container'>
         { movieList }
       </div>
     )
