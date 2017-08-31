@@ -1,0 +1,34 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 100%;
+  font-family: 'Comfortaa', cursive;
+}
+
+header {
+  height: 200px;
+  background-color: #000;
+}
+
+.title {
+  color: red;
+  font-size: 75px;
+  font-weight: bold;
+}
+
+.signIn-btn {
+  height: 50px;
+  width: 150px;
+  background-color: red;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 25px;
+  font-weight: bold;
+}
