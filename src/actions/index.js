@@ -4,3 +4,10 @@ export const addRecentMovies = (data) => {
     data
   }
 }
+
+export const setActiveUser = (data) => {
+  return {
+    type: 'SET_ACTIVE_USER',
+    data
+  }
+}
