@@ -1,5 +1,5 @@
 import React from 'react';
-import UserControls from './UserControls/UserControls';
+import SignInSignOut from './SignInSignOut/SignInSignOut'
 // import FavoritesButton from './FavoritesButton/FavoritesButton';
 
 const Header = () => {
@@ -7,8 +7,7 @@ const Header = () => {
   return(
     <header>
       <h1 className='title'>Movie Tracker</h1>
-      <button className="signIn-btn">Sign In</button>
-      <UserControls />
+      <SignInSignOut />
     </header>
   )
 }

@@ -12,16 +12,19 @@
 
 header {
   height: 200px;
+  display: grid;
+  grid-template-columns: 90% 10%;
   background-color: #000;
 }
 
 .title {
+  margin-left: 50px;
   color: red;
   font-size: 75px;
   font-weight: bold;
 }
 
-.signIn-btn {
+.signIn-signOut {
   height: 50px;
   width: 150px;
   background-color: red;
@@ -31,4 +34,15 @@ header {
   font-family: inherit;
   font-size: 25px;
   font-weight: bold;
+}
+
+.movie-container {
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: 20% 20% 20% 20% 20%;
+  justify-content: center;
+}
+
+.movie-poster{
+  margin: 10px;
 }
