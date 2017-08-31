@@ -8,7 +8,7 @@ const Header = () => {
     <header>
       <h1 className='title'>Movie Tracker</h1>
       <button className="signIn-btn">Sign In</button>
-      {/* <UserControls /> */}
+      <UserControls />
     </header>
   )
 }
