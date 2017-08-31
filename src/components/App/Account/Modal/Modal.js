@@ -1,11 +1,14 @@
 import React from 'react';
+import CreateUserAccount from '../CreateUserAccount/CreateUserAccount';
+import SignIn from '../SignIn/SignIn';
 
-const Modal = () => {
 
+const Modal = ({ action }) => {
+//look into history obj
   return(
     <section>
-      <CreateUserAccount />
-      <LogIn />
+      {action === 'signup' && <CreateUserAccount />}
+      {action === 'signin' && <SignIn />}
     </section>
   )
 }

@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import movieApi from '../../../utils/movieApi';
 import Body from './Body/Body';
 import Header from './Header/Header';
-import SignIn from './Account/SignIn/SignIn';
-import CreateUserAccount from './Account/CreateUserAccount/CreateUserAccount';
+import Modal from './Account/Modal/Modal';
 import { Route } from 'react-router';
 
 export default class App extends Component {
@@ -23,8 +22,8 @@ export default class App extends Component {
     return (
       <div className='app'>
         <Header />
-        <Route exact path='/signin' component={SignIn} />
-        <Route exact path='/signup' component={CreateUserAccount} />
+        <Route exact path='/signin' render={() => <Modal action='signin' />} />
+        <Route exact path='/signup' render={() => <Modal action='signup' />} />
         <Body />
       </div>
     )

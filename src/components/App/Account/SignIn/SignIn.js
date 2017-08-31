@@ -13,6 +13,7 @@ export default class SignIn extends Component {
   render() {
     return(
       <div>
+        <h3>Sign In</h3>
         <input className='username'
                placeholder='Username'
         />
