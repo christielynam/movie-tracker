@@ -6,7 +6,7 @@ import SignIn from '../../../../containers/SignIn-container';
 const Modal = ({ action }) => {
 //look into history obj
   return(
-    <section>
+    <section className='modal'>
       {action === 'signup' && <CreateUserAccount />}
       {action === 'signin' && <SignIn />}
     </section>

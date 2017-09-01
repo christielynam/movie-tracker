@@ -21,6 +21,8 @@ export default class CreateUserAccount extends Component {
     return (this.state.password === this.state.confirmPassword) ? true : false
   }
 
+  
+
   clearInputs(status) {
 
   }

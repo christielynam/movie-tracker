@@ -53,6 +53,51 @@ header {
   line-height: 200px;
 }
 
+.modal{
+  height: 800px;
+  width: 600px;
+  /*display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: 20% 20% 20% 20% 20%;*/
+  position: absolute;
+  top: 400px;
+  background-color: gray;
+  opacity: .85;
+}
+
+.sign-in-heading {
+  grid-column: 2/5;
+  padding: 25px;
+  font-size: 75px;
+  text-align: center;
+}
+
+.signin-email,
+.signin-password {
+  width: 500px;
+  height: 75px;
+  padding: 25px;
+  border: 2px solid gray;
+  font-size: 30px;
+  font-family: inherit;
+}
+
+.signin-btn {
+  height: 100px;
+  width: 200px;
+  border: none;
+  border-radius: 100px;
+  background-color: red;
+  cursor: pointer;
+  font-size: 35px;
+  font-family: inherit;
+  font-weight: bold;
+}
+
+.new-user {
+  font-size: 25px;
+}
+
 .movie-container {
   display: grid;
   grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
