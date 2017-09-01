@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MovieCard from './MovieCard/MovieCard'
+import CardContainer from '../../../../containers/Card-container'
 
 export default class MovieDirectory extends Component {
   constructor() {
@@ -9,7 +9,7 @@ export default class MovieDirectory extends Component {
   render() {
     const { movies } = this.props
     const movieList = movies.map( movie => {
-      return <MovieCard key={ movie.movieId } movie={ movie } />
+      return <CardContainer key={ movie.movieId } movie={ movie } />
     })
 
     return (

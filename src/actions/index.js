@@ -4,3 +4,10 @@ export const addRecentMovies = (data) => {
     data
   }
 }
+
+export const addFavoriteMovies = (data) => {
+  return {
+    type: 'ADD_FAVORITE',
+    data
+  }
+}
