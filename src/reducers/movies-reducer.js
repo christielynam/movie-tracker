@@ -3,13 +3,13 @@ const movies = (state = [], action) => {
     case 'ADD_MOVIES':
       return [...state, ...action.data];
     case 'ADD_FAVORITE':
-      console.log('action: ', action.data.movieId)
+      // console.log('action: ', action.data.movieId)
       let matchedId = action.data.movieId
       let movieArray = state
       let updatedArray = movieArray.map(movie =>{ 
           
           if (movie.movieId === matchedId) {
-              console.log('movieA: ',movie)
+              // console.log('movieA: ',movie)
               movie.isFavorited = !movie.isFavorited
           }  
           return movie

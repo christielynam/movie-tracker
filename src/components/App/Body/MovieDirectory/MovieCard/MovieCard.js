@@ -2,6 +2,7 @@
 import React from 'react';
 
 const addFavoritedMovie = (props)  => {
+  console.log('FAV HIT!!!!')
   const {movie, movies, addMovietoFavorites} = props
   fetch('/api/users/favorites/new', {
     method: 'POST',
@@ -16,20 +17,26 @@ const addFavoritedMovie = (props)  => {
 }
 
 const removeFavoritedMovie = (props) => {
+  console.log('REMOVE HIT!')
   const {movie, movies, addMovietoFavorites} = props
+  console.log(props)
   fetch('/api/users/:id/favorites/:movie_id', {
-    method: 'POST',
+    method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
     },
     body:  JSON.stringify({ movie_id: movie.movieId, user_id: 1 })
   }).then(res => res.json())
-  .then(res => {console.log('RESULT OF REMOVE FAVORITE', res)})
+  .then(res => {
+    addMovietoFavorites(movie)
+    console.log('RESULT OF REMOVE FAVORITE', res)})
 }
 
 const checkFavorite = (props) => {
   const { movie } = props
-  movie.isFavorted === false ? addFavoritedMovie(props) : removeFavoritedMovie(props)
+  console.log('isFavorited: ', movie.isFavorited)
+  
+  movie.isFavorited ? removeFavoritedMovie(props) : addFavoritedMovie(props) 
 }
 
 
@@ -42,7 +49,7 @@ const MovieCard = (props) => {
               type="button"
               onClick={(e) => {
                 e.preventDefault();
-                addFavoritedMovie(props);
+                checkFavorite(props);
               }}
               >FAV</button>
     </div>
