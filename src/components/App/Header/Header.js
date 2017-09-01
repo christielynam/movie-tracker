@@ -1,5 +1,5 @@
 import React from 'react';
-import SignInSignOut from './SignInSignOut/SignInSignOut'
+import SignInSignOutContainer from '../../../containers/SignInSignOut-container'
 // import FavoritesButton from './FavoritesButton/FavoritesButton';
 
 const Header = () => {
@@ -7,7 +7,7 @@ const Header = () => {
   return(
     <header>
       <h1 className='title'>Movie Tracker</h1>
-      <SignInSignOut />
+      <SignInSignOutContainer />
     </header>
   )
 }

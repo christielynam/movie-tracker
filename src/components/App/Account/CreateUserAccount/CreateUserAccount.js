@@ -11,15 +11,17 @@ export default class CreateUserAccount extends Component {
     }
   }
 
-  handleChange(e, string) {
+  handleChange(e, type) {
     this.setState({
-      [string]: e.target.value
+      [type]: e.target.value
     })
   }
 
   validatePassword() {
     return (this.state.password === this.state.confirmPassword) ? true : false
   }
+
+  
 
   clearInputs(status) {
 
