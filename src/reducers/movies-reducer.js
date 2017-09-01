@@ -10,12 +10,14 @@ const movies = (state = [], action) => {
           
           if (movie.movieId === matchedId) {
               console.log('movieA: ',movie)
-              movie.isFavorited = true
+              movie.isFavorited = !movie.isFavorited
           }  
           return movie
       })
       console.log('newState: ', updatedArray)    
-      return updatedArray  ;//BROKE RIGHT NOW
+      return updatedArray;
+    // case 'REMOVE_FAVORITE':
+      
 
 
 

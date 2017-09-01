@@ -2,7 +2,7 @@
 import React from 'react';
 
 const addFavoritedMovie = (props)  => {
-  const {movie, movies, addFavoriteMovie} = props
+  const {movie, movies, addMovietoFavorites} = props
   fetch('/api/users/favorites/new', {
     method: 'POST',
     headers: {
@@ -11,9 +11,27 @@ const addFavoritedMovie = (props)  => {
     body: JSON.stringify({ movie_id: movie.movieId, user_id: 1, title: movie.title, poster_path: movie.posterImg, release_date: movie.releaseDate, vote_average: movie.voteAverage, overview: movie.description  })
   }).then(res => res.json())
   .then(res => {
-    addFavoriteMovie(movie)
+    addMovietoFavorites(movie)
     console.log('RESULT OF ADD FAVORITE', res)})
 }
+
+const removeFavoritedMovie = (props) => {
+  const {movie, movies, addMovietoFavorites} = props
+  fetch('/api/users/:id/favorites/:movie_id', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body:  JSON.stringify({ movie_id: movie.movieId, user_id: 1 })
+  }).then(res => res.json())
+  .then(res => {console.log('RESULT OF REMOVE FAVORITE', res)})
+}
+
+const checkFavorite = (props) => {
+  const { movie } = props
+  movie.isFavorted === false ? addFavoritedMovie(props) : removeFavoritedMovie(props)
+}
+
 
 const MovieCard = (props) => {
 

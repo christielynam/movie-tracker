@@ -11,3 +11,10 @@ export const addFavoriteMovies = (data) => {
     data
   }
 }
+
+export const removeFavoriteMovie = (data) => {
+  return {
+    type: 'REMOVE_FAVORITE',
+    data
+  }
+}
