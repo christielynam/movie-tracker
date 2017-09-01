@@ -12,6 +12,7 @@
 
 header {
   height: 200px;
+  width: 100%;
   display: grid;
   grid-template-columns: 90% 10%;
   background-color: #000;
@@ -22,27 +23,47 @@ header {
   color: red;
   font-size: 75px;
   font-weight: bold;
+  line-height: 200px;
 }
 
-.signIn-signOut {
-  height: 50px;
-  width: 150px;
+.sign-in {
+  padding: 20px;
   background-color: red;
   border: none;
-  border-radius: 25px;
+  border-radius: 50px;
+  color: #000;
   cursor: pointer;
   font-family: inherit;
-  font-size: 25px;
+  font-size: 50px;
   font-weight: bold;
+  text-decoration: none;
+  line-height: 200px;
+}
+
+.sign-out {
+  height: 100px;
+  width: 250px;
+  background-color: red;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 40px;
+  font-weight: bold;
+  line-height: 200px;
 }
 
 .movie-container {
   display: grid;
-  grid-template-columns: 20% 20% 20% 20% 20%;
-  grid-template-rows: 20% 20% 20% 20% 20%;
+  grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
+  grid-template-rows: 2fr 2fr 2fr 2fr;
   justify-content: center;
+  padding: 20px;
+  background-color: gray;
 }
 
 .movie-poster{
   margin: 10px;
+  border-radius: 30px;
+  cursor: pointer;
 }
