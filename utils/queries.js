@@ -33,7 +33,6 @@ function signIn(req, res, next) {
     });
   })
   .catch(function (err) {
-    console.log('sign in api error: ', err)
     return next(err);
   });
 }

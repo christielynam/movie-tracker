@@ -11,3 +11,11 @@ export const setActiveUser = (data) => {
     data
   }
 }
+
+
+export const removeActiveUser = (data) => {
+  return {
+    type: 'REMOVE_ACTIVE_USER',
+    data
+  }
+}
