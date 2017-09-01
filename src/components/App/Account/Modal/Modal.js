@@ -1,6 +1,6 @@
 import React from 'react';
 import CreateUserAccount from '../CreateUserAccount/CreateUserAccount';
-import SignIn from '../SignIn/SignIn';
+import SignIn from '../../../../containers/SignIn-container';
 
 
 const Modal = ({ action }) => {

@@ -11,9 +11,9 @@ export default class CreateUserAccount extends Component {
     }
   }
 
-  handleChange(e, string) {
+  handleChange(e, type) {
     this.setState({
-      [string]: e.target.value
+      [type]: e.target.value
     })
   }
 
