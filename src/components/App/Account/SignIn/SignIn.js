@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
-import createHistory from 'history/createBrowserHistory';
+// import { push } from 'react-router-redux';
+// import createHistory from 'history/createBrowserHistory';
 
-const history = createHistory();
+// const history = createHistory();
 
 export default class SignIn extends Component {
   constructor(props, context) {
@@ -21,6 +22,12 @@ export default class SignIn extends Component {
 
   signInUser(e) {
     e.preventDefault();
+
+    // console.log('WHAT IS CONTEXT:', this.props)
+
+    this.props.changeRoute('/')
+
+    // dispatch(push('/'))
 
     const {email, password} = this.state;
 
@@ -51,12 +58,14 @@ export default class SignIn extends Component {
       .catch(error => console.log('sign in failed: ', error))
   }
 
+
   render() {
     return(
       <div>
-        { Object.keys(this.props.activeAccount).length > 0 &&
-          <Redirect to='/' />
-        }
+
+      { Object.keys(this.props.activeAccount).length > 0 &&
+        <Redirect to='/' />
+      }
 
         { Object.keys(this.props.activeAccount).length === 0 &&
 
