@@ -5,6 +5,14 @@ export const addRecentMovies = (data) => {
   }
 }
 
+
+export const addFavoriteMovies = (data) => {
+  return {
+    type: 'ADD_FAVORITE',
+    data
+  }
+}
+    
 export const setActiveUser = (data) => {
   return {
     type: 'SET_ACTIVE_USER',
@@ -12,6 +20,13 @@ export const setActiveUser = (data) => {
   }
 }
 
+
+export const removeFavoriteMovie = (data) => {
+  return {
+    type: 'REMOVE_FAVORITE',
+    data
+  }
+}
 
 export const removeActiveUser = (data) => {
   return {
