@@ -8,6 +8,7 @@ import { Redirect } from 'react-router';
 export default class SignIn extends Component {
   constructor(props, context) {
     super(props, context);
+    console.log('signin props', props);
     this.state = {
       email: '',
       password: ''
@@ -17,6 +18,17 @@ export default class SignIn extends Component {
   handleChange(e, type) {
     this.setState({
       [type]: e.target.value
+    })
+  }
+
+  updateLocalStorage(props) {
+    localStorage.setItem('user', props.activeAccount)
+  }
+
+  clearInputs() {
+    this.setState({
+      email: '',
+      password: ''
     })
   }
 
@@ -48,10 +60,9 @@ export default class SignIn extends Component {
           this.props.handleSignInSuccess(response.data);
 
           if (this.props.activeAccount.email === email) {
+            this.updateLocalStorage();
             console.log('Current Signed In User:', this.props.activeAccount.name);
-            //history.push('/');
-            //TODO: THIS IS A HACK, how do we actually redirect correctly from inside a function
-            //location.href = location.href;
+
           }
         }
       })
@@ -70,7 +81,7 @@ export default class SignIn extends Component {
         { Object.keys(this.props.activeAccount).length === 0 &&
 
           <div>
-            <h3>Sign In</h3>
+            <h3 className='sign-in-heading'>Sign In</h3>
             <form>
               <input className='signin-email'
                     placeholder='Email'
@@ -82,7 +93,9 @@ export default class SignIn extends Component {
                     value={this.state.password}
                     onChange={(e) => this.handleChange(e, 'password')}
               />
-              <button type='submit' onClick={this.signInUser.bind(this)}>Sign In</button>
+              <button className='signin-btn' type='submit' onClick={this.signInUser.bind(this), this.clearInputs.bind(this)}>Sign In</button>
+              <p className='new-user'>New to Movie Tracker?</p>
+              {/* <Link */}
             </form>
           </div>
         }
