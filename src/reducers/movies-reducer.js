@@ -16,11 +16,25 @@ const movies = (state = [], action) => {
       })
       // console.log('newState: ', updatedArray)    
       return updatedArray;
-    // case 'REMOVE_FAVORITE':
-      
-
-
-
+    case 'FETCH_FAVORITES':
+      let serverFavorites = action.data
+      console.log('SERVER FAVS:', serverFavorites);
+      let storeMovies = state.slice()
+      console.log('STORE MOVIES COPY:', storeMovies);
+          serverFavorites.forEach(favMovie => {
+            storeMovies.forEach(movie => {
+           if  (favMovie.movie_id === movie.movieId) {
+             console.log('match!')
+             movie.isFavorited = true;
+           } 
+          })      
+      }) 
+      return storeMovies;
+    case 'RESET_FAVORITES':
+      return state.map(movie => {
+        movie.isFavorited = false;
+        return movie;
+      })
     default:
       return state;
   }

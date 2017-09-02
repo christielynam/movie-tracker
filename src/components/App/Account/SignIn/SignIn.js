@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { Redirect } from 'react-router';
 import {fetchSignInUser} from '../../../../../utils/movieApi'
-// import Notifications from 'react-notification-system-redux';
-// import Notifications from '../../../../containers/Notifications-container';
-import Notifications from '../../Notifications';
+import { Link } from 'react-router-dom';
+import CreateUserAccount from '../CreateUserAccount/CreateUserAccount'
 
 // import { push } from 'react-router-redux';
 // import createHistory from 'history/createBrowserHistory';
@@ -27,7 +25,6 @@ const notificationOpts = {
 export default class SignIn extends Component {
   constructor(props, context) {
     super(props, context);
-    // console.log('signin props', props);
     this.state = {
       email: '',
       password: ''
@@ -52,11 +49,18 @@ export default class SignIn extends Component {
     localStorage.setItem('user', JSON.stringify(this.props.activeAccount))
   }
 
-  clearInputs() {
-    this.setState({
-      email: '',
-      password: ''
-    })
+  retrieveFavoriteMovies() {
+    fetch(`/api/users/${this.props.activeAccount.id}/favorites`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.status === 'success') {
+          if (data.data.length > 0) {
+            this.props.fetchUserFavorites(data.data)
+          }
+        } else {
+          console.log('ERROR: grabbing favorites from db');
+        }
+      })
   }
 
   signInUser(e) {
@@ -68,9 +72,7 @@ export default class SignIn extends Component {
     
     
     const {email, password} = this.state;
-    
-    // console.log('attemping to sign in');
-    
+
     fetchSignInUser(email, password)
     .then(response => {
       if (response.status === 'success') {
@@ -79,7 +81,7 @@ export default class SignIn extends Component {
         // console.log('after detelting password:', response.data);
         this.props.handleSignInSuccess(response.data);
         //notificaiton
-        // this.props.alertme(notificationOpts);
+        //this.props.alertme(notificationOpts);
         // console.log('WHAT IS CONTEXT@???!>>!>>@: ', this.context)
         // this.context.store.dispatch(success(notificationOpts));
         // this.forceUpdate();
@@ -88,9 +90,8 @@ export default class SignIn extends Component {
           if (this.props.activeAccount.email === email) {
             this.updateLocalStorage();
             // this.clearInputs();
-
-            // this.props.changeRoute('/');
-
+            this.retrieveFavoriteMovies();
+            this.props.changeRoute('/');
             // console.log('Current Signed In User:', this.props.activeAccount.name);
           }
         }
@@ -117,10 +118,11 @@ export default class SignIn extends Component {
         { Object.keys(this.props.activeAccount).length === 0 &&
 
           <div>
-            <h3 className='sign-in-heading'>Sign In</h3>
-            <form>
+            <form className='signin-form'>
+              <h3 className='sign-in-heading'>Sign In</h3>
               <input className='signin-email'
                     placeholder='Email'
+                    autoFocus
                     value={this.state.email}
                     onChange={(e) => this.handleChange(e, 'email')}
               />
@@ -131,6 +133,8 @@ export default class SignIn extends Component {
               />
               <button className='signin-btn' type='submit' onClick={this.signInUser.bind(this)}>Sign In</button>
               <p className='new-user'>New to Movie Tracker?</p>
+              <Link className='signup-link' to='/signup'>Sign up here</Link>
+              <Link className='cancel-signin' to='/'>Cancel</Link>
             </form>
             </div>
           }

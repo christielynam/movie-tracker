@@ -3,13 +3,13 @@ import React from 'react';
 
 const addFavoritedMovie = (props)  => {
   console.log('FAV HIT!!!!')
-  const {movie, movies, addMovietoFavorites} = props
+  const {movie, movies, addMovietoFavorites, activeAccount} = props
   fetch('/api/users/favorites/new', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ movie_id: movie.movieId, user_id: 1, title: movie.title, poster_path: movie.posterImg, release_date: movie.releaseDate, vote_average: movie.voteAverage, overview: movie.description  })
+    body: JSON.stringify({ movie_id: movie.movieId, user_id: activeAccount.id, title: movie.title, poster_path: movie.posterImg, release_date: movie.releaseDate, vote_average: movie.voteAverage, overview: movie.description  })
   }).then(res => res.json())
   .then(res => {
     addMovietoFavorites(movie)
@@ -19,13 +19,13 @@ const addFavoritedMovie = (props)  => {
 const removeFavoritedMovie = (props) => {
   console.log('REMOVE HIT!')
   console.log('PROPS @ DELETE FAV:', props)
-  const {movie, movies, addMovietoFavorites} = props
-  fetch(`/api/users/1/favorites/${movie.movieId}`, {
+  const {movie, movies, addMovietoFavorites, activeAccount} = props
+  fetch(`/api/users/${activeAccount.id}/favorites/${movie.movieId}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
     },
-    body:  JSON.stringify({ movie_id: movie.movieId, user_id: 1 })
+    body:  JSON.stringify({ movie_id: movie.movieId, user_id: activeAccount.id })
   }).then(res => res.json())
   .then(res => {
     addMovietoFavorites(movie)
@@ -34,6 +34,7 @@ const removeFavoritedMovie = (props) => {
 
 const checkFavorite = (props) => {
   const { movie } = props
+  console.log('movie: ', movie)
   console.log('isFavorited: ', movie.isFavorited)
   // is a user signed in?
   // YES: do this check
@@ -43,18 +44,25 @@ const checkFavorite = (props) => {
 }
 
 
+
 const MovieCard = (props) => {
+  console.log(props.movie.isFavorited)
+  const favClass = props.movie.isFavorited ? "favorite-movie-btn favorited-movie-active" : "favorite-movie-btn"
+  
 
   return(
-    <div>
+    <div className='movie-card'>
+      <div className='button-container'>
+        <button className={favClass}
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  checkFavorite(props);
+                }}
+                ></button>
+      </div>
       <img className='movie-poster' src={`https://image.tmdb.org/t/p/w500${props.movie.posterImg}`} />
-      <button className='favorite-movie-btn' 
-              type="button"
-              onClick={(e) => {
-                e.preventDefault();
-                checkFavorite(props);
-              }}
-              >FAV</button>
+
     </div>
   )
 }

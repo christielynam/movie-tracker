@@ -10,23 +10,26 @@
   font-family: 'Comfortaa', cursive;
 }
 
-header {
-  height: 200px;
+.header {
+  height: 150px;
   width: 100%;
   display: grid;
-  grid-template-columns: 90% 10%;
+  grid-template-columns: 75% 25%;
+  position: fixed;
+  z-index: 100;
   background-color: #000;
 }
 
 .title {
   margin-left: 50px;
   color: red;
-  font-size: 75px;
+  font-size: 50px;
   font-weight: bold;
-  line-height: 200px;
+  line-height: 150px;
 }
 
-.sign-in {
+.sign-in,
+.sign-out {
   padding: 20px;
   background-color: red;
   border: none;
@@ -34,81 +37,168 @@ header {
   color: #000;
   cursor: pointer;
   font-family: inherit;
-  font-size: 50px;
+  font-size: 25px;
   font-weight: bold;
   text-decoration: none;
-  line-height: 200px;
+  line-height: 150px;
 }
 
-.sign-out {
-  height: 100px;
-  width: 250px;
-  background-color: red;
-  border: none;
-  border-radius: 100px;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: 40px;
-  font-weight: bold;
-  line-height: 200px;
-}
 
 .modal{
-  height: 800px;
-  width: 600px;
-  /*display: grid;
-  grid-template-columns: 20% 20% 20% 20% 20%;
-  grid-template-rows: 20% 20% 20% 20% 20%;*/
-  position: absolute;
-  top: 400px;
+  height: 400px;
+  width: 300px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  border: 5px solid red;
+  border-radius: 5%;
+  position: fixed;
+  top: 225px;
   background-color: gray;
-  opacity: .85;
+  opacity: .90;
+  animation-name: slideDown;
+  animation-duration: 2s;
+}
+
+@keyframes slideDown {
+  0% {
+    top: -1000px;
+  }
+  100% {
+    top: 225px;
+  }
 }
 
 .sign-in-heading {
-  grid-column: 2/5;
   padding: 25px;
-  font-size: 75px;
+  font-size: 40px;
   text-align: center;
 }
 
+.signin-form {
+  height: 250px;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
 .signin-email,
-.signin-password {
-  width: 500px;
-  height: 75px;
-  padding: 25px;
+.signin-password,
+.newuser-name,
+.newuser-email,
+.newuser-password  {
+  outline: none;
+}
+
+.signin-email,
+.signin-password,
+.newuser-name,
+.newuser-email,
+.newuser-password {
+  width: 250px;
+  height: 50px;
+  padding: 10px;
   border: 2px solid gray;
-  font-size: 30px;
+  font-size: 20px;
   font-family: inherit;
 }
 
-.signin-btn {
-  height: 100px;
-  width: 200px;
+.signin-btn,
+.signup-btn {
+  height: 50px;
+  width: 100px;
   border: none;
   border-radius: 100px;
-  background-color: red;
+  background-color: #FF0000;
   cursor: pointer;
-  font-size: 35px;
+  font-size: 20px;
   font-family: inherit;
+  font-weight: bold;
+  outline: none;
+}
+
+.create-user-form {
+  height: 250px;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.create-account-heading {
+  font-size: 30px;
+  text-align: center;
+}
+
+.new-user,
+.signup-link,
+.cancel-signin {
+  font-size: 20px;
   font-weight: bold;
 }
 
-.new-user {
-  font-size: 25px;
+.signup-link,
+.cancel-signin,
+.cancel-signup {
+  color: red;
+  font-size: 20px;
 }
 
 .movie-container {
   display: grid;
-  grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 2fr 2fr 2fr 2fr;
-  justify-content: center;
-  padding: 20px;
+  /*justify-content: center;*/
+  padding-top: 175px;
   background-color: gray;
+  width: 100%;
 }
 
 .movie-poster{
+  height: 300px;
+  width: 200px;
   margin: 10px;
   border-radius: 30px;
   cursor: pointer;
+  transition: transform .5s;
 }
+
+.movie-card{
+  position: relative;
+  margin: auto;
+}
+
+.button-container{
+  width: 100%;
+  position: absolute;
+  z-index: 10;
+  top: 25px;
+  right: 25px;
+}
+
+.favorite-movie-btn{
+  width: 35px;
+  height: 35px;
+  position: relative;
+  background-image: url('/icons/heart.png');
+  display: inline-block;
+  background-size: contain;
+  background-color: transparent;
+  border: none;
+  float: right;
+  cursor: pointer;
+  outline: none;
+}
+
+.favorite-movie-btn:hover{
+  background-image: url('/icons/heart-red.png');
+  outline: none;
+}
+
+.favorited-movie-active{
+  background-image: url('/icons/heart-red.png');
+  outline: none;
+}
+
+/*.movie-poster:hover {
+  border: 5px solid red;
+  transform: scale(1.05);
+}*/

@@ -19,6 +19,7 @@ const store = createStore(rootReducer, devTools, applyMiddleware(middleware));
 
 window.appStore = store; //In case you want to see what's inside by executing appStore in console;
 
+
 ReactDOM.render(
   <Provider store={ store }>
     <ConnectedRouter history={history}>

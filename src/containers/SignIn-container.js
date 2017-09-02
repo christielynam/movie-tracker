@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux'
 import SignIn from '../components/App/Account/SignIn/SignIn';
-import { setActiveUser, success } from '../actions'
+import { setActiveUser, success, fetchFavoriteMovies } from '../actions'
 // import { success } from 'react-notification-system-redux';
 
 const mapStateToProps = (store) => {
@@ -15,11 +15,13 @@ const mapDispatchToProps = (dispatch) => {
     handleSignInSuccess: (data) => {
       dispatch(setActiveUser(data))
     },
+    fetchUserFavorites: (data) => {
+      dispatch(fetchFavoriteMovies(data))
+    },
     changeRoute: (url) => {
       dispatch(push(url))
     },
     alertme: (notificationOpts) => {
-      console.log('I AM IN ALERT ME!!!')
       dispatch(success(notificationOpts))
     }
   }
