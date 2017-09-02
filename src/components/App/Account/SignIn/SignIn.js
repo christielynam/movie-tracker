@@ -11,13 +11,13 @@ import CreateUserAccount from '../CreateUserAccount/CreateUserAccount'
 
 const notificationOpts = {
   // uid: 'once-please', // you can specify your own uid if required
-  title: 'Hey, it\'s WHAT THE FUCK IS GOING ON!',
-  message: 'Now you can see how easy it is to use notifications in React!',
-  position: 'tr',
+  title: 'You Signed in Successfully!',
+  message: 'You can now add favorites :)',
+  position: 'tc',
   autoDismiss: 0,
   action: {
     label: 'Click me!!',
-    callback: () => alert('clicked!')
+    callback: () => alert('we can issue call backs from buttons clicked within the alert!')
   }
 };
 
@@ -81,7 +81,7 @@ export default class SignIn extends Component {
         // console.log('after detelting password:', response.data);
         this.props.handleSignInSuccess(response.data);
         //notificaiton
-        //this.props.alertme(notificationOpts);
+        this.props.alertme(notificationOpts);
         // console.log('WHAT IS CONTEXT@???!>>!>>@: ', this.context)
         // this.context.store.dispatch(success(notificationOpts));
         // this.forceUpdate();
@@ -96,10 +96,10 @@ export default class SignIn extends Component {
           }
         }
       })
-      .then(data => {
-        // console.log('2ND THEN:', data)
-        this.props.alertme(notificationOpts);        
-      })
+      // .then(data => {
+      //   // console.log('2ND THEN:', data)
+      //   this.props.alertme(notificationOpts);        
+      // })
       .catch(error => console.log('sign in failed: ', error))
   }
 
