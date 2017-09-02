@@ -63,6 +63,7 @@ export default class CreateUserAccount extends Component {
             e.preventDefault();
             this.testAddUser();
           }}>Sign Up</button>
+          {/* // TODO: need to sign user in after new account set up */}
           <Link className='cancel-signup' to='/'>Cancel</Link>
 
         </form>
