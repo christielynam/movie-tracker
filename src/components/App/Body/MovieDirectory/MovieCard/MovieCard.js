@@ -34,6 +34,7 @@ const removeFavoritedMovie = (props) => {
 
 const checkFavorite = (props) => {
   const { movie } = props
+  console.log('movie: ', movie)
   console.log('isFavorited: ', movie.isFavorited)
   // is a user signed in?
   // YES: do this check
@@ -43,18 +44,25 @@ const checkFavorite = (props) => {
 }
 
 
+
 const MovieCard = (props) => {
+  console.log(props.movie.isFavorited)
+  const favClass = props.movie.isFavorited ? "favorite-movie-btn favorited-movie-active" : "favorite-movie-btn"
+  
 
   return(
-    <div>
+    <div className='movie-card'>
+      <div className='button-container'>
+        <button className={favClass}
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  checkFavorite(props);
+                }}
+                ></button>
+      </div>
       <img className='movie-poster' src={`https://image.tmdb.org/t/p/w500${props.movie.posterImg}`} />
-      <button className='favorite-movie-btn' 
-              type="button"
-              onClick={(e) => {
-                e.preventDefault();
-                checkFavorite(props);
-              }}
-              >FAV</button>
+
     </div>
   )
 }

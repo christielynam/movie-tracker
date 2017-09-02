@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import App from '../components/App/App';
-import { addRecentMovies, setActiveUser } from '../actions';
+import { addRecentMovies, fetchFavoriteMovies, setActiveUser } from '../actions';
 
 const mapStateToProps = (mall) => {
   return {
@@ -14,9 +14,12 @@ const mapDispatchToProps = (dispatch) => {
     fetchRecentMovies: (data) => {
       dispatch(addRecentMovies(data))
     },
+    fetchUserFavorites: (data) => {
+      dispatch(fetchFavoriteMovies(data))
+    },
     handleSignInSuccess: (data) => {
       dispatch(setActiveUser(data))
-    },
+    }
   }
 }
 

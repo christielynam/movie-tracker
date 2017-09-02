@@ -10,6 +10,19 @@ export default class App extends Component {
     super();
   }
 
+  retrieveFavoriteMovies() {
+    fetch(`/api/users/1/favorites`)
+    .then(res => res.json())
+    .then(data => {
+      if (data.status === 'success') {
+        if (data.data.length > 0) {
+          this.props.fetchUserFavorites(data.data)
+        }
+      }
+      console.log('RESULT OF FETCH FAVS', data)
+    })
+  }
+  
   retrieveLocalStorage() {
     if (localStorage.getItem('user')) {
       this.props.handleSignInSuccess(localStorage.getItem('user'))  
@@ -27,8 +40,9 @@ export default class App extends Component {
     let movieApiObj = new movieApi();
     movieApiObj.fetchAllMovies()
     .then(data => {
-      this.props.fetchRecentMovies(data)
+      this.props.fetchRecentMovies(data);// send movies to store
       this.retrieveLocalStorage()
+      this.retrieveFavoriteMovies();
     })
   }
 
