@@ -2,9 +2,9 @@ import { connect } from 'react-redux';
 import App from '../components/App/App';
 import { addRecentMovies } from '../actions';
 
-const mapStateToProps = (store) => {
+const mapStateToProps = (mall) => {
   return {
-    movies: store.movies
+    movies: mall.movies
   }
 }
 
