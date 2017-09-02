@@ -10,23 +10,26 @@
   font-family: 'Comfortaa', cursive;
 }
 
-header {
+.header {
   height: 200px;
   width: 100%;
   display: grid;
-  grid-template-columns: 90% 10%;
+  grid-template-columns: 75% 25%;
+  position: fixed;
+  z-index: 100;
   background-color: #000;
 }
 
 .title {
   margin-left: 50px;
   color: red;
-  font-size: 75px;
+  font-size:100px;
   font-weight: bold;
   line-height: 200px;
 }
 
-.sign-in {
+.sign-in,
+.sign-out {
   padding: 20px;
   background-color: red;
   border: none;
@@ -40,40 +43,67 @@ header {
   line-height: 200px;
 }
 
-.sign-out {
-  height: 100px;
-  width: 250px;
-  background-color: red;
-  border: none;
-  border-radius: 100px;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: 40px;
-  font-weight: bold;
-  line-height: 200px;
-}
 
 .modal{
   height: 800px;
   width: 600px;
-  /*display: grid;
-  grid-template-columns: 20% 20% 20% 20% 20%;
-  grid-template-rows: 20% 20% 20% 20% 20%;*/
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  border: 5px solid red;
+  border-radius: 5%;
   position: absolute;
   top: 400px;
   background-color: gray;
-  opacity: .85;
+  opacity: .90;
+  animation-name: slideDown;
+  animation-duration: 2s;
 }
 
-.sign-in-heading {
-  grid-column: 2/5;
+@keyframes slideDown {
+  0% {
+    top: -1000px;
+  }
+  100% {
+    top: 400px;
+  }
+}
+
+.sign-in-heading,
+.create-account-heading {
   padding: 25px;
   font-size: 75px;
   text-align: center;
 }
 
-.signin-email,
+.signin-form {
+  height: 700px;
+  display: grid;
+  grid-template-rows: 20% 20% 30% 10%;
+}
+
+.signin-email {
+  grid-row: 1;
+}
 .signin-password {
+  grid-row: 2;
+}
+
+.signin-email,
+.signin-password,
+.newuser-name,
+.newuser-email,
+.newuser-password  {
+  margin: auto;
+  outline: none;
+}
+
+.signin-email,
+.signin-password,
+.newuser-name,
+.newuser-email,
+.newuser-password {
   width: 500px;
   height: 75px;
   padding: 25px;
@@ -82,9 +112,11 @@ header {
   font-family: inherit;
 }
 
-.signin-btn {
+.signin-btn,
+.signup-btn {
   height: 100px;
   width: 200px;
+  margin-left: 50px;
   border: none;
   border-radius: 100px;
   background-color: #FF0000;
@@ -92,10 +124,49 @@ header {
   font-size: 35px;
   font-family: inherit;
   font-weight: bold;
+  outline: none;
 }
 
-.new-user {
-  font-size: 25px;
+.create-user-form {
+  height: 800px;
+  display: grid;
+  grid-template-rows: 20% 15% 15% 15% 15% 20%;
+}
+
+.create-account-heading {
+  grid-row: 1;
+  font-size: 50px;
+}
+
+.newuser-name {
+  grid-row: 2;
+}
+
+.newuser-email {
+  grid-row: 3;
+}
+
+.newuser-password{
+  grid-row: 4;
+}
+
+.confirm-password {
+  grid-row: 5;
+}
+
+.signup-btn {
+  grid-row: 6;
+}
+
+.new-user,
+.signup-link {
+  margin-left: 50px;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.signup-link {
+  color: red;
 }
 
 .movie-container {
@@ -103,7 +174,7 @@ header {
   grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
   grid-template-rows: 2fr 2fr 2fr 2fr;
   justify-content: center;
-  padding: 20px;
+  padding-top: 220px;
   background-color: gray;
   width: 100%;
 }
@@ -112,6 +183,7 @@ header {
   margin: 10px;
   border-radius: 30px;
   cursor: pointer;
+  transition: transform .5s;
 }
 
 .movie-card{
@@ -147,6 +219,7 @@ header {
   background-image: url('/icons/heart-red.png');  
 }
 
-body{
-  width: 100vw;
-}
+/*.movie-poster:hover {
+  border: 5px solid red;
+  transform: scale(1.05);
+}*/

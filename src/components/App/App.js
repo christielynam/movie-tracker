@@ -19,7 +19,21 @@ export default class App extends Component {
           this.props.fetchUserFavorites(data.data)
         }
       }
-      console.log('RESULT OF FETCH FAVS', data)})
+      console.log('RESULT OF FETCH FAVS', data)
+    })
+  }
+  
+  retrieveLocalStorage() {
+    if (localStorage.getItem('user')) {
+      this.props.handleSignInSuccess(localStorage.getItem('user'))  
+    }
+
+    // if (Object.keys(this.props.activeAccount).length === 0) {
+    //   console.log(' no user signed in')
+    // } else {
+    //   console.log('user signed in');
+    // }
+
   }
 
   componentDidMount() {
@@ -27,8 +41,8 @@ export default class App extends Component {
     movieApiObj.fetchAllMovies()
     .then(data => {
       this.props.fetchRecentMovies(data);// send movies to store
+      this.retrieveLocalStorage()
       this.retrieveFavoriteMovies();
-
     })
   }
 
