@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
+import {fetchSignInUser} from '../../../../../utils/movieApi'
 // import { push } from 'react-router-redux';
 // import createHistory from 'history/createBrowserHistory';
 
@@ -40,20 +41,15 @@ export default class SignIn extends Component {
 
     console.log('attemping to sign in');
 
-    fetch('/api/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({email: email, password: password})
-    }).then(results => results.json())
+    fetchSignInUser(email, password)
       .then(response => {
         if (response.status === 'success') {
           // console.log('sign in success:', response.data);
           delete response.data.password;
           // console.log('after detelting password:', response.data);
           this.props.handleSignInSuccess(response.data);
-
+          // this validates that the user we are trying to login as
+          // actually got set to the store properly.
           if (this.props.activeAccount.email === email) {
             this.updateLocalStorage();
             // this.clearInputs();

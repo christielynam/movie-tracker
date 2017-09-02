@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import movieApi from '../../../utils/movieApi';
+import {fetchAllMovies} from '../../../utils/movieApi';
 import Body from './Body/Body';
 import Header from './Header/Header';
 import Modal from './Account/Modal/Modal';
@@ -11,8 +11,8 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    let movieApiObj = new movieApi();
-    movieApiObj.fetchAllMovies()
+    // let movieApiObj = new movieApi();
+    fetchAllMovies()
     .then(data => {
       this.props.fetchRecentMovies(data)
     })
