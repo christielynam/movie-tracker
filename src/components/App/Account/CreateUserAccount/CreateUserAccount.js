@@ -23,8 +23,13 @@ export default class CreateUserAccount extends Component {
 
 
 
-  clearInputs(status) {
-
+  clearInputs() {
+    this.setState({
+      name: '',
+      email: '',
+      password: '',
+      confirmPassword: ''
+    })
   }
 
   testAddUser() {
@@ -52,7 +57,7 @@ export default class CreateUserAccount extends Component {
     return(
       <section>
         <form className='create-user-form'>
-          
+
           <h3 className='create-account-heading'>Create New Account</h3>
 
           <input className='newuser-name' type='text' placeholder='name' autoFocus value={name} onChange={(e) => this.handleChange(e, 'name')} />
@@ -66,6 +71,8 @@ export default class CreateUserAccount extends Component {
           <button className='signup-btn' type='submit' onClick={(e) => {
             e.preventDefault();
             this.testAddUser();
+            this.clearInputs();
+            // <Route to='signin' component{SignIn} />
           }}>Sign Up</button>
         </form>
       </section>

@@ -124,6 +124,7 @@
   font-size: 35px;
   font-family: inherit;
   font-weight: bold;
+  outline: none;
 }
 
 .create-user-form {
