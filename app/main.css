@@ -47,10 +47,16 @@
 .modal{
   height: 800px;
   width: 600px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  border: 5px solid red;
+  border-radius: 5%;
   /*display: grid;
   grid-template-columns: 20% 20% 20% 20% 20%;
   grid-template-rows: 20% 20% 20% 20% 20%;*/
-  position: absolute;
+  position: fixed;
   top: 400px;
   background-color: gray;
   opacity: .85;
@@ -115,7 +121,7 @@
   transition: transform .5s;
 }
 
-.movie-poster:hover {
+/*.movie-poster:hover {
   border: 5px solid red;
   transform: scale(1.05);
-}
+}*/
