@@ -23,7 +23,7 @@
 .title {
   margin-left: 50px;
   color: red;
-  font-size: 75px;
+  font-size:100px;
   font-weight: bold;
   line-height: 200px;
 }
@@ -53,10 +53,21 @@
   z-index: 100;
   border: 5px solid red;
   border-radius: 5%;
-  position: fixed;
+  position: absolute;
   top: 400px;
   background-color: gray;
   opacity: .90;
+  animation-name: slideDown;
+  animation-duration: 2s;
+}
+
+@keyframes slideDown {
+  0% {
+    top: -1000px;
+  }
+  100% {
+    top: 400px;
+  }
 }
 
 .sign-in-heading,
