@@ -5,6 +5,12 @@ export const addRecentMovies = (data) => {
   }
 }
 
+export const removeAllIsFavorited = () => {
+  return {
+    type: 'RESET_FAVORITES'
+  }
+}
+
 export const fetchFavoriteMovies = (data) => {
   return {
     type: 'FETCH_FAVORITES',

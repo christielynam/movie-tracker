@@ -27,6 +27,20 @@ export default class SignIn extends Component {
     localStorage.setItem('user', JSON.stringify(this.props.activeAccount))
   }
 
+  retrieveFavoriteMovies() {
+    fetch(`/api/users/${this.props.activeAccount.id}/favorites`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.status === 'success') {
+          if (data.data.length > 0) {
+            this.props.fetchUserFavorites(data.data)
+          }
+        } else {
+          console.log('ERROR: grabbing favorites from db');
+        }
+      })
+  }
+
   signInUser(e) {
     e.preventDefault();
 
@@ -50,6 +64,8 @@ export default class SignIn extends Component {
 
           if (this.props.activeAccount.email === email) {
             this.updateLocalStorage();
+            // now go set the isFavorited property
+            this.retrieveFavoriteMovies();
             this.props.changeRoute('/');
             console.log('Current Signed In User:', this.props.activeAccount.name);
           }

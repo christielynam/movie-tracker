@@ -11,21 +11,32 @@ export default class App extends Component {
   }
 
   retrieveFavoriteMovies() {
-    fetch(`/api/users/1/favorites`)
-    .then(res => res.json())
-    .then(data => {
-      if (data.status === 'success') {
-        if (data.data.length > 0) {
-          this.props.fetchUserFavorites(data.data)
+    const { activeAccount } = this.props;
+    console.log('active account:', activeAccount)
+
+    if (Object.keys(activeAccount).length > 0) {
+      
+      fetch(`/api/users/${activeAccount.id}/favorites`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.status === 'success') {
+          if (data.data.length > 0) {
+            this.props.fetchUserFavorites(data.data)
+          }
+        } else {
+          console.log('ERROR: grabbing favorites from db');
         }
-      }
-      console.log('RESULT OF FETCH FAVS', data)
-    })
+      })
+
+    } else {
+      console.log('No User Found to Grab Favs');
+    }
+
   }
   
   retrieveLocalStorage() {
     if (localStorage.getItem('user')) {
-      this.props.handleSignInSuccess(localStorage.getItem('user'))  
+      this.props.handleSignInSuccess(JSON.parse(localStorage.getItem('user')))  
     }
 
     // if (Object.keys(this.props.activeAccount).length === 0) {
@@ -41,9 +52,17 @@ export default class App extends Component {
     movieApiObj.fetchAllMovies()
     .then(data => {
       this.props.fetchRecentMovies(data);// send movies to store
-      this.retrieveLocalStorage()
+      this.retrieveLocalStorage();
       this.retrieveFavoriteMovies();
     })
+  }
+
+  componentWillReceiveProps() {
+    console.log('APP: COMPONENT WILL RECEIVE PROPS')
+  }
+
+  componentWillUpdate() {
+    console.log('APP: COMPONENT WILL UPDATE')
   }
 
   render() {

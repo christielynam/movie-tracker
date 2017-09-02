@@ -3,13 +3,13 @@ import React from 'react';
 
 const addFavoritedMovie = (props)  => {
   console.log('FAV HIT!!!!')
-  const {movie, movies, addMovietoFavorites} = props
+  const {movie, movies, addMovietoFavorites, activeAccount} = props
   fetch('/api/users/favorites/new', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ movie_id: movie.movieId, user_id: 1, title: movie.title, poster_path: movie.posterImg, release_date: movie.releaseDate, vote_average: movie.voteAverage, overview: movie.description  })
+    body: JSON.stringify({ movie_id: movie.movieId, user_id: activeAccount.id, title: movie.title, poster_path: movie.posterImg, release_date: movie.releaseDate, vote_average: movie.voteAverage, overview: movie.description  })
   }).then(res => res.json())
   .then(res => {
     addMovietoFavorites(movie)
@@ -19,13 +19,13 @@ const addFavoritedMovie = (props)  => {
 const removeFavoritedMovie = (props) => {
   console.log('REMOVE HIT!')
   console.log('PROPS @ DELETE FAV:', props)
-  const {movie, movies, addMovietoFavorites} = props
-  fetch(`/api/users/1/favorites/${movie.movieId}`, {
+  const {movie, movies, addMovietoFavorites, activeAccount} = props
+  fetch(`/api/users/${activeAccount.id}/favorites/${movie.movieId}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
     },
-    body:  JSON.stringify({ movie_id: movie.movieId, user_id: 1 })
+    body:  JSON.stringify({ movie_id: movie.movieId, user_id: activeAccount.id })
   }).then(res => res.json())
   .then(res => {
     addMovietoFavorites(movie)
