@@ -5,7 +5,7 @@ import SignInSignOutContainer from '../../../containers/SignInSignOut-container'
 const Header = () => {
   // <FavoritesButton />
   return(
-    <header>
+    <header className='header'>
       <h1 className='title'>Movie Tracker</h1>
       <SignInSignOutContainer />
     </header>
