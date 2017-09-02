@@ -30,6 +30,11 @@ const movies = (state = [], action) => {
           })      
       }) 
       return storeMovies;
+    case 'RESET_FAVORITES':
+      return state.map(movie => {
+        movie.isFavorited = false;
+        return movie;
+      })
     default:
       return state;
   }
