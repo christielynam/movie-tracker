@@ -1,11 +1,13 @@
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux'
 import SignIn from '../components/App/Account/SignIn/SignIn';
-import { setActiveUser } from '../actions'
+import { setActiveUser, success } from '../actions'
+// import { success } from 'react-notification-system-redux';
 
 const mapStateToProps = (store) => {
   return {
-    activeAccount: store.account
+    activeAccount: store.account,
+    notifications: store.notifications
   }
 }
 
@@ -16,6 +18,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     changeRoute: (url) => {
       dispatch(push(url))
+    },
+    alertme: (notificationOpts) => {
+      dispatch(success(notificationOpts))
     }
   }
 }
