@@ -6,8 +6,7 @@ import { setActiveUser, success } from '../actions'
 
 const mapStateToProps = (store) => {
   return {
-    activeAccount: store.account,
-    notifications: store.notifications
+    activeAccount: store.account
   }
 }
 
@@ -20,6 +19,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(push(url))
     },
     alertme: (notificationOpts) => {
+      console.log('I AM IN ALERT ME!!!')
       dispatch(success(notificationOpts))
     }
   }

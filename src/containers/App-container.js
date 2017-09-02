@@ -4,7 +4,8 @@ import { addRecentMovies } from '../actions';
 
 const mapStateToProps = (mall) => {
   return {
-    movies: mall.movies
+    movies: mall.movies,
+    notifications: mall.notifications
   }
 }
 

@@ -14,7 +14,7 @@ export default class Notifications extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log("COMPONENT WILL RECEIVE PROPS")
+    // console.log("COMPONENT WILL RECEIVE PROPS")
     const { notifications } = nextProps;
     const notificationIds = notifications.map(notification => notification.uid);
     // const systemNotifications = this.system().state.notifications || [];
@@ -46,14 +46,14 @@ export default class Notifications extends React.Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    console.log("SHOULD COMPONENT UPDATE 1: ", this.props, '2:', nextProps);
+    // console.log("SHOULD COMPONENT UPDATE 1: ", this.props, '2:', nextProps);
     
     return this.props !== nextProps;
   }
 
   render() {
     const { notifications, ...rest } = this.props;
-    console.log("NOTIFICATION COMPONENT RENDER", this.props)
+    // console.log("NOTIFICATION COMPONENT RENDER", this.props)
 
     return (
       <NotifySystem ref='notify' { ...rest } />

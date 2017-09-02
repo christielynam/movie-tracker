@@ -4,6 +4,8 @@ import Body from './Body/Body';
 import Header from './Header/Header';
 import Modal from './Account/Modal/Modal';
 import { Route } from 'react-router';
+import Notifications from './Notifications';
+
 
 export default class App extends Component {
   constructor() {
@@ -25,6 +27,7 @@ export default class App extends Component {
         <Route exact path='/signin' render={() => <Modal action='signin' />} />
         <Route exact path='/signup' render={() => <Modal action='signup' />} />
         <Body />
+        <Notifications notifications={this.props.notifications} />
       </div>
     )
   }

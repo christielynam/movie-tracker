@@ -57,6 +57,7 @@ export const removeActiveUser = (data) => {
 // }
 
 const show = (opts = {}, level = 'success') => {
+  console.log('SHOW NOTIFY IN ACTION', opts)
   return {
     type: RNS_SHOW_NOTIFICATION,
     ...opts,

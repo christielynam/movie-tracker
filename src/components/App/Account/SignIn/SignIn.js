@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import { Redirect } from 'react-router';
 import {fetchSignInUser} from '../../../../../utils/movieApi'
 // import Notifications from 'react-notification-system-redux';
-import Notifications from '../../../../containers/Notifications-container';
-// import Notifications from '../../Notifications';
+// import Notifications from '../../../../containers/Notifications-container';
+import Notifications from '../../Notifications';
 
 // import { push } from 'react-router-redux';
 // import createHistory from 'history/createBrowserHistory';
@@ -34,6 +34,14 @@ export default class SignIn extends Component {
     };
   }
 
+
+  shouldComponentUpdate(nextProps) {
+    // console.log("SHOULD COMPONENT UPDATE 1: ", this.props, '2:', nextProps);
+    let result =  this.props !== nextProps;
+    // console.log('RESULT:', result, 'NEXT PROPS:', nextProps);
+    return true;
+  }
+
   handleChange(e, type) {
     this.setState({
       [type]: e.target.value
@@ -54,14 +62,14 @@ export default class SignIn extends Component {
   signInUser(e) {
     e.preventDefault();
 
-    console.log("WHAST IS CONTEXT:", this.context)
-    console.log("WHAST IS PROPS:", this.props)
-    console.log("WHAST IS getState:", this.context.store.getState())
+    // console.log("WHAST IS CONTEXT:", this.context)
+    // console.log("WHAST IS PROPS:", this.props)
+    // console.log("WHAST IS getState:", this.context.store.getState())
     
     
     const {email, password} = this.state;
     
-    console.log('attemping to sign in');
+    // console.log('attemping to sign in');
     
     fetchSignInUser(email, password)
     .then(response => {
@@ -71,7 +79,7 @@ export default class SignIn extends Component {
         // console.log('after detelting password:', response.data);
         this.props.handleSignInSuccess(response.data);
         //notificaiton
-        this.props.alertme(notificationOpts);
+        // this.props.alertme(notificationOpts);
         // console.log('WHAT IS CONTEXT@???!>>!>>@: ', this.context)
         // this.context.store.dispatch(success(notificationOpts));
         // this.forceUpdate();
@@ -80,23 +88,31 @@ export default class SignIn extends Component {
           if (this.props.activeAccount.email === email) {
             this.updateLocalStorage();
             // this.clearInputs();
-            this.props.changeRoute('/');
-            console.log('Current Signed In User:', this.props.activeAccount.name);
+
+            // this.props.changeRoute('/');
+
+            // console.log('Current Signed In User:', this.props.activeAccount.name);
           }
         }
+      })
+      .then(data => {
+        // console.log('2ND THEN:', data)
+        this.props.alertme(notificationOpts);        
       })
       .catch(error => console.log('sign in failed: ', error))
   }
 
 
+
+
   render() {
-    console.log('SIGN IN RENDER NOW!');
+    console.log('SIGN IN RENDER NOW!', this.props);
     return(
       <div>
 
-      { Object.keys(this.props.activeAccount).length > 0 &&
-        <Redirect to='/' />
-      }
+        { Object.keys(this.props.activeAccount).length > 0 &&
+          <Redirect to='/' />
+        }
 
         { Object.keys(this.props.activeAccount).length === 0 &&
 
@@ -118,12 +134,12 @@ export default class SignIn extends Component {
             </form>
             </div>
           }
-          <Notifications notifications={ this.props.notifications } />
           </div>
-      )
+        )
+      }
     }
-  }
-
+    
+    // <Notifications notifications={ this.props.notifications } />
 
 
 SignIn.contextTypes = {
