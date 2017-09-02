@@ -6,9 +6,9 @@ import { Redirect } from 'react-router';
 // const history = createHistory();
 
 export default class SignIn extends Component {
-  constructor(props, context) {
-    super(props, context);
-    console.log('signin props', props);
+  constructor() {
+    super();
+    // console.log('signin props', props);
     this.state = {
       email: '',
       password: ''
@@ -21,8 +21,8 @@ export default class SignIn extends Component {
     })
   }
 
-  updateLocalStorage(props) {
-    localStorage.setItem('user', props.activeAccount)
+  updateLocalStorage() {
+    localStorage.setItem('user', JSON.stringify(this.props.activeAccount))
   }
 
   clearInputs() {
@@ -35,11 +35,6 @@ export default class SignIn extends Component {
   signInUser(e) {
     e.preventDefault();
 
-    // console.log('WHAT IS CONTEXT:', this.props)
-
-    this.props.changeRoute('/')
-
-    // dispatch(push('/'))
 
     const {email, password} = this.state;
 
@@ -54,15 +49,16 @@ export default class SignIn extends Component {
     }).then(results => results.json())
       .then(response => {
         if (response.status === 'success') {
-          console.log('sign in success:', response.data);
+          // console.log('sign in success:', response.data);
           delete response.data.password;
-          console.log('after detelting password:', response.data);
+          // console.log('after detelting password:', response.data);
           this.props.handleSignInSuccess(response.data);
 
           if (this.props.activeAccount.email === email) {
             this.updateLocalStorage();
+            // this.clearInputs();
+            this.props.changeRoute('/');
             console.log('Current Signed In User:', this.props.activeAccount.name);
-
           }
         }
       })
@@ -93,9 +89,8 @@ export default class SignIn extends Component {
                     value={this.state.password}
                     onChange={(e) => this.handleChange(e, 'password')}
               />
-              <button className='signin-btn' type='submit' onClick={this.signInUser.bind(this), this.clearInputs.bind(this)}>Sign In</button>
+              <button className='signin-btn' type='submit' onClick={this.signInUser.bind(this)}>Sign In</button>
               <p className='new-user'>New to Movie Tracker?</p>
-              {/* <Link */}
             </form>
           </div>
         }

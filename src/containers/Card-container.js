@@ -2,9 +2,9 @@ import { connect } from 'react-redux';
 import Card from '../components/App/Body/MovieDirectory/MovieCard/MovieCard';
 import { addFavoriteMovies } from '../actions';
 
-const mapStateToProps = (store) => {
+const mapStateToProps = (mall) => {
     return {
-      movies: store.movies
+      movies: mall.movies
     }
   }
   

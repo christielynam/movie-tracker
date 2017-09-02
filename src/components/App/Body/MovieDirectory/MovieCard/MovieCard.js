@@ -18,9 +18,9 @@ const addFavoritedMovie = (props)  => {
 
 const removeFavoritedMovie = (props) => {
   console.log('REMOVE HIT!')
+  console.log('PROPS @ DELETE FAV:', props)
   const {movie, movies, addMovietoFavorites} = props
-  console.log(props)
-  fetch('/api/users/:id/favorites/:movie_id', {
+  fetch(`/api/users/1/favorites/${movie.movieId}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
@@ -35,8 +35,11 @@ const removeFavoritedMovie = (props) => {
 const checkFavorite = (props) => {
   const { movie } = props
   console.log('isFavorited: ', movie.isFavorited)
-  
+  // is a user signed in?
+  // YES: do this check
   movie.isFavorited ? removeFavoritedMovie(props) : addFavoritedMovie(props) 
+  // NO: 
+  // redirect the user to sign in
 }
 
 
