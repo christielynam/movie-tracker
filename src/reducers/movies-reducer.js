@@ -17,7 +17,18 @@ const movies = (state = [], action) => {
       console.log('newState: ', updatedArray)    
       return updatedArray;
     // case 'REMOVE_FAVORITE':
+    case 'FETCH_FAVORITES':
+      let serverFavorites = action.data
+     return serverFavorites.forEach(favMovie => {
+          movies.map(movie => {
+           if  (favMovie.movieId === movie.movieId) {
+             movie.isFavorited = true;
+           }
+           return movie
+          })
+      }) 
       
+      return 
 
 
 

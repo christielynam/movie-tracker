@@ -5,6 +5,13 @@ export const addRecentMovies = (data) => {
   }
 }
 
+export const fetchFavoriteMovies = (data) => {
+  return {
+    type: 'FETCH_FAVORITES',
+    data
+  }
+}
+
 
 export const addFavoriteMovies = (data) => {
   return {
