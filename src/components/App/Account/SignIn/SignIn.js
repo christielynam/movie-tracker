@@ -81,9 +81,10 @@ export default class SignIn extends Component {
 
           <div>
             <h3 className='sign-in-heading'>Sign In</h3>
-            <form>
+            <form className='signin-form'>
               <input className='signin-email'
                     placeholder='Email'
+                    autoFocus
                     value={this.state.email}
                     onChange={(e) => this.handleChange(e, 'email')}
               />

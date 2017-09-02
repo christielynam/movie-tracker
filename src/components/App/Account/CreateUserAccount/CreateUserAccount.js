@@ -51,16 +51,17 @@ export default class CreateUserAccount extends Component {
 
     return(
       <section>
-        <form>
+        <form className='create-user-form'>
+          
           <h3 className='create-account-heading'>Create New Account</h3>
 
-          <input className='newuser-name' type='text' placeholder='name' value={name} onChange={(e) => this.handleChange(e, 'name')} />
+          <input className='newuser-name' type='text' placeholder='name' autoFocus value={name} onChange={(e) => this.handleChange(e, 'name')} />
 
           <input className='newuser-email' type='text' placeholder='email' value={email} onChange={(e) => this.handleChange(e, 'email')} />
 
           <input className='newuser-password' type='text' placeholder='password' value={password} onChange={(e) => this.handleChange(e, 'password')} />
 
-          <input className='newuser-password' type='text' placeholder='confirm password' value={confirmPassword} onChange={(e) => this.handleChange(e, 'confirmPassword')} />
+          <input className='newuser-password confirm-password' type='text' placeholder='confirm password' value={confirmPassword} onChange={(e) => this.handleChange(e, 'confirmPassword')} />
 
           <button className='signup-btn' type='submit' onClick={(e) => {
             e.preventDefault();

@@ -53,21 +53,39 @@
   z-index: 100;
   border: 5px solid red;
   border-radius: 5%;
-  /*display: grid;
-  grid-template-columns: 20% 20% 20% 20% 20%;
-  grid-template-rows: 20% 20% 20% 20% 20%;*/
   position: fixed;
   top: 400px;
   background-color: gray;
-  opacity: .85;
+  opacity: .90;
 }
 
 .sign-in-heading,
 .create-account-heading {
-  grid-column: 2/5;
   padding: 25px;
   font-size: 75px;
   text-align: center;
+}
+
+.signin-form {
+  height: 700px;
+  display: grid;
+  grid-template-rows: 20% 20% 30% 10%;
+}
+
+.signin-email {
+  grid-row: 1;
+}
+.signin-password {
+  grid-row: 2;
+}
+
+.signin-email,
+.signin-password,
+.newuser-name,
+.newuser-email,
+.newuser-password  {
+  margin: auto;
+  outline: none;
 }
 
 .signin-email,
@@ -87,6 +105,7 @@
 .signup-btn {
   height: 100px;
   width: 200px;
+  margin-left: 50px;
   border: none;
   border-radius: 100px;
   background-color: red;
@@ -96,13 +115,46 @@
   font-weight: bold;
 }
 
-.new-user {
+.create-user-form {
+  height: 800px;
+  display: grid;
+  grid-template-rows: 20% 15% 15% 15% 15% 20%;
+}
+
+.create-account-heading {
+  grid-row: 1;
+  font-size: 50px;
+}
+
+.newuser-name {
+  grid-row: 2;
+}
+
+.newuser-email {
+  grid-row: 3;
+}
+
+.newuser-password{
+  grid-row: 4;
+}
+
+.confirm-password {
+  grid-row: 5;
+}
+
+.signup-btn {
+  grid-row: 6;
+}
+
+.new-user,
+.signup-link {
+  margin-left: 50px;
   font-size: 35px;
+  font-weight: bold;
 }
 
 .signup-link {
   color: red;
-  font-size: 35px;
 }
 
 .movie-container {
