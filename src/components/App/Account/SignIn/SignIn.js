@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
+import { Link } from 'react-router-dom';
+import CreateUserAccount from '../CreateUserAccount/CreateUserAccount'
+
 // import { push } from 'react-router-redux';
 // import createHistory from 'history/createBrowserHistory';
 
@@ -91,6 +94,7 @@ export default class SignIn extends Component {
               />
               <button className='signin-btn' type='submit' onClick={this.signInUser.bind(this)}>Sign In</button>
               <p className='new-user'>New to Movie Tracker?</p>
+              <Link className='signup-link' to='/signup' component={CreateUserAccount}>Sign up here</Link>
             </form>
           </div>
         }

@@ -26,7 +26,8 @@ header {
   line-height: 200px;
 }
 
-.sign-in {
+.sign-in,
+.sign-out {
   padding: 20px;
   background-color: red;
   border: none;
@@ -40,18 +41,6 @@ header {
   line-height: 200px;
 }
 
-.sign-out {
-  height: 100px;
-  width: 250px;
-  background-color: red;
-  border: none;
-  border-radius: 100px;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: 40px;
-  font-weight: bold;
-  line-height: 200px;
-}
 
 .modal{
   height: 800px;
@@ -65,7 +54,8 @@ header {
   opacity: .85;
 }
 
-.sign-in-heading {
+.sign-in-heading,
+.create-account-heading {
   grid-column: 2/5;
   padding: 25px;
   font-size: 75px;
@@ -73,7 +63,10 @@ header {
 }
 
 .signin-email,
-.signin-password {
+.signin-password,
+.newuser-name,
+.newuser-email,
+.newuser-password {
   width: 500px;
   height: 75px;
   padding: 25px;
@@ -82,7 +75,8 @@ header {
   font-family: inherit;
 }
 
-.signin-btn {
+.signin-btn,
+.signup-btn {
   height: 100px;
   width: 200px;
   border: none;
@@ -95,7 +89,12 @@ header {
 }
 
 .new-user {
-  font-size: 25px;
+  font-size: 35px;
+}
+
+.signup-link {
+  color: red;
+  font-size: 35px;
 }
 
 .movie-container {
