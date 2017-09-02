@@ -18,19 +18,18 @@ const movies = (state = [], action) => {
       return updatedArray;
     case 'FETCH_FAVORITES':
       let serverFavorites = action.data
-     return serverFavorites.forEach(favMovie => {
-          movies.map(movie => {
-           if  (favMovie.movieId === movie.movieId) {
+      console.log('SERVER FAVS:', serverFavorites);
+      let storeMovies = state.slice()
+      console.log('STORE MOVIES COPY:', storeMovies);
+          serverFavorites.forEach(favMovie => {
+            storeMovies.forEach(movie => {
+           if  (favMovie.movie_id === movie.movieId) {
+             console.log('match!')
              movie.isFavorited = true;
-           }
-           return movie
-          })
+           } 
+          })      
       }) 
-      
-      return 
-
-
-
+      return storeMovies;
     default:
       return state;
   }

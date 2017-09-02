@@ -54,7 +54,7 @@ const MovieCard = (props) => {
                 e.preventDefault();
                 checkFavorite(props);
               }}
-              >FAV</button>
+              ></button>
     </div>
   )
 }

@@ -11,23 +11,24 @@ export default class App extends Component {
   }
 
   retrieveFavoriteMovies() {
-    fetch(`/api/users/1/favorites`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body:  JSON.stringify({user_id: 1 })
-    }).then(res => res.json())
-    .then(res => {
-      fetchUserFavorites()
-      console.log('RESULT OF FETCH FAVS', res)})
+    fetch(`/api/users/1/favorites`)
+    .then(res => res.json())
+    .then(data => {
+      if (data.status === 'success') {
+        if (data.data.length > 0) {
+          this.props.fetchUserFavorites(data.data)
+        }
+      }
+      console.log('RESULT OF FETCH FAVS', data)})
   }
 
   componentDidMount() {
     let movieApiObj = new movieApi();
     movieApiObj.fetchAllMovies()
     .then(data => {
-      this.props.fetchRecentMovies(data)
+      this.props.fetchRecentMovies(data);// send movies to store
+      this.retrieveFavoriteMovies();
+
     })
   }
 

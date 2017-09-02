@@ -87,7 +87,7 @@ header {
   width: 200px;
   border: none;
   border-radius: 100px;
-  background-color: red;
+  background-color: #FF0000;
   cursor: pointer;
   font-size: 35px;
   font-family: inherit;
@@ -111,4 +111,22 @@ header {
   margin: 10px;
   border-radius: 30px;
   cursor: pointer;
+}
+
+.favorite-movie-btn{
+  width: 100px;
+  height: 100px;
+  background-image: url('/icons/heart.png');
+  position: relative;
+  display: inline-block;
+  background-size: contain;
+  background-color: transparent;
+  border: none;
+  right: 130px;
+  bottom: 640px;
+}
+
+.favorite-movie-btn:hover{
+  background-image: url('/icons/heart-red.png');
+  
 }

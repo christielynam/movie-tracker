@@ -18,6 +18,8 @@ const middleware = routerMiddleware(history)
 
 const store = createStore(rootReducer, devTools, applyMiddleware(middleware));
 
+window.appStore = store;
+
 ReactDOM.render(
   <Provider store={ store }>
     <ConnectedRouter history={history}>
