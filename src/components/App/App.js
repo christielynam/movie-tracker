@@ -10,12 +10,25 @@ export default class App extends Component {
     super();
   }
 
+  retrieveLocalStorage() {
+    if (localStorage.length > 0) {
+      this.props.handleSignInSuccess(localStorage.getItem('user'))
+    }
+    // if (Object.keys(this.props.activeAccount).length === 0) {
+    //   console.log(' no user signed in')
+    // } else {
+    //   console.log('user signed in');
+    // }
+
+  }
+
   componentDidMount() {
     let movieApiObj = new movieApi();
     movieApiObj.fetchAllMovies()
     .then(data => {
       this.props.fetchRecentMovies(data)
     })
+    this.retrieveLocalStorage()
   }
 
   render() {
