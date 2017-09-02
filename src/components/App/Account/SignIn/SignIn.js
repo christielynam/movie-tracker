@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
+import {fetchSignInUser} from '../../../../../utils/movieApi'
 import { Link } from 'react-router-dom';
 import CreateUserAccount from '../CreateUserAccount/CreateUserAccount'
 
@@ -8,13 +9,34 @@ import CreateUserAccount from '../CreateUserAccount/CreateUserAccount'
 
 // const history = createHistory();
 
+const notificationOpts = {
+  // uid: 'once-please', // you can specify your own uid if required
+  title: 'Hey, it\'s WHAT THE FUCK IS GOING ON!',
+  message: 'Now you can see how easy it is to use notifications in React!',
+  position: 'tr',
+  autoDismiss: 0,
+  action: {
+    label: 'Click me!!',
+    callback: () => alert('clicked!')
+  }
+};
+
+
 export default class SignIn extends Component {
-  constructor() {
-    super();
+  constructor(props, context) {
+    super(props, context);
     this.state = {
       email: '',
       password: ''
-    }
+    };
+  }
+
+
+  shouldComponentUpdate(nextProps) {
+    // console.log("SHOULD COMPONENT UPDATE 1: ", this.props, '2:', nextProps);
+    let result =  this.props !== nextProps;
+    // console.log('RESULT:', result, 'NEXT PROPS:', nextProps);
+    return true;
   }
 
   handleChange(e, type) {
@@ -44,44 +66,54 @@ export default class SignIn extends Component {
   signInUser(e) {
     e.preventDefault();
 
-
+    // console.log("WHAST IS CONTEXT:", this.context)
+    // console.log("WHAST IS PROPS:", this.props)
+    // console.log("WHAST IS getState:", this.context.store.getState())
+    
+    
     const {email, password} = this.state;
 
-    console.log('attemping to sign in');
-
-    fetch('/api/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({email: email, password: password})
-    }).then(results => results.json())
-      .then(response => {
-        if (response.status === 'success') {
-          delete response.data.password;
-
-          this.props.handleSignInSuccess(response.data);
-
+    fetchSignInUser(email, password)
+    .then(response => {
+      if (response.status === 'success') {
+        // console.log('sign in success:', response.data);
+        delete response.data.password;
+        // console.log('after detelting password:', response.data);
+        this.props.handleSignInSuccess(response.data);
+        //notificaiton
+        //this.props.alertme(notificationOpts);
+        // console.log('WHAT IS CONTEXT@???!>>!>>@: ', this.context)
+        // this.context.store.dispatch(success(notificationOpts));
+        // this.forceUpdate();
+          // this validates that the user we are trying to login as
+          // actually got set to the store properly.
           if (this.props.activeAccount.email === email) {
             this.updateLocalStorage();
-            // now go set the isFavorited property
+            // this.clearInputs();
             this.retrieveFavoriteMovies();
             this.props.changeRoute('/');
-            console.log('Current Signed In User:', this.props.activeAccount.name);
+            // console.log('Current Signed In User:', this.props.activeAccount.name);
           }
         }
+      })
+      .then(data => {
+        // console.log('2ND THEN:', data)
+        this.props.alertme(notificationOpts);        
       })
       .catch(error => console.log('sign in failed: ', error))
   }
 
 
+
+
   render() {
+    console.log('SIGN IN RENDER NOW!', this.props);
     return(
       <div>
 
-      { Object.keys(this.props.activeAccount).length > 0 &&
-        <Redirect to='/' />
-      }
+        { Object.keys(this.props.activeAccount).length > 0 &&
+          <Redirect to='/' />
+        }
 
         { Object.keys(this.props.activeAccount).length === 0 &&
 
@@ -104,9 +136,27 @@ export default class SignIn extends Component {
               <Link className='signup-link' to='/signup'>Sign up here</Link>
               <Link className='cancel-signin' to='/'>Cancel</Link>
             </form>
+            </div>
+          }
           </div>
-        }
-      </div>
-    )
-  }
-}
+        )
+      }
+    }
+    
+    // <Notifications notifications={ this.props.notifications } />
+
+
+SignIn.contextTypes = {
+  store: React.PropTypes.object
+};
+
+
+
+
+
+
+
+SignIn.propTypes = {
+  notifications: React.PropTypes.array
+};
+

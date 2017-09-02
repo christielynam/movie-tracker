@@ -5,6 +5,7 @@ import { addRecentMovies, fetchFavoriteMovies, setActiveUser } from '../actions'
 const mapStateToProps = (mall) => {
   return {
     movies: mall.movies,
+    notifications: mall.notifications,
     activeAccount: mall.account
   }
 }

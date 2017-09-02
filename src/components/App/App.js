@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import movieApi from '../../../utils/movieApi';
+import {fetchAllMovies} from '../../../utils/movieApi';
 import Body from './Body/Body';
 import Header from './Header/Header';
 import Modal from './Account/Modal/Modal';
 import { Route } from 'react-router';
+import Notifications from './Notifications';
+
 
 export default class App extends Component {
   constructor() {
@@ -48,8 +50,8 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    let movieApiObj = new movieApi();
-    movieApiObj.fetchAllMovies()
+    // let movieApiObj = new movieApi();
+    fetchAllMovies()
     .then(data => {
       this.props.fetchRecentMovies(data);// send movies to store
       this.retrieveLocalStorage();
@@ -72,6 +74,7 @@ export default class App extends Component {
         <Route exact path='/signin' render={() => <Modal action='signin' />} />
         <Route exact path='/signup' render={() => <Modal action='signup' />} />
         <Body />
+        <Notifications notifications={this.props.notifications} />
       </div>
     )
   }

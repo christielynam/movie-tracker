@@ -14,7 +14,7 @@ const movies = (state = [], action) => {
           }  
           return movie
       })
-      console.log('newState: ', updatedArray)    
+      // console.log('newState: ', updatedArray)    
       return updatedArray;
     case 'FETCH_FAVORITES':
       let serverFavorites = action.data
