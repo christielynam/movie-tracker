@@ -11,9 +11,10 @@ export default class App extends Component {
   }
 
   retrieveLocalStorage() {
-    if (localStorage.length > 0) {
-      this.props.handleSignInSuccess(localStorage.getItem('user'))
+    if (localStorage.getItem('user')) {
+      this.props.handleSignInSuccess(localStorage.getItem('user'))  
     }
+
     // if (Object.keys(this.props.activeAccount).length === 0) {
     //   console.log(' no user signed in')
     // } else {
@@ -27,8 +28,8 @@ export default class App extends Component {
     movieApiObj.fetchAllMovies()
     .then(data => {
       this.props.fetchRecentMovies(data)
+      this.retrieveLocalStorage()
     })
-    this.retrieveLocalStorage()
   }
 
   render() {
