@@ -70,8 +70,8 @@ export default class SignIn extends Component {
         { Object.keys(this.props.activeAccount).length === 0 &&
 
           <div>
-            <h3 className='sign-in-heading'>Sign In</h3>
             <form className='signin-form'>
+              <h3 className='sign-in-heading'>Sign In</h3>
               <input className='signin-email'
                     placeholder='Email'
                     autoFocus
@@ -86,6 +86,7 @@ export default class SignIn extends Component {
               <button className='signin-btn' type='submit' onClick={this.signInUser.bind(this)}>Sign In</button>
               <p className='new-user'>New to Movie Tracker?</p>
               <Link className='signup-link' to='/signup'>Sign up here</Link>
+              <Link className='cancel-signin' to='/'>Cancel</Link>
             </form>
           </div>
         }

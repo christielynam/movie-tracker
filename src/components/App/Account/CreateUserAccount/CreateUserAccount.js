@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
+
 
 export default class CreateUserAccount extends Component {
   constructor() {
@@ -19,17 +21,6 @@ export default class CreateUserAccount extends Component {
 
   validatePassword() {
     return (this.state.password === this.state.confirmPassword) ? true : false
-  }
-
-
-
-  clearInputs() {
-    this.setState({
-      name: '',
-      email: '',
-      password: '',
-      confirmPassword: ''
-    })
   }
 
   testAddUser() {
@@ -71,9 +62,9 @@ export default class CreateUserAccount extends Component {
           <button className='signup-btn' type='submit' onClick={(e) => {
             e.preventDefault();
             this.testAddUser();
-            this.clearInputs();
-            // <Route to='signin' component{SignIn} />
           }}>Sign Up</button>
+          <Link className='cancel-signup' to='/'>Cancel</Link>
+
         </form>
       </section>
     )

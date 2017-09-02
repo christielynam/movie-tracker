@@ -11,7 +11,7 @@
 }
 
 .header {
-  height: 200px;
+  height: 150px;
   width: 100%;
   display: grid;
   grid-template-columns: 75% 25%;
@@ -23,9 +23,9 @@
 .title {
   margin-left: 50px;
   color: red;
-  font-size:100px;
+  font-size: 50px;
   font-weight: bold;
-  line-height: 200px;
+  line-height: 150px;
 }
 
 .sign-in,
@@ -37,24 +37,23 @@
   color: #000;
   cursor: pointer;
   font-family: inherit;
-  font-size: 50px;
+  font-size: 25px;
   font-weight: bold;
   text-decoration: none;
-  line-height: 200px;
+  line-height: 150px;
 }
 
-
 .modal{
-  height: 800px;
-  width: 600px;
+  height: 400px;
+  width: 300px;
   margin: 0 auto;
   left: 0;
   right: 0;
   z-index: 100;
   border: 5px solid red;
   border-radius: 5%;
-  position: absolute;
-  top: 400px;
+  position: fixed;
+  top: 225px;
   background-color: gray;
   opacity: .90;
   animation-name: slideDown;
@@ -66,28 +65,20 @@
     top: -1000px;
   }
   100% {
-    top: 400px;
+    top: 225px;
   }
 }
 
-.sign-in-heading,
-.create-account-heading {
+.sign-in-heading {
   padding: 25px;
-  font-size: 75px;
+  font-size: 40px;
   text-align: center;
 }
 
 .signin-form {
-  height: 700px;
+  height: 250px;
   display: grid;
-  grid-template-rows: 20% 20% 30% 10%;
-}
-
-.signin-email {
-  grid-row: 1;
-}
-.signin-password {
-  grid-row: 2;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
 .signin-email,
@@ -95,7 +86,6 @@
 .newuser-name,
 .newuser-email,
 .newuser-password  {
-  margin: auto;
   outline: none;
 }
 
@@ -104,82 +94,66 @@
 .newuser-name,
 .newuser-email,
 .newuser-password {
-  width: 500px;
-  height: 75px;
-  padding: 25px;
+  width: 250px;
+  height: 50px;
+  padding: 10px;
   border: 2px solid gray;
-  font-size: 30px;
+  font-size: 20px;
   font-family: inherit;
 }
 
 .signin-btn,
 .signup-btn {
-  height: 100px;
-  width: 200px;
-  margin-left: 50px;
+  height: 50px;
+  width: 100px;
   border: none;
   border-radius: 100px;
   background-color: #FF0000;
   cursor: pointer;
-  font-size: 35px;
+  font-size: 20px;
   font-family: inherit;
   font-weight: bold;
   outline: none;
 }
 
 .create-user-form {
-  height: 800px;
+  height: 250px;
   display: grid;
-  grid-template-rows: 20% 15% 15% 15% 15% 20%;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
 .create-account-heading {
-  grid-row: 1;
-  font-size: 50px;
-}
-
-.newuser-name {
-  grid-row: 2;
-}
-
-.newuser-email {
-  grid-row: 3;
-}
-
-.newuser-password{
-  grid-row: 4;
-}
-
-.confirm-password {
-  grid-row: 5;
-}
-
-.signup-btn {
-  grid-row: 6;
+  font-size: 30px;
+  text-align: center;
 }
 
 .new-user,
-.signup-link {
-  margin-left: 50px;
-  font-size: 35px;
+.signup-link,
+.cancel-signin {
+  font-size: 20px;
   font-weight: bold;
 }
 
-.signup-link {
+.signup-link,
+.cancel-signin,
+.cancel-signup {
   color: red;
+  font-size: 20px;
 }
 
 .movie-container {
   display: grid;
-  grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 2fr 2fr 2fr 2fr;
-  justify-content: center;
-  padding-top: 220px;
+  /*justify-content: center;*/
+  padding-top: 175px;
   background-color: gray;
   width: 100%;
 }
 
 .movie-poster{
+  height: 300px;
+  width: 200px;
   margin: 10px;
   border-radius: 30px;
   cursor: pointer;
@@ -216,7 +190,7 @@
 }
 
 .favorited-movie-active{
-  background-image: url('/icons/heart-red.png');  
+  background-image: url('/icons/heart-red.png');
 }
 
 /*.movie-poster:hover {
