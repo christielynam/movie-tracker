@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
+import { Link } from 'react-router-dom';
+import CreateUserAccount from '../CreateUserAccount/CreateUserAccount'
+
 // import { push } from 'react-router-redux';
 // import createHistory from 'history/createBrowserHistory';
 
@@ -78,9 +81,10 @@ export default class SignIn extends Component {
 
           <div>
             <h3 className='sign-in-heading'>Sign In</h3>
-            <form>
+            <form className='signin-form'>
               <input className='signin-email'
                     placeholder='Email'
+                    autoFocus
                     value={this.state.email}
                     onChange={(e) => this.handleChange(e, 'email')}
               />
@@ -91,6 +95,7 @@ export default class SignIn extends Component {
               />
               <button className='signin-btn' type='submit' onClick={this.signInUser.bind(this)}>Sign In</button>
               <p className='new-user'>New to Movie Tracker?</p>
+              <Link className='signup-link' to='/signup' component={CreateUserAccount}>Sign up here</Link>
             </form>
           </div>
         }
