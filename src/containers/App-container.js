@@ -12,7 +12,11 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchRecentMovies: (data) => {
       dispatch(addRecentMovies(data))
+    },
+    fetchUserFavorites: (data) => {
+      dispatch(fetchFavoriteMovies(data))
     }
+    
   }
 }
 

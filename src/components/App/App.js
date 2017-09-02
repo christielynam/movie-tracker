@@ -10,6 +10,19 @@ export default class App extends Component {
     super();
   }
 
+  retrieveFavoriteMovies() {
+    fetch(`/api/users/1/favorites`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body:  JSON.stringify({user_id: 1 })
+    }).then(res => res.json())
+    .then(res => {
+      fetchUserFavorites()
+      console.log('RESULT OF FETCH FAVS', res)})
+  }
+
   componentDidMount() {
     let movieApiObj = new movieApi();
     movieApiObj.fetchAllMovies()
