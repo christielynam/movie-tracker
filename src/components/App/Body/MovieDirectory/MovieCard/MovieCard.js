@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const genNotificationOpts = (type, movie) => {
@@ -38,7 +37,7 @@ const genNotificationOpts = (type, movie) => {
 
 const addFavoritedMovie = (props)  => {
   const {movie, movies, addMovietoFavorites, activeAccount, alertme, favoritesCounter, increaseFavCount} = props;
-  
+
   fetch('/api/users/favorites/new', {
     method: 'POST',
     headers: {
@@ -77,19 +76,19 @@ const removeFavoritedMovie = (props) => {
 }
 
 const checkFavorite = (props) => {
-  const { movie } = props
-  // is a user signed in?
-  // YES: do this check
-  movie.isFavorited ? removeFavoritedMovie(props) : addFavoritedMovie(props) 
-  // NO: 
-  // redirect the user to sign in
+  const { movie } = props;
+  if (Object.keys(props.activeAccount).length === 0) {
+    props.changeRoute('/signin')
+  } else {
+    movie.isFavorited ? removeFavoritedMovie(props) : addFavoritedMovie(props)
+  }
 }
 
 
 
 const MovieCard = (props) => {
   const favClass = props.movie.isFavorited ? "favorite-movie-btn favorited-movie-active" : "favorite-movie-btn"
-  
+
 
   return(
     <div className='movie-card'>

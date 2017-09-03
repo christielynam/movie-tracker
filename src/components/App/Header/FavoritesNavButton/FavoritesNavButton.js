@@ -8,6 +8,7 @@ const handleFavoriteButton = (props) => {
         props.usersFavoriteMovies()
         console.log('fav button user signed in!')
     } else {
+        props.changeRoute('/signin')
         console.log('MUST SIGN IN')
     }
 }
@@ -19,7 +20,7 @@ const FavoritesNavButton = (props) => {
 
     return(
         <div>
-            <button type='button' 
+            <button type='button'
                     className='favorites-nav-button'
                     onClick={(e) => {
                         e.preventDefault();
