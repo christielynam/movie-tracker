@@ -3,12 +3,11 @@ import React from 'react';
 
 const genNotificationOpts = (type, movie) => {
   let title, message, bgSrc = '';
+  title = `${movie.title}`;
 
   if (type === 'add_fav') {
-    title = `${movie.title}`;
     message = 'Added to Favorites';
   } else if (type === 'rem_fav') {
-    title = `${movie.title}`;
     message = 'Removed from Favorites';
   }
 
