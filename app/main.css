@@ -14,7 +14,7 @@
   height: 150px;
   width: 100%;
   display: grid;
-  grid-template-columns: 75% 25%;
+  grid-template-columns: 60% 20% 20%;
   position: fixed;
   z-index: 100;
   background-color: #000;
@@ -28,6 +28,7 @@
   line-height: 150px;
 }
 
+.favorites-nav-button,
 .sign-in,
 .sign-out {
   padding: 20px;
@@ -43,8 +44,15 @@
   line-height: 150px;
 }
 
+.favorites-nav-button {
+  line-height: 28px;
+  margin-top: 40px;
+}
 
-.modal{
+
+
+
+.modal {
   height: 400px;
   width: 300px;
   margin: 0 auto;
@@ -86,7 +94,7 @@
 .signin-password,
 .newuser-name,
 .newuser-email,
-.newuser-password  {
+.newuser-password {
   outline: none;
 }
 
@@ -152,7 +160,7 @@
   width: 100%;
 }
 
-.movie-poster{
+.movie-poster {
   height: 300px;
   width: 200px;
   margin: 10px;
@@ -161,12 +169,12 @@
   transition: transform .5s;
 }
 
-.movie-card{
+.movie-card {
   position: relative;
   margin: auto;
 }
 
-.button-container{
+.button-container {
   width: 100%;
   position: absolute;
   z-index: 10;
@@ -174,7 +182,7 @@
   right: 25px;
 }
 
-.favorite-movie-btn{
+.favorite-movie-btn {
   width: 35px;
   height: 35px;
   position: relative;
@@ -188,12 +196,12 @@
   outline: none;
 }
 
-.favorite-movie-btn:hover{
+.favorite-movie-btn:hover {
   background-image: url('/icons/heart-red.png');
   outline: none;
 }
 
-.favorited-movie-active{
+.favorited-movie-active {
   background-image: url('/icons/heart-red.png');
   outline: none;
 }

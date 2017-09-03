@@ -21,6 +21,13 @@ export const fetchFavoriteMovies = (data) => {
   }
 }
 
+export const showFavoriteMovies = (data) => {
+  return {
+    type: 'SHOW_FAVORITES',
+    data
+  }
+}
+
 
 export const addFavoriteMovies = (data) => {
   return {

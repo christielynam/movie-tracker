@@ -35,8 +35,8 @@ const genNotificationOpts = (type, movie) => {
 
 
 const addFavoritedMovie = (props)  => {
-  console.log('FAV HIT!!!!')
-  const { movie, movies, addMovietoFavorites, activeAccount, alertme} = props
+  const {movie, movies, addMovietoFavorites, activeAccount, alertme} = props;
+  
   fetch('/api/users/favorites/new', {
     method: 'POST',
     headers: {
@@ -48,6 +48,11 @@ const addFavoritedMovie = (props)  => {
     addMovietoFavorites(movie)
     alertme(genNotificationOpts('add_fav', movie));
     console.log('RESULT OF ADD FAVORITE', res)})
+  // .then(data => {
+  //   fetch('https://api.wolframalpha.com/v1/simple?appid=5WP36U-TP8QL9U7L4&i=aaron+rodgers%3F')
+  //   .then(res => res.json())
+  //   .then(data => console.log('DDDDDAAAAAATTTTAAAAA:', data))
+  // })
 }
 
 const removeFavoritedMovie = (props) => {
@@ -81,7 +86,6 @@ const checkFavorite = (props) => {
 
 
 const MovieCard = (props) => {
-  console.log(props.movie.isFavorited)
   const favClass = props.movie.isFavorited ? "favorite-movie-btn favorited-movie-active" : "favorite-movie-btn"
   
 
