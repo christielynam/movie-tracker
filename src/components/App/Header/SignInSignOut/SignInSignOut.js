@@ -24,6 +24,7 @@ const SignInSignOut = (props) => {
         <Link className='sign-out' to='/' onClick={() => {
         props.handleSignOut();
         props.handleResetFavs();
+        props.resetFavCounter();
         props.alertme(notificationOpts);
       }}> Sign Out </Link>
       }

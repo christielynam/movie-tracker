@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import SignInSignOut from '../components/App/Header/SignInSignOut/SignInSignOut';
-import { removeActiveUser, removeAllIsFavorited, success } from '../actions'
+import { removeActiveUser, removeAllIsFavorited, success, resetFavCounter } from '../actions'
 
 const mapStateToProps = (store) => {
   return {
@@ -18,6 +18,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     alertme: (notificationOpts) => {
       dispatch(success(notificationOpts))
+    },
+    resetFavCounter: () => {
+      dispatech(resetFavCounter())
     }
   }
 }

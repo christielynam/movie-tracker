@@ -14,6 +14,12 @@ export const removeAllIsFavorited = () => {
   }
 }
 
+export const resetFavCounter = () => {
+  return {
+    type: 'RESET_FAV_COUNTER'
+  }
+}
+ 
 export const fetchFavoriteMovies = (data) => {
   return {
     type: 'FETCH_FAVORITES',
