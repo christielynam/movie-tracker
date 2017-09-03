@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
-import { fetchSignInUser } from '../../../../../utils/movieApi'
-
+import { fetchSignInUser } from '../../../../../utils/movieApi';
 
 export default class CreateUserAccount extends Component {
   constructor() {
@@ -11,6 +10,14 @@ export default class CreateUserAccount extends Component {
       email: '',
       password: '',
       confirmPassword: ''
+    }
+  }
+
+  genNotificationOpts = (name) => {
+    return {
+      title: `Hi ${name}, Welcome to Movie Tracker!`,
+      position: 'tc',
+      autoDismiss: 4
     }
   }
 
@@ -47,7 +54,7 @@ export default class CreateUserAccount extends Component {
       if (res.status === 'success') {
         delete res.data.password;
         this.props.handleSignInSuccess(res.data);
-        //call alert
+        this.props.alertme(this.genNotificationOpts(name));
         if (this.props.activeAccount.email === email) {
           this.updateLocalStorage();
           this.retrieveFavoriteMovies();
