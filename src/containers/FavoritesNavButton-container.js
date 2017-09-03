@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import FavoritesNavButton from '../components/App/Header/FavoritesNavButton/FavoritesNavButton';
-import { showFavoriteMovies } from '../actions';
+import { showFavoriteMovies, success } from '../actions';
 
 const mapStateToProps = (mall) => {
     return {
@@ -18,6 +18,9 @@ const mapStateToProps = (mall) => {
       },
       changeRoute: (url) => {
         dispatch(push(url))
+      },
+      alertme: (notificationOpts) => {
+        dispatch(success(notificationOpts))
       }
     }
   }

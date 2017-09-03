@@ -84,11 +84,8 @@ const checkFavorite = (props) => {
   }
 }
 
-
-
 const MovieCard = (props) => {
   const favClass = props.movie.isFavorited ? "favorite-movie-btn favorited-movie-active" : "favorite-movie-btn"
-
 
   return(
     <div className='movie-card'>
@@ -102,7 +99,6 @@ const MovieCard = (props) => {
                 ></button>
       </div>
       <img className='movie-poster' src={`https://image.tmdb.org/t/p/w500${props.movie.posterImg}`} />
-
     </div>
   )
 }
