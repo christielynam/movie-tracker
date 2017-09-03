@@ -14,6 +14,12 @@ export const removeAllIsFavorited = () => {
   }
 }
 
+export const resetFavCounter = () => {
+  return {
+    type: 'RESET_FAV_COUNTER'
+  }
+}
+ 
 export const fetchFavoriteMovies = (data) => {
   return {
     type: 'FETCH_FAVORITES',
@@ -58,6 +64,25 @@ export const removeActiveUser = (data) => {
   }
 }
 
+export const setFavCount = (data) => {
+  return {
+    type: 'SET_FAVORITE_COUNTER',
+    data
+  }
+}
+
+export const increaseFavCount = () => {
+  return {
+    type: 'INCREASE_FAVORITE_COUNTER'
+  }
+}
+
+export const decreaseFavCount = () => {
+  return {
+    type: 'DECREASE_FAVOIRTE_COUNTER'
+  }
+}
+
 
 
 
@@ -78,7 +103,7 @@ export const removeActiveUser = (data) => {
 // }
 
 const show = (opts = {}, level = 'success') => {
-  console.log('SHOW NOTIFY IN ACTION', opts)
+  // console.log('SHOW NOTIFY IN ACTION', opts)
   return {
     type: RNS_SHOW_NOTIFICATION,
     ...opts,

@@ -51,13 +51,16 @@ export default class SignIn extends Component {
     localStorage.setItem('user', JSON.stringify(this.props.activeAccount))
   }
 
-  retrieveFavoriteMovies() {
+  retrieveFavoriteMovies(props) {
+    const setFavCount = { props }
     fetch(`/api/users/${this.props.activeAccount.id}/favorites`)
       .then(res => res.json())
       .then(data => {
         if (data.status === 'success') {
           if (data.data.length > 0) {
             this.props.fetchUserFavorites(data.data)
+            console.log('listOFFavs: ', data.data.length)
+            this.props.setFavCount(data.data.length)
           }
         } else {
           console.log('ERROR: grabbing favorites from db');
@@ -109,7 +112,7 @@ export default class SignIn extends Component {
 
 
   render() {
-    console.log('SIGN IN RENDER NOW!', this.props);
+    // console.log('SIGN IN RENDER NOW!', this.props);
     return(
       <div>
 

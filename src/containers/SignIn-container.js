@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux'
 import SignIn from '../components/App/Account/SignIn/SignIn';
-import { setActiveUser, success, fetchFavoriteMovies } from '../actions'
+import { setActiveUser, success, fetchFavoriteMovies, setFavCount } from '../actions'
 // import { success } from 'react-notification-system-redux';
 
 const mapStateToProps = (store) => {
@@ -23,6 +23,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     alertme: (notificationOpts) => {
       dispatch(success(notificationOpts))
+    },
+    setFavCount: (data) => {
+      dispatch(setFavCount(data))
     }
   }
 }

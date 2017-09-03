@@ -1,7 +1,6 @@
 const movies = (state = [], action) => {
   switch (action.type) {
     case 'ADD_MOVIES':
-    console.log("test git hub")
       return [...state, ...action.data];
     case 'ADD_FAVORITE':
       // console.log('action: ', action.data.movieId)

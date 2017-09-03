@@ -1,13 +1,21 @@
 import React from 'react';
 
 
-const handleFavoriteButton = () => {
-    // props.usersFavoriteMovies()
+const handleFavoriteButton = (props) => {
+    let userKeys = Object.keys(props.activeAccount)
+    if (userKeys.length > 0) {
+        console.log(props)
+        props.usersFavoriteMovies()
+        console.log('fav button user signed in!')
+    } else {
+        console.log('MUST SIGN IN')
+    }
 }
 
 
 
 const FavoritesNavButton = (props) => {
+    const { favoritesCounter } = props
 
     return(
         <div>
@@ -15,10 +23,9 @@ const FavoritesNavButton = (props) => {
                     className='favorites-nav-button'
                     onClick={(e) => {
                         e.preventDefault();
-                        console.log(e);
-                        // handleFavoriteButton();
-                        props.usersFavoriteMovies();
-                    }} >Favorites 0</button>
+                        handleFavoriteButton(props);
+                        {/* props.usersFavoriteMovies(); */}
+                    }} >Favorites: {favoritesCounter}</button>
         </div>
 
     )

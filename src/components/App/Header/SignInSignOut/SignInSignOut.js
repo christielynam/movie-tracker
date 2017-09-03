@@ -17,9 +17,6 @@ const notificationOpts = {
 
 const SignInSignOut = (props) => {
 
-  // console.log('signinout comp props:', props)
-  // console.log('WHAT IS THE TRUTHY:', Object.keys({}).length ? 'true' : 'false')
-
   return(
     <div>
 
@@ -27,6 +24,7 @@ const SignInSignOut = (props) => {
         <Link className='sign-out' to='/' onClick={() => {
         props.handleSignOut();
         props.handleResetFavs();
+        props.resetFavCounter();
         props.alertme(notificationOpts);
       }}> Sign Out </Link>
       }

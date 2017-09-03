@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 import App from '../components/App/App';
-import { addRecentMovies, fetchFavoriteMovies, setActiveUser } from '../actions';
+import { addRecentMovies, fetchFavoriteMovies, setActiveUser, setFavCount } from '../actions';
 
 const mapStateToProps = (mall) => {
   return {
     movies: mall.movies,
     notifications: mall.notifications,
-    activeAccount: mall.account
+    activeAccount: mall.account,
   }
 }
 
@@ -20,6 +20,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     handleSignInSuccess: (data) => {
       dispatch(setActiveUser(data))
+    },
+    setFavCount: (data) => {
+      dispatch(setFavCount(data))
     }
   }
 }
