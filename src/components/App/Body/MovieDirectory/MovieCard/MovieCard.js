@@ -2,7 +2,6 @@
 import React from 'react';
 
 const addFavoritedMovie = (props)  => {
-  console.log('FAV HIT!!!!')
   const {movie, movies, addMovietoFavorites, activeAccount} = props
   fetch('/api/users/favorites/new', {
     method: 'POST',
@@ -46,7 +45,6 @@ const checkFavorite = (props) => {
 
 
 const MovieCard = (props) => {
-  console.log(props.movie.isFavorited)
   const favClass = props.movie.isFavorited ? "favorite-movie-btn favorited-movie-active" : "favorite-movie-btn"
   
 
