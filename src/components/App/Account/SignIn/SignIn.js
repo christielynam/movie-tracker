@@ -16,10 +16,12 @@ const notificationOpts = {
   position: 'tc',
   autoDismiss: 0,
   action: {
-    label: 'Click me!!',
-    callback: () => alert('we can issue call backs from buttons clicked within the alert!')
+    label: 'Click me!!'
   }
 };
+// ,
+// callback: () => alert('we can issue call backs from buttons clicked within the alert!')
+
 
 
 export default class SignIn extends Component {
