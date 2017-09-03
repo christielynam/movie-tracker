@@ -1,6 +1,6 @@
 import React from 'react';
 import SignInSignOutContainer from '../../../containers/SignInSignOut-container';
-import FavoritesNavButton from './FavoritesNavButton/FavoritesNavButton'
+import FavoritesNavButton from '../../../containers/FavoritesNavButton-container';
 // import movieIMG from './44808-O4G0M1.jpg'
 // import FavoritesButton from './FavoritesNavButton/FavoritesNavButton';
 

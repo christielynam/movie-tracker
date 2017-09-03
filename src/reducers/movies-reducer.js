@@ -34,13 +34,13 @@ const movies = (state = [], action) => {
       return state.map(movie => {
         movie.isFavorited = false;
         return movie;
-      })
+        });
 
     case 'SHOW_FAVORITES':
-      console.log(state)
-      return state.filter(movie=> {
-       return movie.isFavorited;
-      })
+      console.log(state);
+      return state.filter(movie => {
+        return movie.isFavorited;
+        });
     default:
       return state;
   }
