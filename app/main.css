@@ -26,6 +26,7 @@
   font-size: 50px;
   font-weight: bold;
   line-height: 150px;
+  text-decoration: none;
 }
 
 .favorites-nav-button,
@@ -48,9 +49,6 @@
   line-height: 28px;
   margin-top: 40px;
 }
-
-
-
 
 .modal {
   height: 400px;
@@ -87,6 +85,7 @@
 .signin-form {
   height: 250px;
   display: grid;
+  grid-row-gap: 10px;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
@@ -103,8 +102,9 @@
 .newuser-name,
 .newuser-email,
 .newuser-password {
-  width: 250px;
+  width: 280px;
   height: 50px;
+  margin-left: 5px;
   padding: 10px;
   border: 2px solid gray;
   font-size: 20px;
@@ -115,6 +115,7 @@
 .signup-btn {
   height: 50px;
   width: 100px;
+  margin-left: 5px;
   border: none;
   border-radius: 100px;
   background-color: #FF0000;
@@ -128,26 +129,28 @@
 .create-user-form {
   height: 250px;
   display: grid;
+  grid-row-gap: 5px;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
 .create-account-heading {
+  padding-top: 10px;
   font-size: 30px;
   text-align: center;
 }
 
 .new-user,
 .signup-link,
-.cancel-signin {
+.cancel-signin,
+.cancel-signup {
+  margin-left: 5px;
+  color: red;
   font-size: 20px;
   font-weight: bold;
 }
 
-.signup-link,
-.cancel-signin,
-.cancel-signup {
-  color: red;
-  font-size: 20px;
+.new-user {
+  color: #000;
 }
 
 .movie-container {

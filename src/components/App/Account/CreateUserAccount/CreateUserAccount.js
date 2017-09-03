@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
+import { fetchSignInUser } from '../../../../../utils/movieApi'
 
 
 export default class CreateUserAccount extends Component {
@@ -23,6 +24,39 @@ export default class CreateUserAccount extends Component {
     return (this.state.password === this.state.confirmPassword) ? true : false
   }
 
+  updateLocalStorage() {
+    localStorage.setItem('user', JSON.stringify(this.props.activeAccount))
+  }
+
+  retrieveFavoriteMovies() {
+    fetch(`/api/users/${this.props.activeAccount.id}/favorites`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.status === 'success') {
+          if (data.data.length > 0) {
+            this.props.fetchUserFavorites(data.data)
+          }
+        } else {
+          console.log('ERROR: grabbing favorites from db');
+        }
+      })
+  }
+
+  autoSignInUser(name, email, password) {
+    fetchSignInUser(email, password).then(res => {
+      if (res.status === 'success') {
+        delete res.data.password;
+        this.props.handleSignInSuccess(res.data);
+        //call alert
+        if (this.props.activeAccount.email === email) {
+          this.updateLocalStorage();
+          this.retrieveFavoriteMovies();
+          this.props.changeRoute('/');
+        }
+      }
+    })
+  }
+
   testAddUser() {
     const { name, email, password } = this.state
 
@@ -35,8 +69,12 @@ export default class CreateUserAccount extends Component {
         },
         body: JSON.stringify({ name: name, password: password, email: email })
       }).then(res => res.json())
-        .then(res => console.log('RESULT OF ADD USER:', res));
+        .then(res => {
+          console.log('RESULT OF ADD USER:', res)
+          this.autoSignInUser(name, email, password)
+        });
     } else {
+      //notification that passwords dont match
       alert('Passwords do not match')
     }
   }

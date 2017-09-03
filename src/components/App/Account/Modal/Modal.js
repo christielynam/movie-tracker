@@ -1,5 +1,5 @@
 import React from 'react';
-import CreateUserAccount from '../CreateUserAccount/CreateUserAccount';
+import CreateUserAccount from '../../../../containers/CreateUserAccount-container';
 import SignIn from '../../../../containers/SignIn-container';
 
 
