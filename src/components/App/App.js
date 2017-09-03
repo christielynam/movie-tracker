@@ -32,7 +32,7 @@ export default class App extends Component {
 
   retrieveFavoriteMovies() {
     const { activeAccount } = this.props;
-    console.log('active account:', activeAccount)
+    // console.log('active account:', activeAccount)
 
     if (Object.keys(activeAccount).length > 0) {
       
@@ -42,14 +42,15 @@ export default class App extends Component {
         if (data.status === 'success') {
           if (data.data.length > 0) {
             this.props.fetchUserFavorites(data.data)
+            this.props.setFavCount(data.data.length)
           }
         } else {
-          console.log('ERROR: grabbing favorites from db');
+          // console.log('ERROR: grabbing favorites from db');
         }
       })
 
     } else {
-      console.log('No User Found to Grab Favs');
+      // console.log('No User Found to Grab Favs');
     }
 
   }
@@ -74,15 +75,16 @@ export default class App extends Component {
       this.props.fetchRecentMovies(data);// send movies to store
       this.retrieveLocalStorage();
       this.retrieveFavoriteMovies();
+      
     })
   }
 
   componentWillReceiveProps() {
-    console.log('APP: COMPONENT WILL RECEIVE PROPS')
+    // console.log('APP: COMPONENT WILL RECEIVE PROPS')
   }
 
   componentWillUpdate() {
-    console.log('APP: COMPONENT WILL UPDATE')
+    // console.log('APP: COMPONENT WILL UPDATE')
   }
 
   render() {

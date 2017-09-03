@@ -1,7 +1,6 @@
 const movies = (state = [], action) => {
   switch (action.type) {
     case 'ADD_MOVIES':
-    console.log("test git hub")
       return [...state, ...action.data];
     case 'ADD_FAVORITE':
       // console.log('action: ', action.data.movieId)
@@ -41,6 +40,8 @@ const movies = (state = [], action) => {
       return state.filter(movie => {
         return movie.isFavorited;
         });
+
+        
     default:
       return state;
   }

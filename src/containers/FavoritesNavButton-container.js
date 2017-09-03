@@ -5,7 +5,8 @@ import { showFavoriteMovies } from '../actions';
 const mapStateToProps = (mall) => {
     return {
       movies: mall.movies,
-      activeAccount: mall.account
+      activeAccount: mall.account,
+      favoritesCounter: mall.favoritesCounter
     }
   }
   

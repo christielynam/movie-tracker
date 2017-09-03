@@ -7,8 +7,10 @@ const genNotificationOpts = (type, movie) => {
 
   if (type === 'add_fav') {
     message = 'Added to Favorites';
+
   } else if (type === 'rem_fav') {
     message = 'Removed from Favorites';
+
   }
 
   bgSrc = `https://image.tmdb.org/t/p/w500${movie.posterImg}`
@@ -35,7 +37,7 @@ const genNotificationOpts = (type, movie) => {
 
 
 const addFavoritedMovie = (props)  => {
-  const {movie, movies, addMovietoFavorites, activeAccount, alertme} = props;
+  const {movie, movies, addMovietoFavorites, activeAccount, alertme, favoritesCounter, increaseFavCount} = props;
   
   fetch('/api/users/favorites/new', {
     method: 'POST',
@@ -46,6 +48,7 @@ const addFavoritedMovie = (props)  => {
   }).then(res => res.json())
   .then(res => {
     addMovietoFavorites(movie)
+    increaseFavCount()
     alertme(genNotificationOpts('add_fav', movie));
     console.log('RESULT OF ADD FAVORITE', res)})
   // .then(data => {
@@ -58,7 +61,7 @@ const addFavoritedMovie = (props)  => {
 const removeFavoritedMovie = (props) => {
   console.log('REMOVE HIT!')
   console.log('PROPS @ DELETE FAV:', props)
-  const { movie, movies, addMovietoFavorites, activeAccount, alertme, notifications } = props
+  const { movie, movies, addMovietoFavorites, activeAccount, alertme, notifications, favoritesCounter, decreaseFavCount} = props
   fetch(`/api/users/${activeAccount.id}/favorites/${movie.movieId}`, {
     method: 'DELETE',
     headers: {
@@ -68,14 +71,13 @@ const removeFavoritedMovie = (props) => {
   }).then(res => res.json())
   .then(res => {
     addMovietoFavorites(movie);
+    decreaseFavCount();
     let notifyReturn = alertme(genNotificationOpts('rem_fav', movie));
     console.log('RESULT OF REMOVE FAVORITE', res)})
 }
 
 const checkFavorite = (props) => {
   const { movie } = props
-  console.log('movie: ', movie)
-  console.log('isFavorited: ', movie.isFavorited)
   // is a user signed in?
   // YES: do this check
   movie.isFavorited ? removeFavoritedMovie(props) : addFavoritedMovie(props) 
