@@ -7,6 +7,24 @@ import { Route } from 'react-router';
 import Notifications from './Notifications';
 
 
+const notificationStyle = {
+  NotificationItem: { // Override the notification item
+    DefaultStyle: { // Applied to every notification, regardless of the notification level
+      margin: '10px 5px 2px 1px',
+      borderRadius: '12px',
+      fontSize: '18px',
+    },
+
+    success: { // Applied only to the success notification item
+      color: 'red',
+      backgroundColor: '#000000',
+      borderTop: '4px solid red'
+    }
+  }
+};
+
+
+
 export default class App extends Component {
   constructor() {
     super();
@@ -74,7 +92,7 @@ export default class App extends Component {
         <Route exact path='/signin' render={() => <Modal action='signin' />} />
         <Route exact path='/signup' render={() => <Modal action='signup' />} />
         <Body />
-        <Notifications notifications={this.props.notifications} />
+        <Notifications notifications={this.props.notifications} style={notificationStyle} />
       </div>
     )
   }
