@@ -41,7 +41,7 @@ export const addFavoriteMovies = (data) => {
     data
   }
 }
-    
+
 export const setActiveUser = (data) => {
   return {
     type: 'SET_ACTIVE_USER',
@@ -82,6 +82,7 @@ export const decreaseFavCount = () => {
     type: 'DECREASE_FAVOIRTE_COUNTER'
   }
 }
+
 
 
 
