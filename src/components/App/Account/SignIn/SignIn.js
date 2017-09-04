@@ -74,8 +74,8 @@ export default class SignIn extends Component {
     // console.log("WHAST IS CONTEXT:", this.context)
     // console.log("WHAST IS PROPS:", this.props)
     // console.log("WHAST IS getState:", this.context.store.getState())
-    
-    
+
+
     const {email, password} = this.state;
 
     fetchSignInUser(email, password)
@@ -103,7 +103,7 @@ export default class SignIn extends Component {
       })
       // .then(data => {
       //   // console.log('2ND THEN:', data)
-      //   this.props.alertme(notificationOpts);        
+      //   this.props.alertme(notificationOpts);
       // })
       .catch(error => console.log('sign in failed: ', error))
   }
@@ -128,18 +128,31 @@ export default class SignIn extends Component {
               <input className='signin-email'
                     placeholder='Email'
                     autoFocus
+                    required
                     value={this.state.email}
                     onChange={(e) => this.handleChange(e, 'email')}
               />
               <input className='signin-password'
-                    placeholder='Password'
-                    value={this.state.password}
-                    onChange={(e) => this.handleChange(e, 'password')}
+                     placeholder='Password'
+                     required
+                     value={this.state.password}
+                     onChange={(e) => this.handleChange(e, 'password')}
               />
-              <button className='signin-btn' type='submit' onClick={this.signInUser.bind(this)}>Sign In</button>
+              <button className='signin-btn'
+                      type='submit'
+                      disabled={!this.state.email, !this.state.password}
+                      onClick={this.signInUser.bind(this)}>
+                      Sign In
+              </button>
               <p className='new-user'>New to Movie Tracker?</p>
-              <Link className='signup-link' to='/signup'>Sign up here</Link>
-              <Link className='cancel-signin' to='/'>Cancel</Link>
+              <Link className='signup-link'
+                    to='/signup'>
+                    Sign up here
+              </Link>
+              <Link className='cancel-signin'
+                    to='/'>
+                    Cancel
+              </Link>
             </form>
             </div>
           }
@@ -147,7 +160,7 @@ export default class SignIn extends Component {
         )
       }
     }
-    
+
     // <Notifications notifications={ this.props.notifications } />
 
 
@@ -164,4 +177,3 @@ SignIn.contextTypes = {
 SignIn.propTypes = {
   notifications: React.PropTypes.array
 };
-

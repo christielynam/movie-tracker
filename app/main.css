@@ -121,6 +121,11 @@
   outline: none;
 }
 
+.signin-btn:disabled,
+.signup-btn:disabled {
+  background-color: #fff;
+}
+
 .create-user-form {
   height: 250px;
   display: grid;
