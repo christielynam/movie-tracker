@@ -27,7 +27,7 @@ export default class CreateUserAccount extends Component {
     return {
       title: `Hi ${name}, Welcome to Movie Tracker!`,
       position: 'tc',
-      autoDismiss: 4
+      autoDismiss: 3
     }
   }
 

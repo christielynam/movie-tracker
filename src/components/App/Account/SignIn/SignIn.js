@@ -10,19 +10,16 @@ import CreateUserAccount from '../CreateUserAccount/CreateUserAccount'
 // const history = createHistory();
 
 const notificationOpts = {
-  // uid: 'once-please', // you can specify your own uid if required
   title: 'You Signed in Successfully!',
   message: 'You can now add favorites :)',
   position: 'tc',
-  autoDismiss: 0,
+  autoDismiss: 3,
   action: {
-    label: 'Click me!!'
+    label: 'OK'
   }
 };
 // ,
 // callback: () => alert('we can issue call backs from buttons clicked within the alert!')
-
-
 
 export default class SignIn extends Component {
   constructor(props, context) {
@@ -71,21 +68,15 @@ export default class SignIn extends Component {
   signInUser(e) {
     e.preventDefault();
 
-    // console.log("WHAST IS CONTEXT:", this.context)
-    // console.log("WHAST IS PROPS:", this.props)
-    // console.log("WHAST IS getState:", this.context.store.getState())
-
-
     const {email, password} = this.state;
 
     fetchSignInUser(email, password)
     .then(response => {
       if (response.status === 'success') {
-        // console.log('sign in success:', response.data);
         delete response.data.password;
-        // console.log('after detelting password:', response.data);
+
         this.props.handleSignInSuccess(response.data);
-        //notificaiton
+
         this.props.alertme(notificationOpts);
         // console.log('WHAT IS CONTEXT@???!>>!>>@: ', this.context)
         // this.context.store.dispatch(success(notificationOpts));
@@ -94,10 +85,8 @@ export default class SignIn extends Component {
           // actually got set to the store properly.
           if (this.props.activeAccount.email === email) {
             this.updateLocalStorage();
-            // this.clearInputs();
             this.retrieveFavoriteMovies();
             this.props.changeRoute('/');
-            // console.log('Current Signed In User:', this.props.activeAccount.name);
           }
         }
       })
@@ -107,9 +96,6 @@ export default class SignIn extends Component {
       // })
       .catch(error => console.log('sign in failed: ', error))
   }
-
-
-
 
   render() {
     // console.log('SIGN IN RENDER NOW!', this.props);
@@ -126,11 +112,11 @@ export default class SignIn extends Component {
             <form className='signin-form'>
               <h3 className='sign-in-heading'>Sign In</h3>
               <input className='signin-email'
-                    placeholder='Email'
-                    autoFocus
-                    required
-                    value={this.state.email}
-                    onChange={(e) => this.handleChange(e, 'email')}
+                     placeholder='Email'
+                     autoFocus
+                     required
+                     value={this.state.email}
+                     onChange={(e) => this.handleChange(e, 'email')}
               />
               <input className='signin-password'
                      placeholder='Password'
@@ -160,9 +146,6 @@ export default class SignIn extends Component {
         )
       }
     }
-
-    // <Notifications notifications={ this.props.notifications } />
-
 
 SignIn.contextTypes = {
   store: React.PropTypes.object
