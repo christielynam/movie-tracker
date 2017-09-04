@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
-import { fetchSignInUser } from '../../../../../utils/movieApi';
+import { fetchSignInUser, fetchFavoriteMovies, fetchCreateUser } from '../../../../../utils/movieApi';
 
 const notifyOptsPasswordsDontMatch = {
   title: 'Try again...',
@@ -61,8 +61,7 @@ export default class SignUp extends Component {
   }
 
   retrieveFavoriteMovies() {
-    fetch(`/api/users/${this.props.activeAccount.id}/favorites`)
-      .then(res => res.json())
+    fetchFavoriteMovies(this.props.activeAccount.id)
       .then(data => {
         if (data.status === 'success') {
           if (data.data.length > 0) {
@@ -94,13 +93,7 @@ export default class SignUp extends Component {
 
     let didMatch = this.validatePassword()
     if(didMatch) {
-      fetch('/api/users/new', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ name: name, password: password, email: email })
-      }).then(res => res.json())
+      fetchCreateUser(name, email, password)
         .then(res => {
           console.log('RESULT OF ADD USER:', res);
           if (res.status === 'success') {
