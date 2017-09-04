@@ -149,18 +149,18 @@
 }
 
 .movie-container {
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
   grid-gap: 10px;
-  padding-top: 175px;
+  padding: 175px 20px 10px;
   background-color: gray;
-  width: 100%;
 }
 
 .movie-poster {
-  height: 300px;
-  width: 200px;
+  height: 100%;
+  width: 100%;
   margin-bottom: 10px;
   border-radius: 30px;
   cursor: pointer;
@@ -176,8 +176,8 @@
   width: 100%;
   position: absolute;
   z-index: 10;
-  top: 25px;
-  right: 25px;
+  top: 20px;
+  right: 20px;
 }
 
 .favorite-movie-btn {
