@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { push } from 'react-router-redux';
+import { push } from 'react-router-redux'
 import FavoritesNavButton from '../components/App/Header/FavoritesNavButton/FavoritesNavButton';
 import { showFavoriteMovies, success } from '../actions';
 

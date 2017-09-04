@@ -12,6 +12,7 @@ const notificationOpts = {
 };
 
 const handleFavoriteButton = (props) => {
+
   let userKeys = Object.keys(props.activeAccount)
 
   if (userKeys.length > 0 && props.favoritesCounter === 0) {
