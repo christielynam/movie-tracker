@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
-import {fetchSignInUser} from '../../../../../utils/movieApi'
+import { fetchSignInUser, fetchFavoriteMovies} from '../../../../../utils/movieApi'
 import { Link } from 'react-router-dom';
 import SignUp from '../SignUp/SignUp'
 
@@ -56,21 +56,19 @@ export default class SignIn extends Component {
     localStorage.setItem('user', JSON.stringify(this.props.activeAccount))
   }
 
-  retrieveFavoriteMovies(props) {
-    const setFavCount = { props }
-    fetch(`/api/users/${this.props.activeAccount.id}/favorites`)
-      .then(res => res.json())
-      .then(data => {
-        if (data.status === 'success') {
-          if (data.data.length > 0) {
-            this.props.fetchUserFavorites(data.data)
-            console.log('listOFFavs: ', data.data.length)
-            this.props.setFavCount(data.data.length)
-          }
-        } else {
-          console.log('ERROR: grabbing favorites from db');
+  retrieveFavoriteMovies() {
+    fetchFavoriteMovies(this.props.activeAccount.id)
+    .then(data => {
+      if (data.status === 'success') {
+        if (data.data.length > 0) {
+          this.props.fetchUserFavorites(data.data)
+          console.log('listOFFavs: ', data.data.length)
+          this.props.setFavCount(data.data.length)
         }
-      })
+      } else {
+        console.log('ERROR: grabbing favorites from db');
+      }
+    })
   }
 
   signInUser(e) {
