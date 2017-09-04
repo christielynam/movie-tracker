@@ -7,7 +7,7 @@ const notificationOpts = {
   position: 'tc',
   autoDismiss: 4,
   action: {
-    label: 'Click me!!'
+    label: 'OK'
   }
 };
 
@@ -17,7 +17,6 @@ const handleFavoriteButton = (props) => {
 
   if (userKeys.length > 0 && props.favoritesCounter === 0) {
     props.alertme(notificationOpts)
-    //notify user that they currently have no favorites selected
   }
   if (userKeys.length > 0 && props.favoritesCounter !== 0) {
     props.usersFavoriteMovies()
@@ -35,12 +34,14 @@ const FavoritesNavButton = (props) => {
 
   return(
     <div>
-      <Link to='/favories' className='favorites-nav-button'
+      <Link to='/favories'
+            className='favorites-nav-button'
             onClick={(e) => {
                 e.preventDefault();
                 handleFavoriteButton(props);
-            {/* props.usersFavoriteMovies(); */}
-            }}>Favorites: {favoritesCounter}</Link>
+            }}>
+            Favorites: {favoritesCounter}
+      </Link>
     </div>
   )
 }

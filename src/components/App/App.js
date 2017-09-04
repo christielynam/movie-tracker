@@ -24,8 +24,6 @@ const notificationStyle = {
   }
 };
 
-
-
 class App extends Component {
   constructor(props, context) {
     super(props, context);
@@ -36,7 +34,7 @@ class App extends Component {
     console.log('retrieve favs for:', activeAccount)
 
     if (Object.keys(activeAccount).length > 0) {
-      
+
       return fetch(`/api/users/${activeAccount.id}/favorites`)
       .then(res => res.json())
       .then(data => {
@@ -57,10 +55,10 @@ class App extends Component {
     }
 
   }
-  
+
   retrieveLocalStorage() {
     if (localStorage.getItem('user')) {
-      this.props.handleSignInSuccess(JSON.parse(localStorage.getItem('user')))  
+      this.props.handleSignInSuccess(JSON.parse(localStorage.getItem('user')))
     }
 
     // if (Object.keys(this.props.activeAccount).length === 0) {
@@ -72,7 +70,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // let movieApiObj = new movieApi();
     fetchAllMovies()
     .then(data => {
       this.props.fetchRecentMovies(data);// send movies to store
@@ -101,7 +98,7 @@ class App extends Component {
             this.retrieveFavoriteMovies();
           })
       }
-      
+
       console.log("on route change:", location);
     });
   }
@@ -136,10 +133,16 @@ class App extends Component {
     return (
       <div className='app'>
         <Header />
-        <Route exact path='/signin' render={() => <Modal action='signin' />} />
-        <Route exact path='/signup' render={() => <Modal action='signup' />} />
+        <Route exact path='/signin'
+              render={() => <Modal action='signin' />}
+        />
+        <Route exact path='/signup'
+               render={() => <Modal action='signup' />}
+        />
         <Body />
-        <Notifications notifications={this.props.notifications} style={notificationStyle} />
+        <Notifications notifications={this.props.notifications}
+                       style={notificationStyle}
+        />
       </div>
     )
   }
@@ -148,8 +151,6 @@ class App extends Component {
 
 export default withRouter(App);
 
-
 App.contextTypes = {
   store: React.PropTypes.object
 };
-

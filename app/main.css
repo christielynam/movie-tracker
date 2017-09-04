@@ -4,6 +4,10 @@
   padding: 0;
 }
 
+html {
+  background-color: black;  
+}
+
 .app {
   display: grid;
   grid-template-columns: 100%;
@@ -18,10 +22,13 @@
   position: fixed;
   z-index: 100;
   background-color: #000;
+  background-image: url('/assets/film2.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .title {
-  margin-left: 50px;
+  margin-left: 220px;
   color: red;
   font-size: 50px;
   font-weight: bold;
@@ -45,6 +52,19 @@
   line-height: 150px;
 }
 
+
+.modal-backdrop {
+  height: 800px;
+  width: 100%;
+  z-index: 100;
+  position: fixed;
+  top: 150px;
+  background-color: black;
+  opacity: .90;
+  animation-name: slideDown2;
+  animation-duration: 2s;
+}
+
 .modal {
   height: 400px;
   width: 300px;
@@ -56,11 +76,21 @@
   border-radius: 5%;
   position: fixed;
   top: 225px;
-  background-color: gray;
-  opacity: .90;
+  background-color: #433B3B;
   animation-name: slideDown;
   animation-duration: 2s;
+
 }
+
+@keyframes slideDown2 {
+  0% {
+    top: 0px;
+  }
+  100% {
+    top: 150px;
+  }
+}
+
 
 @keyframes slideDown {
   0% {
@@ -75,6 +105,7 @@
   padding: 25px;
   font-size: 40px;
   text-align: center;
+  color: white;
 }
 
 .signin-form {
@@ -121,6 +152,11 @@
   outline: none;
 }
 
+.signin-btn:disabled,
+.signup-btn:disabled {
+  background-color: #fff;
+}
+
 .create-user-form {
   height: 250px;
   display: grid;
@@ -132,6 +168,7 @@
   padding-top: 10px;
   font-size: 30px;
   text-align: center;
+  color: white;
 }
 
 .new-user,
@@ -145,7 +182,7 @@
 }
 
 .new-user {
-  color: #000;
+  color: white;
 }
 
 .movie-container {
@@ -155,7 +192,11 @@
   grid-template-rows: 1fr 1fr 1fr 1fr;
   grid-gap: 10px;
   padding: 175px 20px 10px;
-  background-color: gray;
+  background-color: black;
+  /* background-image: url('/assets/blackWallpaper.jpg');    */
+  /* background-image: url('/assets/texturedBackground.jpg');   */
+  background-size: contain;
+  /* background-repeat: no-repeat; */
 }
 
 .movie-poster {
