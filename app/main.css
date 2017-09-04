@@ -173,7 +173,6 @@
 }
 
 .button-container {
-  width: 100%;
   position: absolute;
   z-index: 10;
   top: 20px;
@@ -181,8 +180,8 @@
 }
 
 .favorite-movie-btn {
-  width: 35px;
-  height: 35px;
+  width: 40px;
+  height: 40px;
   position: relative;
   background-image: url('/icons/heart.png');
   display: inline-block;
