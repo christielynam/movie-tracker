@@ -156,7 +156,7 @@ export default class CreateUserAccount extends Component {
 
           <button className='signup-btn'
                   type='submit'
-                  disabled={!this.state.name, !this.state.email, !this.state.password, !this.state.confirmPassword}
+                  disabled={!this.state.name || !this.state.email || !this.state.password || !this.state.confirmPassword}
                   onClick={(e) => {
                     e.preventDefault();
                     this.testAddUser();

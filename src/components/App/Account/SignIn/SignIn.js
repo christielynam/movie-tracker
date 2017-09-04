@@ -136,7 +136,7 @@ export default class SignIn extends Component {
               />
               <button className='signin-btn'
                       type='submit'
-                      disabled={!this.state.email, !this.state.password}
+                      disabled={!this.state.email || !this.state.password}
                       onClick={this.signInUser.bind(this)}>
                       Sign In
               </button>
