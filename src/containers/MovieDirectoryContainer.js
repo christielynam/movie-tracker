@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import MovieDirectory from '../components/App/Body/MovieDirectory/MovieDirectory';
+import MovieDirectory from '../components/App/MovieDirectory/MovieDirectory';
 
 
 

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Card from '../components/App/Body/MovieDirectory/MovieCard/MovieCard';
+import Card from '../components/App/MovieDirectory/MovieCard/MovieCard';
 import { addFavoriteMovies, success, favoritesCounter, increaseFavCount, decreaseFavCount } from '../actions';
 import { push } from 'react-router-redux';
 

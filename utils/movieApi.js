@@ -15,9 +15,6 @@ var key = require('./key');
     })
   }
 
-  
-
-
   const fetchAllMovies = () => {
     return fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${key}`)
       .then(results => results.json())
