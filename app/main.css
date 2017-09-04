@@ -60,9 +60,9 @@ html {
   position: fixed;
   top: 150px;
   background-color: black;
-  opacity: .88;
-  /* animation-name: slideDown; */
-  /* animation-duration: 2s; */
+  opacity: .90;
+  animation-name: slideDown2;
+  animation-duration: 2s;
 }
 
 .modal {
@@ -77,9 +77,18 @@ html {
   position: fixed;
   top: 225px;
   background-color: #433B3B;
-  /* opacity: 1; */
   animation-name: slideDown;
   animation-duration: 2s;
+
+}
+
+@keyframes slideDown2 {
+  0% {
+    top: 0px;
+  }
+  100% {
+    top: 150px;
+  }
 }
 
 
