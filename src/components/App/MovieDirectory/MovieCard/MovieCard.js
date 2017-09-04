@@ -15,15 +15,8 @@ const genNotificationOpts = (type, movie) => {
   bgSrc = `https://image.tmdb.org/t/p/w500${movie.posterImg}`
 
   return {
-    // uid: 'once-please', // you can specify your own uid if required
-    // title: title,
-    // message: message,
     position: 'bl',
-    autoDismiss: 4,
-    dismissible: true,
-    // action: {
-    //   label: 'close'
-    // },
+    autoDismiss: 3,
     children: (
       <div className='popup-fav-addrem' style={{ backgroundImage: 'url(' + bgSrc + ')'}}>
         <p className='popup-fav-layer'>{title} <span className='popup-fav-sub-layer'>{message}</span></p>

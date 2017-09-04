@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CardContainer from '../../../containers/Card-container'
+import CardContainer from '../../../containers/MovieCard-container'
 
 export default class MovieDirectory extends Component {
   constructor() {

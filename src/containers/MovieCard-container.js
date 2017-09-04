@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Card from '../components/App/MovieDirectory/MovieCard/MovieCard';
+import MovieCard from '../components/App/MovieDirectory/MovieCard/MovieCard';
 import { addFavoriteMovies, success, favoritesCounter, increaseFavCount, decreaseFavCount } from '../actions';
 import { push } from 'react-router-redux';
 
@@ -33,4 +33,4 @@ const mapStateToProps = (mall) => {
     }
   }
 
-  export default connect(mapStateToProps, mapDispatchToProps)(Card);
+  export default connect(mapStateToProps, mapDispatchToProps)(MovieCard);

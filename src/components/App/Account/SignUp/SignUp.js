@@ -8,11 +8,11 @@ const notifyOptsPasswordsDontMatch = {
   position: 'tc',
   autoDismiss: 0,
   action: {
-    label: 'Click me!!'
+    label: 'OK'
   }
 };
 
-export default class CreateUserAccount extends Component {
+export default class SignUp extends Component {
   constructor() {
     super()
     this.state = {
@@ -39,7 +39,10 @@ export default class CreateUserAccount extends Component {
       title: 'Could not create your account',
       message: message,
       position: 'tc',
-      autoDismiss: 4
+      autoDismiss: 0,
+      action: {
+        label: 'OK'
+      }
     }
   }
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {fetchAllMovies} from '../../../utils/movieApi';
-import MovieDirectoryContainer from '../../containers/MovieDirectoryContainer';
+import MovieDirectoryContainer from '../../containers/MovieDirectory-container';
 import Header from './Header/Header';
 import Modal from './Account/Modal/Modal';
 import { Route } from 'react-router';

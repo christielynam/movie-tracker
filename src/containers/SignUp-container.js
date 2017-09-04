@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
-import CreateUserAccount from '../components/App/Account/CreateUserAccount/CreateUserAccount';
+import SignUp from '../components/App/Account/SignUp/SignUp';
 import { setActiveUser, success, fetchFavoriteMovies } from '../actions'
 
 const mapStateToProps = (mall) => {
@@ -26,4 +26,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateUserAccount);
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
