@@ -45,11 +45,6 @@
   line-height: 150px;
 }
 
-.favorites-nav-button {
-  line-height: 28px;
-  margin-top: 40px;
-}
-
 .modal {
   height: 400px;
   width: 300px;
@@ -157,7 +152,6 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 2fr 2fr 2fr 2fr;
-  /*justify-content: center;*/
   padding-top: 175px;
   background-color: gray;
   width: 100%;
