@@ -151,7 +151,8 @@
 .movie-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 2fr 2fr 2fr 2fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
   padding-top: 175px;
   background-color: gray;
   width: 100%;
@@ -160,7 +161,7 @@
 .movie-poster {
   height: 300px;
   width: 200px;
-  margin: 10px;
+  margin-bottom: 10px;
   border-radius: 30px;
   cursor: pointer;
   transition: transform .5s;
