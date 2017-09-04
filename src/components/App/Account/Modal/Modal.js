@@ -4,7 +4,6 @@ import SignIn from '../../../../containers/SignIn-container';
 
 
 const Modal = ({ action }) => {
-//look into history obj
   return(
     <div className='modal-backdrop'>
       <section className='modal'>
@@ -12,7 +11,6 @@ const Modal = ({ action }) => {
         {action === 'signin' && <SignIn />}
       </section>
     </div>
-
   )
 }
 
