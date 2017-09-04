@@ -4,8 +4,9 @@ import React from 'react';
 const handleFavoriteButton = (props) => {
     let userKeys = Object.keys(props.activeAccount)
     if (userKeys.length > 0) {
-        console.log(props)
+        // console.log(props)
         props.usersFavoriteMovies()
+        props.changeRoute('/favorites');
         console.log('fav button user signed in!')
     } else {
         console.log('MUST SIGN IN')

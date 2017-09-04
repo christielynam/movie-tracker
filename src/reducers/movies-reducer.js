@@ -1,7 +1,7 @@
 const movies = (state = [], action) => {
   switch (action.type) {
     case 'ADD_MOVIES':
-      return [...state, ...action.data];
+      return [...action.data];
     case 'ADD_FAVORITE':
       // console.log('action: ', action.data.movieId)
       let matchedId = action.data.movieId
