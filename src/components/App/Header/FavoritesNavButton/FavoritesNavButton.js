@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const notificationOpts = {
   title: 'Whoops!',
@@ -26,24 +27,21 @@ const handleFavoriteButton = (props) => {
   }
 }
 
-
-
 const FavoritesNavButton = (props) => {
-    const { favoritesCounter } = props
-    console.log('fav counter', favoritesCounter);
+  const { favoritesCounter } = props
+  console.log('fav counter', favoritesCounter);
 
-    return(
-        <div>
-            <button type='button'
-                    className='favorites-nav-button'
-                    onClick={(e) => {
-                        e.preventDefault();
-                        handleFavoriteButton(props);
-                        {/* props.usersFavoriteMovies(); */}
-                    }} >Favorites: {favoritesCounter}</button>
-        </div>
-
-    )
+  return(
+    <div>
+      <Link to='/favorites'
+            className='favorites-nav-button'
+            onClick={(e) => {
+                e.preventDefault();
+                handleFavoriteButton(props);
+            {/* props.usersFavoriteMovies(); */}
+            }}>Favorites: {favoritesCounter}</Link>
+    </div>
+  )
 }
 
 export default FavoritesNavButton
