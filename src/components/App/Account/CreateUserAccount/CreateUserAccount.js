@@ -2,6 +2,16 @@ import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import { fetchSignInUser } from '../../../../../utils/movieApi';
 
+const notificationOpts = {
+  title: 'Try again...',
+  message: 'The passwords you entered do not match',
+  position: 'tc',
+  autoDismiss: 0,
+  action: {
+    label: 'Click me!!'
+  }
+};
+
 export default class CreateUserAccount extends Component {
   constructor() {
     super()
@@ -81,8 +91,7 @@ export default class CreateUserAccount extends Component {
           this.autoSignInUser(name, email, password)
         });
     } else {
-      //notification that passwords dont match
-      alert('Passwords do not match')
+      this.props.alertme(notificationOpts)
     }
   }
 

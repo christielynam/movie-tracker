@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import Card from '../components/App/Body/MovieDirectory/MovieCard/MovieCard';
 import { addFavoriteMovies, success, favoritesCounter, increaseFavCount, decreaseFavCount } from '../actions';
+import { push } from 'react-router-redux';
+
 
 const mapStateToProps = (mall) => {
     return {
@@ -10,7 +12,7 @@ const mapStateToProps = (mall) => {
       favoritesCounter: mall.favoritesCounter
     }
   }
-  
+
   const mapDispatchToProps = (dispatch) => {
     return {
       addMovietoFavorites: (data) => {
@@ -24,8 +26,11 @@ const mapStateToProps = (mall) => {
       },
       decreaseFavCount: (data) => {
         dispatch(decreaseFavCount(data))
+      },
+      changeRoute: (url) => {
+        dispatch(push(url))
       }
     }
   }
-  
+
   export default connect(mapStateToProps, mapDispatchToProps)(Card);

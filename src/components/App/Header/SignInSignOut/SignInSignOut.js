@@ -19,7 +19,6 @@ const SignInSignOut = (props) => {
 
   return(
     <div>
-
       { Object.keys(props.activeAccount).length > 0 &&
         <Link className='sign-out' to='/' onClick={() => {
         props.handleSignOut();
@@ -28,11 +27,9 @@ const SignInSignOut = (props) => {
         props.alertme(notificationOpts);
       }}> Sign Out </Link>
       }
-
       { Object.keys(props.activeAccount).length === 0 &&
         <Link className='sign-in' to='/signin'> Sign In </Link>
       }
-
     </div>
   )
 }
