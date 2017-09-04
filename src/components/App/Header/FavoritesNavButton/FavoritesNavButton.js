@@ -21,6 +21,7 @@ const handleFavoriteButton = (props) => {
   }
   if (userKeys.length > 0 && props.favoritesCounter !== 0) {
     props.usersFavoriteMovies()
+    props.changeRoute('/favorites')
   }
   if (userKeys.length === 0) {
       props.changeRoute('/signin')
@@ -34,8 +35,7 @@ const FavoritesNavButton = (props) => {
 
   return(
     <div>
-      <Link to='/favorites'
-            className='favorites-nav-button'
+      <Link to='/favories' className='favorites-nav-button'
             onClick={(e) => {
                 e.preventDefault();
                 handleFavoriteButton(props);
