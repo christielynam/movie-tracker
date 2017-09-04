@@ -2,18 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const notificationOpts = {
-  title: 'You have been Signed OUT!',
+  title: 'You have been Signed Out!',
   message: 'Have a nice day!',
   position: 'tc',
-  autoDismiss: 0,
-  action: {
-    label: 'OK',
-    callback: () => alert('we can issue call backs from buttons clicked within the alert!')
-  }
+  autoDismiss: 3
 };
 
 
-const SignInSignOut = (props) => {
+const SignInSignOutButton = (props) => {
 
   return(
     <div>
@@ -40,4 +36,4 @@ const SignInSignOut = (props) => {
   )
 }
 
-export default SignInSignOut
+export default SignInSignOutButton

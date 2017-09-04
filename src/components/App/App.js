@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {fetchAllMovies} from '../../../utils/movieApi';
-import Body from './Body/Body';
+import MovieDirectoryContainer from '../../containers/MovieDirectory-container';
 import Header from './Header/Header';
 import Modal from './Account/Modal/Modal';
 import { Route } from 'react-router';
@@ -139,7 +139,7 @@ class App extends Component {
         <Route exact path='/signup'
                render={() => <Modal action='signup' />}
         />
-        <Body />
+        <MovieDirectoryContainer />
         <Notifications notifications={this.props.notifications}
                        style={notificationStyle}
         />

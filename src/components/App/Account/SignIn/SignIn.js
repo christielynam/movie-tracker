@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router';
 import {fetchSignInUser} from '../../../../../utils/movieApi'
 import { Link } from 'react-router-dom';
-import CreateUserAccount from '../CreateUserAccount/CreateUserAccount'
+import SignUp from '../SignUp/SignUp'
 
 // import { push } from 'react-router-redux';
 // import createHistory from 'history/createBrowserHistory';
@@ -13,10 +13,7 @@ const notificationOpts = {
   title: 'You Signed in Successfully!',
   message: 'You can now add favorites :)',
   position: 'tc',
-  autoDismiss: 3,
-  action: {
-    label: 'OK'
-  }
+  autoDismiss: 3
 };
 
 const notifyOptsBadSignIn = {

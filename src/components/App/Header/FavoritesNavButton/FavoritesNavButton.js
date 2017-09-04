@@ -5,10 +5,7 @@ const notificationOpts = {
   title: 'Whoops!',
   message: 'You currently have no movies selected as favorites',
   position: 'tc',
-  autoDismiss: 4,
-  action: {
-    label: 'OK'
-  }
+  autoDismiss: 3
 };
 
 const handleFavoriteButton = (props) => {

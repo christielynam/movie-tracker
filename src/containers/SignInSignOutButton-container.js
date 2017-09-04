@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux'
-import SignInSignOut from '../components/App/Header/SignInSignOut/SignInSignOut';
+import SignInSignOutButton from '../components/App/Header/SignInSignOutButton/SignInSignOutButton';
 import { removeActiveUser, removeAllIsFavorited, success, resetFavCounter } from '../actions'
 
 const mapStateToProps = (store) => {
@@ -26,4 +26,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignInSignOut);
+export default connect(mapStateToProps, mapDispatchToProps)(SignInSignOutButton);

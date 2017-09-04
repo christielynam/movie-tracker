@@ -1,5 +1,5 @@
 import React from 'react';
-import CreateUserAccount from '../../../../containers/CreateUserAccount-container';
+import SignUp from '../../../../containers/SignUp-container';
 import SignIn from '../../../../containers/SignIn-container';
 
 
@@ -8,7 +8,7 @@ const Modal = ({ action }) => {
   return(
     <div className='modal-backdrop'>
       <section className='modal'>
-        {action === 'signup' && <CreateUserAccount />}
+        {action === 'signup' && <SignUp />}
         {action === 'signin' && <SignIn />}
       </section>
     </div>

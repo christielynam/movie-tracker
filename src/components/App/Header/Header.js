@@ -1,6 +1,6 @@
 import React from 'react';
-import SignInSignOutContainer from '../../../containers/SignInSignOut-container';
-import FavoritesNavButton from '../../../containers/FavoritesNavButton-container';
+import SignInSignOutButtonContainer from '../../../containers/SignInSignOutButton-container';
+import FavoritesNavButtonContainer from '../../../containers/FavoritesNavButton-container';
 import { Link } from 'react-router-dom';
 
 
@@ -12,8 +12,8 @@ const Header = () => {
             className='title'>
             Movie Tracker
       </Link>
-      <FavoritesNavButton />
-      <SignInSignOutContainer />
+      <FavoritesNavButtonContainer />
+      <SignInSignOutButtonContainer />
     </header>
   )
 }
