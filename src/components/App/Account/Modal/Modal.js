@@ -12,7 +12,6 @@ const Modal = ({ action }) => {
         {action === 'signin' && <SignIn />}
       </section>
     </div>
-
   )
 }
 

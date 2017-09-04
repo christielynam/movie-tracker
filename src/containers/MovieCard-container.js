@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import MovieCard from '../components/App/MovieDirectory/MovieCard/MovieCard';
-import { addFavoriteMovies, success, favoritesCounter, increaseFavCount, decreaseFavCount } from '../actions';
+import { addFavoriteMovies, favoritesCounter, increaseFavCount, decreaseFavCount } from '../actions';
 import { push } from 'react-router-redux';
+import { success } from 'react-notification-system-redux';
 
 
 const mapStateToProps = (mall) => {
