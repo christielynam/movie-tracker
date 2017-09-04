@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import { fetchSignInUser } from '../../../../../utils/movieApi';
 
-const notificationOpts = {
+const notifyOptsPasswordsDontMatch = {
   title: 'Try again...',
   message: 'The passwords you entered do not match',
   position: 'tc',
@@ -28,6 +28,18 @@ export default class CreateUserAccount extends Component {
       title: `Hi ${name}, Welcome to Movie Tracker!`,
       position: 'tc',
       autoDismiss: 3
+    }
+  }
+
+  genNotifyOptsEmailExists = (email = 'invalid') => {
+    let message = (email === 'invalid') 
+                  ? 'Please try again'
+                  : `${email} already in use`
+    return {
+      title: 'Could not create your account',
+      message: message,
+      position: 'tc',
+      autoDismiss: 4
     }
   }
 
@@ -87,11 +99,21 @@ export default class CreateUserAccount extends Component {
         body: JSON.stringify({ name: name, password: password, email: email })
       }).then(res => res.json())
         .then(res => {
-          console.log('RESULT OF ADD USER:', res)
-          this.autoSignInUser(name, email, password)
-        });
+          console.log('RESULT OF ADD USER:', res);
+          if (res.status === 'success') {
+            this.autoSignInUser(name, email, password);
+          } else if (res.error.includes('already exists')) {
+            this.props.alertme(this.genNotifyOptsEmailExists(email));
+          } else {
+            this.props.alertme(this.genNotifyOptsEmailExists());
+          }
+        })
+        .catch(error => {
+          console.log('API ERROR: New Account Signup Failed');
+          this.props.alertme(this.genNotifyOptsEmailExists());
+        })
     } else {
-      this.props.alertme(notificationOpts)
+      this.props.alertme(notifyOptsPasswordsDontMatch)
     }
   }
 

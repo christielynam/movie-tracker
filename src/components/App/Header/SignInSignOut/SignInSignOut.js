@@ -18,16 +18,17 @@ const SignInSignOut = (props) => {
   return(
     <div>
       { Object.keys(props.activeAccount).length > 0 &&
+
         <Link className='sign-out'
               to='/'
               onClick={() => {
                 props.handleSignOut();
-                props.handleResetFavs();
-                props.resetFavCounter();
+                props.changeRoute('/');
                 props.alertme(notificationOpts);
               }}>
               Sign Out
         </Link>
+
       }
       { Object.keys(props.activeAccount).length === 0 &&
         <Link className='sign-in'

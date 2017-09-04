@@ -31,7 +31,7 @@ class App extends Component {
 
   retrieveFavoriteMovies() {
     const { activeAccount } = this.props;
-    // console.log('active account:', activeAccount)
+    console.log('retrieve favs for:', activeAccount)
 
     if (Object.keys(activeAccount).length > 0) {
 
@@ -51,6 +51,7 @@ class App extends Component {
 
     } else {
       console.log('No User Found to Grab Favs');
+      this.props.resetFavCounter();
     }
 
   }

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import App from '../components/App/App';
-import { addRecentMovies, fetchFavoriteMovies, setActiveUser, setFavCount, showFavoriteMovies } from '../actions';
+import { addRecentMovies, fetchFavoriteMovies, setActiveUser, setFavCount, showFavoriteMovies, resetFavCounter } from '../actions';
 
 const mapStateToProps = (mall) => {
   return {
@@ -26,6 +26,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     usersFavoriteMovies: (data) => {
       dispatch(showFavoriteMovies(data))
+    },
+    resetFavCounter: () => {
+      dispatch(resetFavCounter())
     }
   }
 }

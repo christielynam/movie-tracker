@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux'
 import SignInSignOut from '../components/App/Header/SignInSignOut/SignInSignOut';
 import { removeActiveUser, removeAllIsFavorited, success, resetFavCounter } from '../actions'
 
@@ -16,11 +17,11 @@ const mapDispatchToProps = (dispatch) => {
     handleResetFavs: () => {
       dispatch(removeAllIsFavorited())
     },
+    changeRoute: (url) => {
+      dispatch(push(url))
+    },
     alertme: (notificationOpts) => {
       dispatch(success(notificationOpts))
-    },
-    resetFavCounter: () => {
-      dispatech(resetFavCounter())
     }
   }
 }

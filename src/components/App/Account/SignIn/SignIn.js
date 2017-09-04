@@ -18,6 +18,17 @@ const notificationOpts = {
     label: 'OK'
   }
 };
+
+const notifyOptsBadSignIn = {
+  // uid: 'once-please', // you can specify your own uid if required
+  title: 'Invalid Login',
+  message: 'Please check your email and password',
+  position: 'tc',
+  autoDismiss: 0,
+  action: {
+    label: 'OK'
+  }
+};
 // ,
 // callback: () => alert('we can issue call backs from buttons clicked within the alert!')
 
@@ -74,13 +85,9 @@ export default class SignIn extends Component {
     .then(response => {
       if (response.status === 'success') {
         delete response.data.password;
+        this.props.handleSignInSuccess(response.data); // adds user to store
+        this.props.alertme(notificationOpts); // alert of new sign in
 
-        this.props.handleSignInSuccess(response.data);
-
-        this.props.alertme(notificationOpts);
-        // console.log('WHAT IS CONTEXT@???!>>!>>@: ', this.context)
-        // this.context.store.dispatch(success(notificationOpts));
-        // this.forceUpdate();
           // this validates that the user we are trying to login as
           // actually got set to the store properly.
           if (this.props.activeAccount.email === email) {
@@ -94,7 +101,10 @@ export default class SignIn extends Component {
       //   // console.log('2ND THEN:', data)
       //   this.props.alertme(notificationOpts);
       // })
-      .catch(error => console.log('sign in failed: ', error))
+      .catch(error => {
+        console.log('API ERROR: Login Failed: ', error);
+        this.props.alertme(notifyOptsBadSignIn);
+      })
   }
 
   render() {
