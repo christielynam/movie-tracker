@@ -2,16 +2,13 @@ import { connect } from 'react-redux';
 import FullMovieDetail from '../components/App/FullMovieDetail/FullMovieDetail'
 import { push } from 'react-router-redux';
 
-
-
 const mapStateToProps = (mall) => {
-    return {
-      movies: mall.movies,
-      notifications: mall.notifications,
-      activeAccount: mall.account,
-    }
-  
+  return {
+    movies: mall.movies,
+    notifications: mall.notifications,
+    activeAccount: mall.account,
   }
+}
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -21,4 +18,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-  export default connect(mapStateToProps, mapDispatchToProps)(FullMovieDetail);
+export default connect(mapStateToProps, mapDispatchToProps)(FullMovieDetail);

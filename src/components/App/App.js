@@ -23,7 +23,7 @@ const notificationStyle = {
       borderTop: '4px solid red'
     }
   }
-};
+}
 
 class App extends Component {
   constructor(props, context) {
@@ -32,15 +32,12 @@ class App extends Component {
 
   retrieveFavoriteMovies() {
     const { activeAccount } = this.props;
-    console.log('retrieve favs for:', activeAccount)
 
     if (Object.keys(activeAccount).length > 0) {
-
       return fetchFavoriteMovies(activeAccount.id)
       .then(data => {
         if (data.status === 'success') {
           if (data.data.length > 0) {
-            console.log('FETCHING FAVORITE MOVIES')
             this.props.fetchUserFavorites(data.data)
             this.props.setFavCount(data.data.length)
           }
@@ -53,20 +50,12 @@ class App extends Component {
       console.log('No User Found to Grab Favs');
       this.props.resetFavCounter();
     }
-
   }
 
   retrieveLocalStorage() {
     if (localStorage.getItem('user')) {
       this.props.handleSignInSuccess(JSON.parse(localStorage.getItem('user')))
     }
-
-    // if (Object.keys(this.props.activeAccount).length === 0) {
-    //   console.log(' no user signed in')
-    // } else {
-    //   console.log('user signed in');
-    // }
-
   }
 
   componentDidMount() {
@@ -98,35 +87,7 @@ class App extends Component {
             this.retrieveFavoriteMovies();
           })
       }
-
-      console.log("on route change:", location);
-    });
-  }
-
-  componentWillUnmount() {
-    // this.unlisten();
-  }
-
-  componentWillReceiveProps() {
-    // console.log('APP: COMPONENT WILL RECEIVE PROPS')
-  }
-
-  componentWillUpdate() {
-    // console.log('APP: COMPONENT WILL UPDATE');
-
-    // this.props.history.listen((location, action) => {
-    //   console.log('LISTEN TO THIS')
-    // })
-
-    // if (this.props.location.pathname === '/favorites') {
-    //   if (Object.keys(this.props.activeAccount).length > 0) {
-    //     console.log('You are on path:', this.props.location.pathname)
-    //     this.props.usersFavoriteMovies();
-    //   } else {
-    //     console.log('MUST SIGN IN TO SEE FAVS')
-    //   }
-    // }
-
+    })
   }
 
   render() {
@@ -151,9 +112,8 @@ class App extends Component {
   }
 }
 
-
 export default withRouter(App);
 
 App.contextTypes = {
   store: React.PropTypes.object
-};
+}

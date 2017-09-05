@@ -3,7 +3,6 @@ import SignUp from '../../../../containers/SignUp-container';
 import SignIn from '../../../../containers/SignIn-container';
 import FullMovieDetail from '../../../../containers/FullMovieDetail-container';
 
-
 const Modal = ({ action }) => {
 
   let modalClass = (action === 'fullmoviedetail') ? 'modal fullmovie-modal' : 'modal'

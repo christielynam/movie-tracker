@@ -4,20 +4,14 @@ import { fetchSignInUser, fetchFavoriteMovies} from '../../../../../utils/movieA
 import { Link } from 'react-router-dom';
 import SignUp from '../SignUp/SignUp'
 
-// import { push } from 'react-router-redux';
-// import createHistory from 'history/createBrowserHistory';
-
-// const history = createHistory();
-
 const notificationOpts = {
   title: 'You Signed in Successfully!',
   message: 'You can now add favorites :)',
   position: 'tc',
   autoDismiss: 3
-};
+}
 
 const notifyOptsBadSignIn = {
-  // uid: 'once-please', // you can specify your own uid if required
   title: 'Invalid Login',
   message: 'Please check your email and password',
   position: 'tc',
@@ -25,9 +19,7 @@ const notifyOptsBadSignIn = {
   action: {
     label: 'OK'
   }
-};
-// ,
-// callback: () => alert('we can issue call backs from buttons clicked within the alert!')
+}
 
 export default class SignIn extends Component {
   constructor(props, context) {
@@ -38,11 +30,8 @@ export default class SignIn extends Component {
     };
   }
 
-
   shouldComponentUpdate(nextProps) {
-    // console.log("SHOULD COMPONENT UPDATE 1: ", this.props, '2:', nextProps);
     let result =  this.props !== nextProps;
-    // console.log('RESULT:', result, 'NEXT PROPS:', nextProps);
     return true;
   }
 
@@ -62,7 +51,6 @@ export default class SignIn extends Component {
       if (data.status === 'success') {
         if (data.data.length > 0) {
           this.props.fetchUserFavorites(data.data)
-          console.log('listOFFavs: ', data.data.length)
           this.props.setFavCount(data.data.length)
         }
       } else {
@@ -82,7 +70,6 @@ export default class SignIn extends Component {
         delete response.data.password;
         this.props.handleSignInSuccess(response.data); // adds user to store
         this.props.alertme(notificationOpts); // alert of new sign in
-
           // this validates that the user we are trying to login as
           // actually got set to the store properly.
           if (this.props.activeAccount.email === email) {
@@ -92,10 +79,6 @@ export default class SignIn extends Component {
           }
         }
       })
-      // .then(data => {
-      //   // console.log('2ND THEN:', data)
-      //   this.props.alertme(notificationOpts);
-      // })
       .catch(error => {
         console.log('API ERROR: Login Failed: ', error);
         this.props.alertme(notifyOptsBadSignIn);
@@ -103,7 +86,6 @@ export default class SignIn extends Component {
   }
 
   render() {
-    // console.log('SIGN IN RENDER NOW!', this.props);
     return(
       <div>
 
@@ -154,9 +136,8 @@ export default class SignIn extends Component {
 
 SignIn.contextTypes = {
   store: React.PropTypes.object
-};
-
+}
 
 SignIn.propTypes = {
   notifications: React.PropTypes.array
-};
+}
