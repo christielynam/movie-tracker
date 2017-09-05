@@ -32,8 +32,8 @@ const FavoritesNavButton = (props) => {
       <Link to='/favories'
             className='favorites-nav-button'
             onClick={(e) => {
-                e.preventDefault();
-                handleFavoriteButton(props);
+              e.preventDefault();
+              handleFavoriteButton(props);
             }}>
             Favorites: {favoritesCounter}
       </Link>

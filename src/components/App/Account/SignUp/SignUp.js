@@ -11,7 +11,7 @@ const notifyOptsPasswordsDontMatch = {
   action: {
     label: 'OK'
   }
-};
+}
 
 export default class SignUp extends Component {
   constructor() {
@@ -33,7 +33,7 @@ export default class SignUp extends Component {
   }
 
   genNotifyOptsEmailExists = (email = 'invalid') => {
-    let message = (email === 'invalid') 
+    let message = (email === 'invalid')
                   ? 'Please try again'
                   : `${email} already in use`
     return {
@@ -106,7 +106,6 @@ export default class SignUp extends Component {
           }
         })
         .catch(error => {
-          console.log('API ERROR: New Account Signup Failed');
           this.props.alertme(this.genNotifyOptsEmailExists());
         })
     } else {
@@ -121,36 +120,32 @@ export default class SignUp extends Component {
     return(
       <section>
         <form className='create-user-form'>
-
-          <h3 className='create-account-heading'>Create New Account</h3>
-
+          <h3 className='create-account-heading'>
+              Create New Account
+          </h3>
           <input className='newuser-name'
                  type='text'
                  placeholder='name'
                  autoFocus value={name}
                  onChange={(e) => this.handleChange(e, 'name')}
           />
-
           <input className='newuser-email'
                  type='text'
                  placeholder='email'
                  value={email}
                  onChange={(e) => this.handleChange(e, 'email')}
           />
-
           <input className='newuser-password'
                  type='text'
                  placeholder='password'
                  value={password}
                  onChange={(e) => this.handleChange(e, 'password')}
           />
-
           <input className='newuser-password confirm-password'
                  type='text'
                  placeholder='confirm password' value={confirmPassword}
                  onChange={(e) => this.handleChange(e, 'confirmPassword')}
           />
-
           <button className='signup-btn'
                   type='submit'
                   disabled={!this.state.name || !this.state.email || !this.state.password || !this.state.confirmPassword}
@@ -160,12 +155,10 @@ export default class SignUp extends Component {
                   }}>
                   Sign Up
           </button>
-          {/* // TODO: need to sign user in after new account set up */}
           <Link className='cancel-signup'
                 to='/'>
                 Cancel
           </Link>
-
         </form>
       </section>
     )

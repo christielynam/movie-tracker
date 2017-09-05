@@ -9,9 +9,11 @@ export default class MovieDirectory extends Component {
 
   render() {
     const { movies } = this.props
-    const movieList = movies.map( movie => {
-      return <CardContainer key={ movie.movieId } movie={ movie } />
-    })
+    const movieList = movies.map( movie =>
+      <CardContainer key={ movie.movieId }
+                     movie={ movie }
+      />
+    )
 
     return (
       <div className='movie-container'>

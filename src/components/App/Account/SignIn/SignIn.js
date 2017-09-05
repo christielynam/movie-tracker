@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router';
 import { fetchSignInUser, fetchFavoriteMovies} from '../../../../../utils/movieApi'
 import { Link } from 'react-router-dom';
+
 import SignUp from '../SignUp/SignUp';
 import PropTypes from 'prop-types';
 
@@ -10,7 +11,7 @@ const notificationOpts = {
   message: 'You can now add favorites :)',
   position: 'tc',
   autoDismiss: 3
-};
+}
 
 const notifyOptsBadSignIn = {
   title: 'Invalid Login',
@@ -20,7 +21,8 @@ const notifyOptsBadSignIn = {
   action: {
     label: 'OK'
   }
-};
+}
+
 
 export default class SignIn extends Component {
   constructor(props, context) {
@@ -30,7 +32,6 @@ export default class SignIn extends Component {
       password: ''
     };
   }
-
 
   shouldComponentUpdate(nextProps) {
     let result =  this.props !== nextProps;
@@ -70,8 +71,10 @@ export default class SignIn extends Component {
     .then(response => {
       if (response.status === 'success') {
         delete response.data.password;
-        this.props.handleSignInSuccess(response.data);
-        this.props.alertme(notificationOpts);
+        this.props.handleSignInSuccess(response.data); // adds user to store
+        this.props.alertme(notificationOpts); // alert of new sign in
+          // this validates that the user we are trying to login as
+          // actually got set to the store properly.
           if (this.props.activeAccount.email === email) {
             this.updateLocalStorage();
             this.retrieveFavoriteMovies();
@@ -136,8 +139,7 @@ export default class SignIn extends Component {
 
 SignIn.contextTypes = {
   store: React.PropTypes.object
-};
-
+}
 
 SignIn.propTypes = {
   notifications: React.PropTypes.array,
@@ -150,4 +152,4 @@ SignIn.propTypes = {
     handleSignInSuccess: PropTypes.func,
     setFavCount: PropTypes.func,
   })
-};
+}

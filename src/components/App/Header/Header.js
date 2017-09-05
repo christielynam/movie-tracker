@@ -3,10 +3,7 @@ import SignInSignOutButtonContainer from '../../../containers/SignInSignOutButto
 import FavoritesNavButtonContainer from '../../../containers/FavoritesNavButton-container';
 import { Link } from 'react-router-dom';
 
-
 const Header = () => {
-  
-
   return(
     <header className='header'>
       <Link to='/'

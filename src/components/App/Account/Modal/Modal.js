@@ -4,7 +4,6 @@ import SignIn from '../../../../containers/SignIn-container';
 import FullMovieDetail from '../../../../containers/FullMovieDetail-container';
 import PropTypes from 'prop-types';
 
-
 const Modal = ({ action }) => {
 
   let modalClass = (action === 'fullmoviedetail') ? 'modal fullmovie-modal' : 'modal'

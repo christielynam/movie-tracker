@@ -9,15 +9,12 @@ const notificationOpts = {
   autoDismiss: 3
 };
 
-
 const SignInSignOutButton = (props) => {
   return(
     <div className='btn-container'>
       { Object.keys(props.activeAccount).length > 0 &&
-
         <div className='signIn-signOut-container'>
           <p className='welcome-message'>{`Welcome, ${props.activeAccount.name}!`}</p>
-
           <Link className='sign-out'
                 to='/'
                 onClick={() => {
@@ -28,13 +25,10 @@ const SignInSignOutButton = (props) => {
                 Sign Out
           </Link>
         </div>
-
       }
       { Object.keys(props.activeAccount).length === 0 &&
-
         <div className='signIn-signOut-container'>
           <p className='welcome-message'>Welcome!</p>
-
           <Link className='sign-in'
                 to='/signin'>
                 Sign In

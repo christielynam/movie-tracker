@@ -1,4 +1,3 @@
-
 export const addRecentMovies = (data) => {
   return {
     type: 'ADD_MOVIES',
@@ -17,7 +16,7 @@ export const resetFavCounter = () => {
     type: 'RESET_FAV_COUNTER'
   }
 }
- 
+
 export const fetchFavoriteMovies = (data) => {
   return {
     type: 'FETCH_FAVORITES',
@@ -32,7 +31,6 @@ export const showFavoriteMovies = (data) => {
   }
 }
 
-
 export const addFavoriteMovies = (data) => {
   return {
     type: 'ADD_FAVORITE',
@@ -46,7 +44,6 @@ export const setActiveUser = (data) => {
     data
   }
 }
-
 
 export const removeFavoriteMovie = (data) => {
   return {
@@ -80,5 +77,3 @@ export const decreaseFavCount = () => {
     type: 'DECREASE_FAVOIRTE_COUNTER'
   }
 }
-
-

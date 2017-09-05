@@ -23,7 +23,7 @@ const notificationStyle = {
       borderTop: '4px solid red'
     }
   }
-};
+}
 
 class App extends Component {
   constructor(props, context) {
@@ -50,7 +50,6 @@ class App extends Component {
       console.log('No User Found to Grab Favs');
       this.props.resetFavCounter();
     }
-
   }
 
   retrieveLocalStorage() {
@@ -87,7 +86,7 @@ class App extends Component {
             this.retrieveFavoriteMovies();
           })
       }
-    });
+    })
   }
 
   render() {
@@ -112,9 +111,8 @@ class App extends Component {
   }
 }
 
-
 export default withRouter(App);
 
 App.contextTypes = {
   store: React.PropTypes.object
-};
+}

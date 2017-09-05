@@ -1,6 +1,5 @@
 var key = require('./key');
 
-
 const fetchAllMovies = () => {
   return fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${key}`)
   .then(results => results.json())
@@ -35,7 +34,6 @@ const fetchRemoveFavoriteMovie = (movieId, userId) => {
     body: JSON.stringify({ movie_id: movieId, user_id: userId })
   }).then(res => res.json())
     .then(response => response)
-  
 }
 
 const fetchCreateUser = (name, email, password) => {
@@ -61,8 +59,7 @@ const fetchSignInUser = (email, password) => {
   .then(results => results.json())
   .then(response => response)
 }
-  
-  
+
   const cleanMovieData = (movieArray) => {
     return movieArray.map(movie => {
       return {
@@ -76,6 +73,5 @@ const fetchSignInUser = (email, password) => {
       }
     })
   }
-
 
 module.exports = { fetchAllMovies, fetchSignInUser, fetchFavoriteMovies, fetchCreateUser, fetchAddFavoriteMovie, fetchRemoveFavoriteMovie };
