@@ -21,6 +21,7 @@
     "express": "^4.14.0",
     "express-cors": "0.0.3",
     "history": "^4.6.3",
+    "nock": "^9.0.14",
     "pg-promise": "^3.2.3",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
@@ -29,6 +30,7 @@
     "react-redux": "^5.0.2",
     "react-router": "^4.1.1",
     "react-router-redux": "^5.0.0-alpha.6",
+    "react-scripts": "^1.0.13",
     "redux": "^3.6.0"
   },
   "devDependencies": {
