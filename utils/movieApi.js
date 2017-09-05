@@ -5,6 +5,7 @@ const fetchAllMovies = () => {
   return fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${key}`)
   .then(results => results.json())
   .then(movies => {
+    console.log('COPY THIS:', movies);
     return cleanMovieData(movies.results)
   })
 }
@@ -12,7 +13,9 @@ const fetchAllMovies = () => {
 const fetchFavoriteMovies = (id) => {
   return fetch(`/api/users/${id}/favorites`)
     .then(result => result.json())
-    .then(response => response)
+    .then(response => {
+      return response;
+    })
 }
 
 const fetchAddFavoriteMovie = (movie, id) => {
