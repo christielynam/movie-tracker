@@ -328,6 +328,9 @@ html {
   .signIn-signOut-container {
     width: 150px;
   }
+  .fullmovie-modal {
+    width: 85%;
+  }
 }
 
 @media screen and (max-width: 800px) {
@@ -347,6 +350,9 @@ html {
     width: 25px;
     height: 25px;
   }
+  .fullmovie-modal {
+    width: 85%;
+  }
 }
 
 
@@ -365,5 +371,8 @@ html {
   .sign-out,
   .welcome-message {
     font-size: 12px;
+  }
+  .fullmovie-modal {
+    width: 90%;
   }
 }
