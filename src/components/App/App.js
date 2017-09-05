@@ -19,8 +19,39 @@ const notificationStyle = {
 
     success: { // Applied only to the success notification item
       color: 'red',
+      fontSize: '20px',
       backgroundColor: '#000000',
-      borderTop: '4px solid red'
+      borderTop: '4px solid red',
+      borderBottom: '4px solid red'
+    }
+  },
+  Title: {
+    DefaultStyle: {
+      fontSize: '18px',
+      margin: '10px',
+      padding: 0,
+      fontWeight: 'bold'
+    },
+
+    success: {
+      color: '#ffffff'
+    }
+  },
+  Action: {
+    DefaultStyle: {
+      background: '#ffffff',
+      borderRadius: '3px',
+      fontSize: '16px',
+      padding: '8px 20px',
+      fontWeight: 'bold',
+      margin: '10px',
+      border: 0
+    },
+
+    success: {
+      backgroundColor: '#c74148',
+      color: '#ffffff',
+      cursor: 'pointer'
     }
   }
 }
