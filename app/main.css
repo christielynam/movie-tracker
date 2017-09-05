@@ -18,7 +18,7 @@ html {
   height: 150px;
   width: 100%;
   display: grid;
-  grid-template-columns: 60% 25% 15%;
+  grid-template-columns: 60% 20% 25%;
   position: fixed;
   z-index: 100;
   background-color: #000;
@@ -59,10 +59,6 @@ html {
   font-weight: bold;
   text-decoration: none;
   line-height: 75px;
-}
-
-.signIn-signOut-container {
-  width: 150px;
 }
 
 .favorites-nav-button {
@@ -273,7 +269,7 @@ html {
   line-height: 1.5em;
 }
 
-/* .movie-detail { 
+/* .movie-detail {
   width: 500px;
 } */
 
@@ -312,7 +308,7 @@ html {
 }
 
 .movie-poster:hover {
-  border: 5px solid red;
+  border: 2px solid red;
 }
 
 @media screen and (max-width: 1000px) {
@@ -331,6 +327,9 @@ html {
   .sign-in,
   .sign-out {
     line-height: 85px;
+  }
+  .signIn-signOut-container {
+    width: 150px;
   }
 }
 
@@ -371,4 +370,3 @@ html {
     font-size: 12px;
   }
 }
-
