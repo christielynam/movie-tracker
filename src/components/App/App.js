@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import {fetchAllMovies} from '../../../utils/movieApi';
+import { fetchAllMovies, fetchFavoriteMovies } from '../../../utils/movieApi';
 import MovieDirectoryContainer from '../../containers/MovieDirectory-container';
 import Header from './Header/Header';
 import Modal from './Account/Modal/Modal';
 import { Route } from 'react-router';
-import Notifications from './Notifications';
+// import Notifications from './Notifications';
+import Notifications from 'react-notification-system-redux';
 import { withRouter } from 'react-router-dom';
 
 
@@ -35,8 +36,7 @@ class App extends Component {
 
     if (Object.keys(activeAccount).length > 0) {
 
-      return fetch(`/api/users/${activeAccount.id}/favorites`)
-      .then(res => res.json())
+      return fetchFavoriteMovies(activeAccount.id)
       .then(data => {
         if (data.status === 'success') {
           if (data.data.length > 0) {

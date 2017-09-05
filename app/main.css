@@ -5,7 +5,7 @@
 }
 
 html {
-  background-color: black;  
+  background-color: black;
 }
 
 .app {
@@ -18,7 +18,7 @@ html {
   height: 150px;
   width: 100%;
   display: grid;
-  grid-template-columns: 60% 20% 20%;
+  grid-template-columns: 60% 25% 15%;
   position: fixed;
   z-index: 100;
   background-color: #000;
@@ -36,6 +36,15 @@ html {
   text-decoration: none;
 }
 
+.welcome-message {
+  width: 300px;
+  position: relative;
+  right: 100px;
+  margin: 20px 0;
+  color: #fff;
+  font-size: 20px;
+}
+
 .favorites-nav-button,
 .sign-in,
 .sign-out {
@@ -49,7 +58,15 @@ html {
   font-size: 25px;
   font-weight: bold;
   text-decoration: none;
-  line-height: 150px;
+  line-height: 75px;
+}
+
+.signIn-signOut-container {
+  width: 150px;
+}
+
+.favorites-nav-button {
+  line-height: 200px;
 }
 
 
@@ -198,10 +215,7 @@ html {
   grid-gap: 10px;
   padding: 175px 20px 10px;
   background-color: black;
-  /* background-image: url('/assets/blackWallpaper.jpg');    */
-  /* background-image: url('/assets/texturedBackground.jpg');   */
   background-size: contain;
-  /* background-repeat: no-repeat; */
 }
 
 .movie-poster {
@@ -270,7 +284,6 @@ html {
 }
 
 .popup-fav-addrem {
-  /* background-image: url('/icons/heart.png'); */
   min-height: 200px;
   background-size: cover;
   width: 100%;
@@ -298,10 +311,64 @@ html {
   display: none;
 }
 
-
-
-
-/*.movie-poster:hover {
+.movie-poster:hover {
   border: 5px solid red;
-  transform: scale(1.05);
-}*/
+}
+
+@media screen and (max-width: 1000px) {
+  .header {
+    grid-template-columns: 10fr 3fr 1fr;
+  }
+  .title {
+    font-size: 35px;
+  }
+  .favorites-nav-button,
+  .sign-in,
+  .sign-out,
+  .welcome-message {
+    font-size: 16px;
+  }
+  .sign-in,
+  .sign-out {
+    line-height: 85px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .movie-container {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  }
+  .header {
+    grid-template-columns: 55% 25% 20%;
+    background-image: none;
+  }
+  .title {
+    margin-left: 25px;
+    font-size: 40px;
+  }
+  .favorite-movie-btn {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+
+@media screen and (max-width: 600px)  {
+  .movie-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .title {
+    font-size: 25px;
+  }
+  .header {
+    grid-template-columns: 50% 30% 20%;
+  }
+  .favorites-nav-button,
+  .sign-in,
+  .sign-out,
+  .welcome-message {
+    font-size: 12px;
+  }
+}
+

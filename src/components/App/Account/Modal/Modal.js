@@ -6,7 +6,7 @@ import FullMovieDetail from '../../../../containers/FullMovieDetail-container';
 
 const Modal = ({ action }) => {
 
-  let modalClass = action === 'fullmoviedetail' ? 'modal fullmovie-modal' : 'modal'
+  let modalClass = (action === 'fullmoviedetail') ? 'modal fullmovie-modal' : 'modal'
 
   return(
     <div className='modal-backdrop'>
@@ -16,7 +16,6 @@ const Modal = ({ action }) => {
         {action === 'fullmoviedetail' && <FullMovieDetail />}
       </section>
     </div>
-
   )
 }
 

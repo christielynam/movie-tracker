@@ -1,4 +1,5 @@
 import React from 'react';
+import { fetchAddFavoriteMovie, fetchRemoveFavoriteMovie } from '../../../../../utils/movieApi'
 
 const genNotificationOpts = (type, movie) => {
   let title, message, bgSrc = '';
@@ -31,36 +32,21 @@ const genNotificationOpts = (type, movie) => {
 const addFavoritedMovie = (props)  => {
   const {movie, movies, addMovietoFavorites, activeAccount, alertme, favoritesCounter, increaseFavCount} = props;
 
-  fetch('/api/users/favorites/new', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ movie_id: movie.movieId, user_id: activeAccount.id, title: movie.title, poster_path: movie.posterImg, release_date: movie.releaseDate, vote_average: movie.voteAverage, overview: movie.description  })
-  }).then(res => res.json())
+  fetchAddFavoriteMovie(movie, activeAccount.id)
   .then(res => {
     addMovietoFavorites(movie)
     increaseFavCount()
     alertme(genNotificationOpts('add_fav', movie));
-    console.log('RESULT OF ADD FAVORITE', res)})
-  // .then(data => {
-  //   fetch('https://api.wolframalpha.com/v1/simple?appid=5WP36U-TP8QL9U7L4&i=aaron+rodgers%3F')
-  //   .then(res => res.json())
-  //   .then(data => console.log('DDDDDAAAAAATTTTAAAAA:', data))
-  // })
+    console.log('RESULT OF ADD FAVORITE', res);
+  })
 }
 
 const removeFavoritedMovie = (props) => {
   console.log('REMOVE HIT!')
   console.log('PROPS @ DELETE FAV:', props)
   const { movie, movies, addMovietoFavorites, activeAccount, alertme, notifications, favoritesCounter, decreaseFavCount} = props
-  fetch(`/api/users/${activeAccount.id}/favorites/${movie.movieId}`, {
-    method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body:  JSON.stringify({ movie_id: movie.movieId, user_id: activeAccount.id })
-  }).then(res => res.json())
+
+  fetchRemoveFavoriteMovie(movie.movieId, activeAccount.id)
   .then(res => {
     addMovietoFavorites(movie);
     decreaseFavCount();
