@@ -49,20 +49,27 @@ describe('App Component', () => {
   // })
 
   test('state obj for movies fetch should be set correctly', async () => {
-
+    console.log('MOCK A');
     nock(`https://api.themoviedb.org/`)
       .get(`/3/movie/now_playing?api_key=${key}`)
       .reply(200, { body: { todos: ['do something'] } })
 
 
     const expectedActions = [
-      { type: 'ADD_MOVIES', body: { todos: ['do something'] }},
+      { type: 'ADD_MOVIES', data: { todos: ['do something'] }},
     ]
 
     const store = mockStore({ todos: [] })
 
-    return store.dispatch(actions.fetchTodos()).then(() => {
+    return store.dispatch(() => {
+      console.log('MOCK 1');
+      
+      return dispatch => {
+        dispatch(actions.addRecentMovies(data));
+      }
+    }).then(() => {
       // return of async actions
+      console.log('MOCK 2');
       expect(store.getActions()).toEqual(expectedActions)
     })
 
