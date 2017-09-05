@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const notificationOpts = {
   title: 'You have been Signed Out!',
@@ -10,7 +11,6 @@ const notificationOpts = {
 
 
 const SignInSignOutButton = (props) => {
-
   return(
     <div className='btn-container'>
       { Object.keys(props.activeAccount).length > 0 &&
@@ -45,4 +45,16 @@ const SignInSignOutButton = (props) => {
   )
 }
 
-export default SignInSignOutButton
+export default SignInSignOutButton;
+
+SignInSignOutButton.propTypes = {
+  notifications: React.PropTypes.array,
+  props: PropTypes.object,
+  props: PropTypes.shape({
+    activeAccount: PropTypes.object,
+    alertme: PropTypes.func,
+    changeRoute: PropTypes.func,
+    handleResetFavs: PropTypes.func,
+    handleSignOut: PropTypes.func
+  })
+};

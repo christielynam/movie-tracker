@@ -2,12 +2,8 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router';
 import { fetchSignInUser, fetchFavoriteMovies} from '../../../../../utils/movieApi'
 import { Link } from 'react-router-dom';
-import SignUp from '../SignUp/SignUp'
-
-// import { push } from 'react-router-redux';
-// import createHistory from 'history/createBrowserHistory';
-
-// const history = createHistory();
+import SignUp from '../SignUp/SignUp';
+import PropTypes from 'prop-types';
 
 const notificationOpts = {
   title: 'You Signed in Successfully!',
@@ -17,7 +13,6 @@ const notificationOpts = {
 };
 
 const notifyOptsBadSignIn = {
-  // uid: 'once-please', // you can specify your own uid if required
   title: 'Invalid Login',
   message: 'Please check your email and password',
   position: 'tc',
@@ -26,8 +21,6 @@ const notifyOptsBadSignIn = {
     label: 'OK'
   }
 };
-// ,
-// callback: () => alert('we can issue call backs from buttons clicked within the alert!')
 
 export default class SignIn extends Component {
   constructor(props, context) {
@@ -40,9 +33,7 @@ export default class SignIn extends Component {
 
 
   shouldComponentUpdate(nextProps) {
-    // console.log("SHOULD COMPONENT UPDATE 1: ", this.props, '2:', nextProps);
     let result =  this.props !== nextProps;
-    // console.log('RESULT:', result, 'NEXT PROPS:', nextProps);
     return true;
   }
 
@@ -62,7 +53,6 @@ export default class SignIn extends Component {
       if (data.status === 'success') {
         if (data.data.length > 0) {
           this.props.fetchUserFavorites(data.data)
-          console.log('listOFFavs: ', data.data.length)
           this.props.setFavCount(data.data.length)
         }
       } else {
@@ -80,11 +70,8 @@ export default class SignIn extends Component {
     .then(response => {
       if (response.status === 'success') {
         delete response.data.password;
-        this.props.handleSignInSuccess(response.data); // adds user to store
-        this.props.alertme(notificationOpts); // alert of new sign in
-
-          // this validates that the user we are trying to login as
-          // actually got set to the store properly.
+        this.props.handleSignInSuccess(response.data);
+        this.props.alertme(notificationOpts);
           if (this.props.activeAccount.email === email) {
             this.updateLocalStorage();
             this.retrieveFavoriteMovies();
@@ -92,10 +79,6 @@ export default class SignIn extends Component {
           }
         }
       })
-      // .then(data => {
-      //   // console.log('2ND THEN:', data)
-      //   this.props.alertme(notificationOpts);
-      // })
       .catch(error => {
         console.log('API ERROR: Login Failed: ', error);
         this.props.alertme(notifyOptsBadSignIn);
@@ -103,7 +86,6 @@ export default class SignIn extends Component {
   }
 
   render() {
-    // console.log('SIGN IN RENDER NOW!', this.props);
     return(
       <div>
 
@@ -158,5 +140,14 @@ SignIn.contextTypes = {
 
 
 SignIn.propTypes = {
-  notifications: React.PropTypes.array
+  notifications: React.PropTypes.array,
+  props: PropTypes.object,
+  props: PropTypes.shape({
+    activeAccount: PropTypes.object,
+    alertme: PropTypes.func,
+    changeRoute: PropTypes.func,
+    fetchUserFavorites: PropTypes.func,
+    handleSignInSuccess: PropTypes.func,
+    setFavCount: PropTypes.func,
+  })
 };

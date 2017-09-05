@@ -2,6 +2,7 @@ import React from 'react';
 import SignUp from '../../../../containers/SignUp-container';
 import SignIn from '../../../../containers/SignIn-container';
 import FullMovieDetail from '../../../../containers/FullMovieDetail-container';
+import PropTypes from 'prop-types';
 
 
 const Modal = ({ action }) => {
@@ -19,4 +20,8 @@ const Modal = ({ action }) => {
   )
 }
 
-export default Modal
+export default Modal;
+
+Modal.propTypes = {
+  action: PropTypes.string
+}
