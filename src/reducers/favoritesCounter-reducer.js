@@ -7,7 +7,7 @@ const favoritesCounter = (state = 0, action) => {
     case 'INCREASE_FAVORITE_COUNTER':
       return state += 1;
 
-    case 'DECREASE_FAVOIRTE_COUNTER':
+    case 'DECREASE_FAVORITE_COUNTER':
       return state -= 1;
 
     case 'RESET_FAV_COUNTER':
