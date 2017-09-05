@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const notificationOpts = {
   title: 'Whoops!',
@@ -9,7 +10,6 @@ const notificationOpts = {
 };
 
 const handleFavoriteButton = (props) => {
-
   let userKeys = Object.keys(props.activeAccount)
 
   if (userKeys.length > 0 && props.favoritesCounter === 0) {
@@ -21,21 +21,19 @@ const handleFavoriteButton = (props) => {
   }
   if (userKeys.length === 0) {
       props.changeRoute('/signin')
-      console.log('MUST SIGN IN')
   }
 }
 
 const FavoritesNavButton = (props) => {
   const { favoritesCounter } = props
-  console.log('fav counter', favoritesCounter);
 
   return(
-    <div>
+    <div className='btn-container'>
       <Link to='/favories'
             className='favorites-nav-button'
             onClick={(e) => {
-                e.preventDefault();
-                handleFavoriteButton(props);
+              e.preventDefault();
+              handleFavoriteButton(props);
             }}>
             Favorites: {favoritesCounter}
       </Link>
@@ -44,3 +42,16 @@ const FavoritesNavButton = (props) => {
 }
 
 export default FavoritesNavButton
+
+
+FavoritesNavButton.propTypes = {
+  props: PropTypes.object,
+  props: PropTypes.shape({
+    activeAccount: PropTypes.object,
+    alertme: PropTypes.func,
+    changeRoute: PropTypes.func,
+    favoritesCounter: PropTypes.number,
+    movies: PropTypes.array,
+    usersFavoriteMovies: PropTypes.func
+  })
+};

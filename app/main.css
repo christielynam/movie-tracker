@@ -5,7 +5,7 @@
 }
 
 html {
-  background-color: black;  
+  background-color: black;
 }
 
 .app {
@@ -18,7 +18,7 @@ html {
   height: 150px;
   width: 100%;
   display: grid;
-  grid-template-columns: 60% 20% 20%;
+  grid-template-columns: 60% 20% 25%;
   position: fixed;
   z-index: 100;
   background-color: #000;
@@ -28,12 +28,26 @@ html {
 }
 
 .title {
+  height: 150px;
   margin-left: 220px;
   color: red;
   font-size: 50px;
   font-weight: bold;
   line-height: 150px;
   text-decoration: none;
+}
+
+.welcome-message {
+  width: 300px;
+  position: relative;
+  right: 100px;
+  margin: 20px 0;
+  color: #fff;
+  font-size: 20px;
+}
+
+.btn-container {
+  height: 150px;
 }
 
 .favorites-nav-button,
@@ -49,16 +63,19 @@ html {
   font-size: 25px;
   font-weight: bold;
   text-decoration: none;
-  line-height: 150px;
+  line-height: 75px;
 }
 
+.favorites-nav-button {
+  line-height: 200px;
+}
 
 .modal-backdrop {
   height: 800px;
   width: 100%;
-  z-index: 100;
   position: fixed;
   top: 150px;
+  z-index: 100;
   background-color: black;
   opacity: .90;
   animation-name: fadeIn;
@@ -74,17 +91,16 @@ html {
   height: 400px;
   width: 300px;
   margin: 0 auto;
-  left: 0;
+  position: fixed;
+  top: 225px;
   right: 0;
+  left: 0;
   z-index: 100;
   border: 5px solid red;
   border-radius: 5%;
-  position: fixed;
-  top: 225px;
   background-color: #433B3B;
   animation-name: slideDown;
   animation-duration: 2s;
-
 }
 
 @keyframes slideDown2 {
@@ -95,7 +111,6 @@ html {
     top: 150px;
   }
 }
-
 
 @keyframes slideDown {
   0% {
@@ -108,9 +123,9 @@ html {
 
 .sign-in-heading {
   padding: 25px;
+  color: white;
   font-size: 40px;
   text-align: center;
-  color: white;
 }
 
 .signin-form {
@@ -133,8 +148,8 @@ html {
 .newuser-name,
 .newuser-email,
 .newuser-password {
-  width: 280px;
   height: 50px;
+  width: 280px;
   margin-left: 5px;
   padding: 10px;
   border: 2px solid gray;
@@ -171,9 +186,9 @@ html {
 
 .create-account-heading {
   padding-top: 10px;
+  color: white;
   font-size: 30px;
   text-align: center;
-  color: white;
 }
 
 .new-user,
@@ -198,20 +213,17 @@ html {
   grid-gap: 10px;
   padding: 175px 20px 10px;
   background-color: black;
-  /* background-image: url('/assets/blackWallpaper.jpg');    */
-  /* background-image: url('/assets/texturedBackground.jpg');   */
   background-size: contain;
-  /* background-repeat: no-repeat; */
 }
 
 .movie-poster {
   height: 100%;
   width: 100%;
   margin-bottom: 10px;
+  border: 2px solid #808080;
   border-radius: 30px;
   cursor: pointer;
   transition: transform .5s;
-  border: 2px solid #808080;
 }
 
 .movie-card {
@@ -221,53 +233,66 @@ html {
 
 .button-container {
   position: absolute;
-  z-index: 10;
   top: 20px;
   right: 20px;
+  z-index: 10;
 }
 
 .favorite-movie-btn {
-  width: 40px;
   height: 40px;
+  width: 40px;
   position: relative;
-  background-image: url('/icons/heart.png');
   display: inline-block;
-  background-size: contain;
-  background-color: transparent;
   border: none;
-  float: right;
+  background-image: url('/icons/heart.png');
+  background-color: transparent;
+  background-size: contain;
   cursor: pointer;
+  float: right;
   outline: none;
 }
 
-.favorite-movie-btn:hover {
-  background-image: url('/icons/heart-red.png');
-  outline: none;
-}
-
+.favorite-movie-btn:hover,
 .favorited-movie-active {
   background-image: url('/icons/heart-red.png');
   outline: none;
 }
 
+.fullmovie-modal {
+  width: 50%;
+  height: 70%;
+  padding: 20px;
+  color: white;
+  line-height: 1.5em;
+  text-align: center;
+}
+
+/* .movie-detail {
+  width: 500px;
+} */
+
+.movie-poster-detail {
+  width: 200px;
+  margin: 10px;
+}
+
 .popup-fav-addrem {
-  /* background-image: url('/icons/heart.png'); */
-  min-height: 200px;
-  background-size: cover;
-  width: 100%;
   height: 100%;
+  min-height: 200px;
+  width: 100%;
+  background-size: cover;
 }
 
 .popup-fav-layer {
-  color: white;
-  background-color: black;
-  opacity: 0.8;
-  font-size: 26px;
-  font-weight: bold;
-  font-family: 'Comfortaa';
   width: 100%;
   height: 100%;
   padding: 10px;
+  background-color: black;
+  color: white;
+  font-size: 26px;
+  font-family: 'Comfortaa';
+  font-weight: bold;
+  opacity: 0.8;
 }
 
 .popup-fav-sub-layer {
@@ -279,9 +304,75 @@ html {
   display: none;
 }
 
+.movie-poster:hover {
+  border: 2px solid red;
+}
+
+@media screen and (max-width: 1000px) {
+  .header {
+    grid-template-columns: 10fr 3fr 1fr;
+  }
+  .title {
+    font-size: 35px;
+  }
+  .favorites-nav-button,
+  .sign-in,
+  .sign-out,
+  .welcome-message {
+    font-size: 16px;
+  }
+  .sign-in,
+  .sign-out {
+    line-height: 85px;
+  }
+  .signIn-signOut-container {
+    width: 150px;
+  }
+  .fullmovie-modal {
+    width: 85%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .movie-container {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  }
+  .header {
+    grid-template-columns: 55% 25% 20%;
+    background-image: none;
+  }
+  .title {
+    margin-left: 25px;
+    font-size: 40px;
+  }
+  .favorite-movie-btn {
+    width: 25px;
+    height: 25px;
+  }
+  .fullmovie-modal {
+    width: 85%;
+  }
+}
 
 
-/*.movie-poster:hover {
-  border: 5px solid red;
-  transform: scale(1.05);
-}*/
+@media screen and (max-width: 600px)  {
+  .movie-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .title {
+    font-size: 25px;
+  }
+  .header {
+    grid-template-columns: 50% 30% 20%;
+  }
+  .favorites-nav-button,
+  .sign-in,
+  .sign-out,
+  .welcome-message {
+    font-size: 12px;
+  }
+  .fullmovie-modal {
+    width: 90%;
+  }
+}
