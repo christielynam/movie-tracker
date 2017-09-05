@@ -1,25 +1,31 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom'
 
 const FullMovieDetail = (props) => {
-
-    const favClass = props.movie.isFavorited ? "favorite-movie-btn favorited-movie-active" : "favorite-movie-btn"
-
+    const selectedId = props.location.pathname.replace('/fullmoviedetail/', '')
+    console.log('location: ', selectedId)
+    const selectedArray = props.movies.filter( movie => {
+        console.log(selectedId, movie.movieId)
+       return movie.movieId == selectedId
+    });
+    const selectedMovie = selectedArray[0]
+    console.log('selectedMovie: ', selectedMovie)
+    const favClass = selectedMovie.isFavorited ? "favorite-movie-btn favorited-movie-active" : "favorite-movie-btn"
+    
     return(
-        <div>
-        <h3>${props.movie.title}</h3>
-        <button className={favClass}
-                type="button"
-                onClick={(e) => {
-                  e.preventDefault();
-                  checkFavorite(props);
-                }}
-                ></button>
-        <img className='movie-poster' src={`https://image.tmdb.org/t/p/w500${props.movie.posterImg}`} />
-        <p>${props.movie.releaseDate}</p>
-        <p>${props.movie.voteAverage}</p>
-        <p>${props.movie.description}</p>
+        <div className='movie-detail'
+             onClick={(e) => {
+             e.preventDefault();
+             props.changeRoute(`/`);
+           }}>
+            <h2>{selectedMovie.title}</h2>
+            <img className='movie-poster-detail' src={`https://image.tmdb.org/t/p/w500${selectedMovie.posterImg}`} />
+            <p>Released: {selectedMovie.releaseDate}</p>
+            <p>Rating: {selectedMovie.voteAverage}</p>
+            <p>Summary: {selectedMovie.description}</p>
         </div>
     )
 }
 
-export default FullMovieDetail;
+
+export default withRouter(FullMovieDetail);

@@ -1,9 +1,8 @@
 import { connect } from 'react-redux';
-import { push } from 'react-router-redux'
+import { push } from 'react-router-redux';
 import SignInSignOutButton from '../components/App/Header/SignInSignOutButton/SignInSignOutButton';
 import { removeActiveUser, removeAllIsFavorited, resetFavCounter } from '../actions';
 import { success } from 'react-notification-system-redux';
-
 
 const mapStateToProps = (store) => {
   return {

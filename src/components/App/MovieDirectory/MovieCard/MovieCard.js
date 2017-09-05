@@ -77,7 +77,14 @@ const MovieCard = (props) => {
                 }}
                 ></button>
       </div>
-      <img className='movie-poster' src={`https://image.tmdb.org/t/p/w500${props.movie.posterImg}`} />
+      <img className='movie-poster' 
+           src={`https://image.tmdb.org/t/p/w500${props.movie.posterImg}`}
+           onClick={(e) => {
+             e.preventDefault();
+             console.log(props)
+             props.changeRoute(`/fullmoviedetail/${props.movie.movieId}`);
+           }}
+            />
     </div>
   )
 }
