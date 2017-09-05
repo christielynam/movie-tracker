@@ -1,5 +1,6 @@
 import React from 'react';
 import { fetchAddFavoriteMovie, fetchRemoveFavoriteMovie } from '../../../../../utils/movieApi'
+import PropTypes from 'prop-types';
 
 const genNotificationOpts = (type, movie) => {
   let title, message, bgSrc = '';
@@ -64,8 +65,8 @@ const checkFavorite = (props) => {
 }
 
 const MovieCard = (props) => {
-  const favClass = props.movie.isFavorited ? "favorite-movie-btn favorited-movie-active" : "favorite-movie-btn"
 
+  const favClass = props.movie.isFavorited ? "favorite-movie-btn favorited-movie-active" : "favorite-movie-btn"
   return(
     <div className='movie-card'>
       <div className='button-container'>
@@ -81,7 +82,6 @@ const MovieCard = (props) => {
            src={`https://image.tmdb.org/t/p/w500${props.movie.posterImg}`}
            onClick={(e) => {
              e.preventDefault();
-             console.log(props)
              props.changeRoute(`/fullmoviedetail/${props.movie.movieId}`);
            }}
             />
@@ -90,3 +90,19 @@ const MovieCard = (props) => {
 }
 
 export default MovieCard;
+
+MovieCard.propTypes = {
+  notifications: React.PropTypes.array,
+  props: PropTypes.object,
+  props: PropTypes.shape({
+    activeAccount: PropTypes.object,
+    addMovietoFavorites: PropTypes.func,
+    alertme: PropTypes.func,
+    changeRoute: PropTypes.func,
+    decreaseFavCount: PropTypes.func,
+    favoritesCounter: PropTypes.number,
+    increaseFavCount: PropTypes.func,
+    movie: PropTypes.object,
+    movies: PropTypes.array,
+  })
+};

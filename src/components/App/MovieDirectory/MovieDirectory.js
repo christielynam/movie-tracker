@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import CardContainer from '../../../containers/MovieCard-container'
+import CardContainer from '../../../containers/MovieCard-container';
+import PropTypes from 'prop-types';
 
 export default class MovieDirectory extends Component {
   constructor() {
@@ -21,3 +22,12 @@ export default class MovieDirectory extends Component {
     )
   }
 }
+
+MovieDirectory.propTypes = {
+  notifications: React.PropTypes.array,
+  props: PropTypes.object,
+  props: PropTypes.shape({
+    dispatch: PropTypes.func,
+    movies: PropTypes.array,
+  })
+};

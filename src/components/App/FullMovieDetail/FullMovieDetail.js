@@ -1,8 +1,11 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 
 const FullMovieDetail = (props) => {
     const selectedId = props.location.pathname.replace('/fullmoviedetail/', '')
+    
     const selectedArray = props.movies.filter( movie =>
       movie.movieId == selectedId
     );
@@ -25,3 +28,20 @@ const FullMovieDetail = (props) => {
 }
 
 export default withRouter(FullMovieDetail);
+
+
+FullMovieDetail.propTypes = {
+    notifications: React.PropTypes.array,
+    props: PropTypes.object,
+    props: PropTypes.shape({
+      activeAccount: PropTypes.object,
+      addMovietoFavorites: PropTypes.func,
+      alertme: PropTypes.func,
+      changeRoute: PropTypes.func,
+      decreaseFavCount: PropTypes.func,
+      favoritesCounter: PropTypes.number,
+      increaseFavCount: PropTypes.func,
+      movie: PropTypes.object,
+      movies: PropTypes.array,
+    })
+  };

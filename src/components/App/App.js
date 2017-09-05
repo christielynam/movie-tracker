@@ -61,12 +61,11 @@ class App extends Component {
   componentDidMount() {
     fetchAllMovies()
     .then(data => {
-      this.props.fetchRecentMovies(data);// send movies to store
+      this.props.fetchRecentMovies(data);
       this.retrieveLocalStorage();
       return this.retrieveFavoriteMovies()
     })
     .then(data => {
-      // if on favorites route, swap in the favs array
       if (this.props.location.pathname === '/favorites') {
         if (Object.keys(this.props.activeAccount).length > 0) {
           this.props.usersFavoriteMovies();

@@ -1,4 +1,5 @@
 const favoritesCounter = (state = 0, action) => {
+
   switch (action.type) {
     case 'SET_FAVORITE_COUNTER':
       return action.data;

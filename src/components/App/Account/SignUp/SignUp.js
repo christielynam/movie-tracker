@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import { fetchSignInUser, fetchFavoriteMovies, fetchCreateUser } from '../../../../../utils/movieApi';
+import PropTypes from 'prop-types';
 
 const notifyOptsPasswordsDontMatch = {
   title: 'Try again...',
@@ -163,3 +164,14 @@ export default class SignUp extends Component {
     )
   }
 }
+
+SignUp.propTypes = {
+  props: PropTypes.object,
+  props: PropTypes.shape({
+    activeAccount: PropTypes.object,
+    alertme: PropTypes.func,
+    changeRoute: PropTypes.func,
+    fetchUserFavorites: PropTypes.func,
+    handleSignInSuccess: PropTypes.func,
+  })
+};

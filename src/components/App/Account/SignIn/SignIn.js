@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router';
 import { fetchSignInUser, fetchFavoriteMovies} from '../../../../../utils/movieApi'
 import { Link } from 'react-router-dom';
-import SignUp from '../SignUp/SignUp'
+
+import SignUp from '../SignUp/SignUp';
+import PropTypes from 'prop-types';
 
 const notificationOpts = {
   title: 'You Signed in Successfully!',
@@ -20,6 +22,7 @@ const notifyOptsBadSignIn = {
     label: 'OK'
   }
 }
+
 
 export default class SignIn extends Component {
   constructor(props, context) {
@@ -139,5 +142,14 @@ SignIn.contextTypes = {
 }
 
 SignIn.propTypes = {
-  notifications: React.PropTypes.array
+  notifications: React.PropTypes.array,
+  props: PropTypes.object,
+  props: PropTypes.shape({
+    activeAccount: PropTypes.object,
+    alertme: PropTypes.func,
+    changeRoute: PropTypes.func,
+    fetchUserFavorites: PropTypes.func,
+    handleSignInSuccess: PropTypes.func,
+    setFavCount: PropTypes.func,
+  })
 }
