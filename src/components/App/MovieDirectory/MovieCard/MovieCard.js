@@ -38,13 +38,10 @@ const addFavoritedMovie = (props)  => {
     addMovietoFavorites(movie)
     increaseFavCount()
     alertme(genNotificationOpts('add_fav', movie));
-    console.log('RESULT OF ADD FAVORITE', res);
   })
 }
 
 const removeFavoritedMovie = (props) => {
-  console.log('REMOVE HIT!')
-  console.log('PROPS @ DELETE FAV:', props)
   const { movie, movies, addMovietoFavorites, activeAccount, alertme, notifications, favoritesCounter, decreaseFavCount} = props
 
   fetchRemoveFavoriteMovie(movie.movieId, activeAccount.id)
@@ -52,7 +49,7 @@ const removeFavoritedMovie = (props) => {
     addMovietoFavorites(movie);
     decreaseFavCount();
     let notifyReturn = alertme(genNotificationOpts('rem_fav', movie));
-    console.log('RESULT OF REMOVE FAVORITE', res)})
+  })
 }
 
 const checkFavorite = (props) => {

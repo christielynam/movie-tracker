@@ -96,7 +96,6 @@ export default class SignUp extends Component {
     if(didMatch) {
       fetchCreateUser(name, email, password)
         .then(res => {
-          console.log('RESULT OF ADD USER:', res);
           if (res.status === 'success') {
             this.autoSignInUser(name, email, password);
           } else if (res.error.includes('already exists')) {
