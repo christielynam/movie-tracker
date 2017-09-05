@@ -15,7 +15,7 @@ const SignInSignOutButton = (props) => {
     <div>
       { Object.keys(props.activeAccount).length > 0 &&
 
-        <div>
+        <div className='signIn-signOut-container'>
           <p className='welcome-message'>{`Welcome, ${props.activeAccount.name}!`}</p>
 
           <Link className='sign-out'
@@ -32,7 +32,7 @@ const SignInSignOutButton = (props) => {
       }
       { Object.keys(props.activeAccount).length === 0 &&
 
-        <div>
+        <div className='signIn-signOut-container'>
           <p className='welcome-message'>Welcome!</p>
 
           <Link className='sign-in'
