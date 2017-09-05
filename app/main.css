@@ -250,6 +250,25 @@ html {
   outline: none;
 }
 
+.fullmovie-modal {
+  width: 50%;
+  height: 70%;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  line-height: 1.5em;
+}
+
+/* .movie-detail { 
+  width: 500px;
+} */
+
+.movie-poster-detail {
+  width: 200px;
+  margin: 10px;
+
+}
+
 .popup-fav-addrem {
   /* background-image: url('/icons/heart.png'); */
   min-height: 200px;
@@ -278,6 +297,7 @@ html {
 .notification-dismiss {
   display: none;
 }
+
 
 
 

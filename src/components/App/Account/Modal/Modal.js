@@ -1,15 +1,19 @@
 import React from 'react';
 import SignUp from '../../../../containers/SignUp-container';
 import SignIn from '../../../../containers/SignIn-container';
+import FullMovieDetail from '../../../../containers/FullMovieDetail-container';
 
 
 const Modal = ({ action }) => {
-//look into history obj
+
+  let modalClass = action === 'fullmoviedetail' ? 'modal fullmovie-modal' : 'modal'
+
   return(
     <div className='modal-backdrop'>
-      <section className='modal'>
+      <section className={modalClass}>
         {action === 'signup' && <SignUp />}
         {action === 'signin' && <SignIn />}
+        {action === 'fullmoviedetail' && <FullMovieDetail />}
       </section>
     </div>
 

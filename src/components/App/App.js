@@ -134,10 +134,13 @@ class App extends Component {
       <div className='app'>
         <Header />
         <Route exact path='/signin'
-              render={() => <Modal action='signin' />}
+               render={() => <Modal action='signin' />}
         />
         <Route exact path='/signup'
                render={() => <Modal action='signup' />}
+        />
+        <Route exact path='/fullmoviedetail/:movieId'
+               render={() => <Modal action='fullmoviedetail' />}
         />
         <MovieDirectoryContainer />
         <Notifications notifications={this.props.notifications}
