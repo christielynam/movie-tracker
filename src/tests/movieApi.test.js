@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
 import { shallow, mount } from 'enzyme';
-import movieApi from '../../utils/movieApi';
+import { fetchAllMovies } from '../../utils/movieApi';
 import fetchMock from 'fetch-mock';
 import MockMovieData from '../../utils/MockMovieData';
 import AppContainer from '../containers/App-container';
@@ -15,7 +15,7 @@ import { Route } from 'react-router';
 import { ConnectedRouter, routerMiddleware, push } from 'react-router-redux';
 
 import configureMockStore from 'redux-mock-store';
-import * as actions from '../actions'
+import { addRecentMovies } from '../actions'
 import nock from 'nock';
 
 
@@ -23,8 +23,12 @@ import nock from 'nock';
 describe('App Component', () => {
   let wrapper;
   let mockFn;
-  let mockMiddleware = routerMiddleware(history);
+  // let devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+  // let history = createHistory();
+  let mockMiddleware = []; //routerMiddleware(history);
   let mockStore = configureMockStore(mockMiddleware);
+
+  // const store = createStore(rootReducer, devTools, applyMiddleware(middleware));
 
   const dummySetTimeoutPromise = () => new Promise(resolve => setTimeout(() => resolve(), 10));
   
@@ -52,26 +56,28 @@ describe('App Component', () => {
     console.log('MOCK A');
     nock(`https://api.themoviedb.org/`)
       .get(`/3/movie/now_playing?api_key=${key}`)
-      .reply(200, { body: { todos: ['do something'] } })
+      .reply(200, MockMovieData)
 
+    // { body: { todos: ['do something'] } }
 
     const expectedActions = [
-      { type: 'ADD_MOVIES', data: { todos: ['do something'] }},
+      { type: 'ADD_MOVIES', data: { todos: ['do something'] }}
     ]
 
     const store = mockStore({ todos: [] })
 
-    return store.dispatch(() => {
-      console.log('MOCK 1');
-      
-      return dispatch => {
-        dispatch(actions.addRecentMovies(data));
-      }
-    }).then(() => {
-      // return of async actions
-      console.log('MOCK 2');
-      expect(store.getActions()).toEqual(expectedActions)
-    })
+    console.log('MOCK B');
+    return store.dispatch(addRecentMovies({ todos: ['do something'] }))
+    // .then(() => {
+    //     console.log('MOCKY AA');
+        expect(store.getActions()).toEqual(expectedActions);
+    // })
+    console.log('MOCK C');
+    // .then(() => {
+    //   // return of async actions
+    //   console.log('MOCK 2');
+    //   expect(store.getActions()).toEqual(expectedActions)
+    // })
 
 
     // expect(fetchMock._matchedCalls.length).toEqual(0);
@@ -91,5 +97,23 @@ describe('App Component', () => {
     //   })
 
   });
+
+
+
+  test('mock the movie api call', async () => {
+    console.log('MOCK A');
+    nock(`https://api.themoviedb.org`)
+      .get(`/3/movie/now_playing`)
+      .query({ api_key: key})
+      .reply(200, MockMovieData)
+
+    fetchAllMovies()
+    .then(what => {
+      console.log('WHAT???', what)
+    })
+    
+
+  });
+
 
 })
