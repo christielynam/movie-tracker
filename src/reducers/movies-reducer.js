@@ -2,16 +2,18 @@ const movies = (state = [], action) => {
   switch (action.type) {
     case 'ADD_MOVIES':
       return [...action.data];
+
     case 'ADD_FAVORITE':
       let matchedId = action.data.movieId
       let movieArray = state
-      let updatedArray = movieArray.map(movie =>{
+      let updatedArray = movieArray.map(movie => {
         if (movie.movieId === matchedId) {
           movie.isFavorited = !movie.isFavorited
         }
         return movie
       })
       return updatedArray;
+
     case 'FETCH_FAVORITES':
       let serverFavorites = action.data;
       let storeMovies = state.slice();
@@ -23,7 +25,7 @@ const movies = (state = [], action) => {
         })
       })
       return storeMovies;
-
+      
     case 'RESET_FAVORITES':
       return state.map(movie => {
         movie.isFavorited = false;
