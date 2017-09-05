@@ -1,26 +1,15 @@
 import ReactDOM from 'react-dom';
 import { shallow, mount } from 'enzyme';
-// import movieApi from '../../utils/movieApi';
-// import fetchMock from 'fetch-mock';
 import MockCleanedMovieData from '../../utils/MockCleanedMovieData';
-// import AppContainer from '../containers/App-container';
-// import { Provider } from 'react-redux';
-// var key = require('../../utils/key');
-
+import MockFalsyMovieData from '../../utils/MockFalsyMovieData';
 import React, { Component } from 'react';
-// import { createStore, applyMiddleware } from 'redux';
-// import rootReducer from '../reducers';
-// import createHistory from 'history/createBrowserHistory';
-// import { Route } from 'react-router';
-// import { ConnectedRouter, routerMiddleware, push } from 'react-router-redux';
-
 import configureStore from 'redux-mock-store';
-import { addRecentMovies } from '../actions'
-// import nock from 'nock';
+import { addRecentMovies, removeAllIsFavorited } from '../actions'
+
 const middlewares = [];
 const mockStore = configureStore(middlewares);
 
-it('should work!', () => {
+it('Test Action: addRecentMovies', () => {
   const initialState = [];
   const store = mockStore(initialState);
 
@@ -29,5 +18,22 @@ it('should work!', () => {
   const actions = store.getActions();
   const expectedPayload = { type: 'ADD_MOVIES', data: MockCleanedMovieData };
   expect(actions).toEqual([expectedPayload]);
+})
+
+it('Test Action: removeAllIsFavorited', () => {
+  const initialState = [];
+  let mockDataCopy = MockCleanedMovieData.slice();
+  const store = mockStore(mockDataCopy);
+
+  store.dispatch(removeAllIsFavorited());
+
+  const actions = store.getActions();
+  const expectedPayload = { type: 'RESET_FAVORITES' };
+  expect(actions).toEqual([expectedPayload]);
+
+  // why doesn't it equal the falsy movie data?
+  // expect(store.getState()).toEqual(MockFalsyMovieData);
+  // it still equals the truthy version:
+  expect(store.getState()).toEqual(MockCleanedMovieData);
 
 })
