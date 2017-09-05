@@ -294,7 +294,6 @@ html {
 
 .movie-poster:hover {
   border: 5px solid red;
-  transform: scale(1.05);
 }
 
 @media screen and (max-width: 1000px) {
