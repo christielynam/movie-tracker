@@ -28,6 +28,7 @@ html {
 }
 
 .title {
+  height: 150px;
   margin-left: 220px;
   color: red;
   font-size: 50px;
@@ -43,6 +44,10 @@ html {
   margin: 20px 0;
   color: #fff;
   font-size: 20px;
+}
+
+.btn-container {
+  height: 150px;
 }
 
 .favorites-nav-button,

@@ -12,7 +12,7 @@ const notificationOpts = {
 const SignInSignOutButton = (props) => {
 
   return(
-    <div>
+    <div className='btn-container'>
       { Object.keys(props.activeAccount).length > 0 &&
 
         <div className='signIn-signOut-container'>

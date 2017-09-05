@@ -30,7 +30,7 @@ const FavoritesNavButton = (props) => {
   console.log('fav counter', favoritesCounter);
 
   return(
-    <div>
+    <div className='btn-container'>
       <Link to='/favories'
             className='favorites-nav-button'
             onClick={(e) => {
