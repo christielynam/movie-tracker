@@ -72,6 +72,7 @@ class App extends Component {
   componentDidMount() {
     fetchAllMovies()
     .then(data => {
+      console.log('CLEANED DATA BACK:', data)
       this.props.fetchRecentMovies(data);// send movies to store
       this.retrieveLocalStorage();
       return this.retrieveFavoriteMovies()

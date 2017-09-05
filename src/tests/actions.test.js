@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom';
 import { shallow, mount } from 'enzyme';
 // import movieApi from '../../utils/movieApi';
 // import fetchMock from 'fetch-mock';
-// import MockMovieData from '../../utils/MockMovieData';
+import MockCleanedMovieData from '../../utils/MockCleanedMovieData';
 // import AppContainer from '../containers/App-container';
 // import { Provider } from 'react-redux';
 // var key = require('../../utils/key');
@@ -24,11 +24,10 @@ it('should work!', () => {
   const initialState = [];
   const store = mockStore(initialState);
 
-  store.dispatch(addRecentMovies({ todos: ['do something'] }));
+  store.dispatch(addRecentMovies(MockCleanedMovieData));
 
   const actions = store.getActions();
-  const expectedPayload = { type: 'ADD_MOVIES', data: { todos: ['do something'] } };
+  const expectedPayload = { type: 'ADD_MOVIES', data: MockCleanedMovieData };
   expect(actions).toEqual([expectedPayload]);
-
 
 })

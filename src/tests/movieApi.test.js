@@ -1,11 +1,14 @@
 import ReactDOM from 'react-dom';
 import { shallow, mount } from 'enzyme';
-import { fetchAllMovies } from '../../utils/movieApi';
+import { fetchAllMovies, fetchFavoriteMovies } from '../../utils/movieApi';
 import fetchMock from 'fetch-mock';
 import MockMovieData from '../../utils/MockMovieData';
 import AppContainer from '../containers/App-container';
+import App from '../components/App/App'
 import { Provider } from 'react-redux';
 var key = require('../../utils/key');
+
+import { Router } from 'react-router-dom';
 
 import React, { Component } from 'react';
 import { createStore, applyMiddleware } from 'redux';
@@ -19,45 +22,28 @@ import { addRecentMovies } from '../actions'
 import nock from 'nock';
 
 
+//TODO:
+//  look into https://github.com/mzabriskie/moxios
+// and axios
+
 
 describe('App Component', () => {
   let wrapper;
   let mockFn;
-  // let devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
-  // let history = createHistory();
   let mockMiddleware = []; //routerMiddleware(history);
   let mockStore = configureMockStore(mockMiddleware);
-
-  // const store = createStore(rootReducer, devTools, applyMiddleware(middleware));
-
   const dummySetTimeoutPromise = () => new Promise(resolve => setTimeout(() => resolve(), 10));
   
-  // beforeAll(function () {
-  //   middleware = routerMiddleware(history);
-  //   store = createStore(rootReducer, applyMiddleware(middleware));
-
-  // })
-
   afterEach(() => {
-    // expect(fetchMock.calls().unmatched).toEqual([]);
-    // fetchMock.restore();
-
+    expect(fetchMock.calls().unmatched).toEqual([]);
+    fetchMock.restore();
     nock.cleanAll();
   })
 
-  // beforeEach(function () {
-  //   fetchMock.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${key}`, {
-  //     status: 200, // we're mocking the response, so essentially we're saying we got back a 200 status
-  //     body: MockMovieData
-  //   })
-  // })
-
-  test('state obj for movies fetch should be set correctly', async () => {
-    console.log('MOCK A');
+  test.skip('nock test for fetch of movies api', async () => {
     nock(`https://api.themoviedb.org/`)
       .get(`/3/movie/now_playing?api_key=${key}`)
       .reply(200, MockMovieData)
-
     // { body: { todos: ['do something'] } }
 
     const expectedActions = [
@@ -65,53 +51,66 @@ describe('App Component', () => {
     ]
 
     const store = mockStore({ todos: [] })
-
-    console.log('MOCK B');
     return store.dispatch(addRecentMovies({ todos: ['do something'] }))
-    // .then(() => {
-    //     console.log('MOCKY AA');
-        expect(store.getActions()).toEqual(expectedActions);
-    // })
-    console.log('MOCK C');
-    // .then(() => {
-    //   // return of async actions
-    //   console.log('MOCK 2');
-    //   expect(store.getActions()).toEqual(expectedActions)
-    // })
-
-
-    // expect(fetchMock._matchedCalls.length).toEqual(0);
-    // expect(fetchMock.routes[0].method).toEqual('GET')
-    // expect(fetchMock.routes[0].response.body).toEqual(MockMovieData)
-
-    // wrapper = mount(<Provider store={ store } />);
-
-    // expect(fetchMock._matchedCalls.length).toEqual(1)
-    // expect(fetchMock.called()).toEqual(true);
-
-    // await dummySetTimeoutPromise();
-
-    // await fetchMock.flush()
-    //   .then(result => {
-    //     expect(Object.keys(wrapper.state('crawlObj')).length).toEqual(4);
-    //   })
-
+    expect(store.getActions()).toEqual(expectedActions);
   });
 
 
 
-  test('mock the movie api call', async () => {
-    console.log('MOCK A');
-    nock(`https://api.themoviedb.org`)
-      .get(`/3/movie/now_playing`)
-      .query({ api_key: key})
-      .reply(200, MockMovieData)
+  test.skip('fetch-mock test for fetch of users favorites', async () => {
+    fetchMock.mock(`http://localhost:3000/api/users/1/favorites`,
+    {
+      status: 200, // we're mocking the response, so essentially we're saying we got back a 200 status
+      body: MockMovieData
+    },
+      { method: 'GET' }
+    )
 
-    fetchAllMovies()
+    expect(fetchMock._matchedCalls.length).toEqual(0);
+    expect(fetchMock.routes[0].method).toEqual('GET')
+    expect(fetchMock.routes[0].response.body).toEqual(MockMovieData)
+
+    fetchFavoriteMovies(1);
+
+    const store = mockStore({ todos: [] })
+    wrapper = mount(
+      <Provider store={store}>
+        <Router history={history}>
+          <div>
+            <AppContainer store={store} />
+          </div>
+        </Router>
+      </Provider>
+    );
+
+    expect(fetchMock._matchedCalls.length).toEqual(1)
+    expect(fetchMock.called()).toEqual(true);
+  });
+
+
+
+
+  test.skip('nock test for fetch of users favorites', async () => {
+    nock(`http://localhost:3000`)
+      .get(`/api/users/1/favorites`)
+      // .query(true)
+      // .query({ api_key: key})
+      .reply(200, MockMovieData)
+    // {
+    //   'Access-Control-Allow-Origin': '*',
+    //     'Content-type': 'application/json'
+    // }
+
+    fetchFavoriteMovies(1)
     .then(what => {
       console.log('WHAT???', what)
     })
-    
+
+    fetch('https://api.themoviedb.org/3/movie/now_playing?api_key=${key}')
+    .then(results => results.json())
+    .then(movies => {
+      console.log('COPY THIS:', movies);
+    })
 
   });
 
