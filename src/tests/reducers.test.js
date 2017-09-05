@@ -19,15 +19,15 @@ describe('Reducers', () => {
   })
 
 
-  it('Favorites Counter Reducer: DECREASE_FAVOIRTE_COUNTER', () => {
+  it('Favorites Counter Reducer: DECREASE_FAVORITE_COUNTER', () => {
     expect(favoritesCounterReducer(undefined, {})).toEqual(0)
 
     expect(
-      favoritesCounterReducer(4, { type: 'DECREASE_FAVOIRTE_COUNTER' })
+      favoritesCounterReducer(4, { type: 'DECREASE_FAVORITE_COUNTER' })
     ).toEqual(3)
 
     expect(
-      favoritesCounterReducer(1, { type: 'DECREASE_FAVOIRTE_COUNTER' })
+      favoritesCounterReducer(1, { type: 'DECREASE_FAVORITE_COUNTER' })
     ).toEqual(0)
 
   })

@@ -74,6 +74,6 @@ export const increaseFavCount = () => {
 
 export const decreaseFavCount = () => {
   return {
-    type: 'DECREASE_FAVOIRTE_COUNTER'
+    type: 'DECREASE_FAVORITE_COUNTER'
   }
 }
