@@ -5,7 +5,7 @@ const movies = (state = [], action) => {
 
     case 'ADD_FAVORITE':
       let matchedId = action.data.movieId
-      let movieArray = state
+      let movieArray = [...state]
       let updatedArray = movieArray.map(movie => {
         if (movie.movieId === matchedId) {
           movie.isFavorited = !movie.isFavorited

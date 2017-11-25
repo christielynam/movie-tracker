@@ -11,7 +11,6 @@ const genNotificationOpts = (type, movie) => {
 
   } else if (type === 'rem_fav') {
     message = 'Removed from Favorites';
-
   }
 
   bgSrc = `https://image.tmdb.org/t/p/w500${movie.posterImg}`
