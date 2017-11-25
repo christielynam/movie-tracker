@@ -2,3 +2,4 @@ node_modules/
 ./src/bundle.js
 ./src/bundle.js.map
 ./utils/key.js
+.DS_Store

@@ -78,7 +78,6 @@ class App extends Component {
       })
 
     } else {
-      console.log('No User Found to Grab Favs');
       this.props.resetFavCounter();
     }
   }
@@ -125,17 +124,17 @@ class App extends Component {
       <div className='app'>
         <Header />
         <Route exact path='/signin'
-               render={() => <Modal action='signin' />}
+              render={() => <Modal action='signin' />}
         />
         <Route exact path='/signup'
-               render={() => <Modal action='signup' />}
+              render={() => <Modal action='signup' />}
         />
         <Route exact path='/fullmoviedetail/:movieId'
-               render={() => <Modal action='fullmoviedetail' />}
+              render={() => <Modal action='fullmoviedetail' />}
         />
         <MovieDirectoryContainer />
         <Notifications notifications={this.props.notifications}
-                       style={notificationStyle}
+                      style={notificationStyle}
         />
       </div>
     )
