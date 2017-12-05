@@ -20,22 +20,22 @@ const handleFavoriteButton = (props) => {
     props.changeRoute('/favorites')
   }
   if (userKeys.length === 0) {
-      props.changeRoute('/signin')
+    props.changeRoute('/signin')
   }
 }
 
 const FavoritesNavButton = (props) => {
   const { favoritesCounter } = props
 
-  return(
+  return (
     <div className='btn-container'>
       <Link to='/favories'
-            className='favorites-nav-button'
-            onClick={(e) => {
-              e.preventDefault();
-              handleFavoriteButton(props);
-            }}>
-            Favorites: {favoritesCounter}
+        className='favorites-nav-button'
+        onClick={(e) => {
+          e.preventDefault();
+          handleFavoriteButton(props);
+        }}>
+        Favorites: {favoritesCounter}
       </Link>
     </div>
   )

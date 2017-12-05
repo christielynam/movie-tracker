@@ -4,11 +4,11 @@ import FavoritesNavButtonContainer from '../../../containers/FavoritesNavButton-
 import { Link } from 'react-router-dom';
 
 const Header = () => {
-  return(
+  return (
     <header className='header'>
       <Link to='/'
-            className='title'>
-            Movie Tracker
+        className='title'>
+        Movie Tracker
       </Link>
       <FavoritesNavButtonContainer />
       <SignInSignOutButtonContainer />

@@ -19,7 +19,7 @@ const genNotificationOpts = (type, movie) => {
     position: 'bl',
     autoDismiss: 3,
     children: (
-      <div className='popup-fav-addrem' style={{ backgroundImage: 'url(' + bgSrc + ')'}}>
+      <div className='popup-fav-addrem' style={{ backgroundImage: 'url(' + bgSrc + ')' }}>
         <p className='popup-fav-layer'>{title} <span className='popup-fav-sub-layer'>{message}</span></p>
       </div>
     )
@@ -29,26 +29,26 @@ const genNotificationOpts = (type, movie) => {
 
 
 
-const addFavoritedMovie = (props)  => {
-  const {movie, movies, addMovietoFavorites, activeAccount, alertme, favoritesCounter, increaseFavCount} = props;
+const addFavoritedMovie = (props) => {
+  const { movie, movies, addMovietoFavorites, activeAccount, alertme, favoritesCounter, increaseFavCount } = props;
 
   fetchAddFavoriteMovie(movie, activeAccount.id)
-  .then(res => {
-    addMovietoFavorites(movie)
-    increaseFavCount()
-    alertme(genNotificationOpts('add_fav', movie));
-  })
+    .then(res => {
+      addMovietoFavorites(movie)
+      increaseFavCount()
+      alertme(genNotificationOpts('add_fav', movie));
+    })
 }
 
 const removeFavoritedMovie = (props) => {
-  const { movie, movies, addMovietoFavorites, activeAccount, alertme, notifications, favoritesCounter, decreaseFavCount} = props
+  const { movie, movies, addMovietoFavorites, activeAccount, alertme, notifications, favoritesCounter, decreaseFavCount } = props
 
   fetchRemoveFavoriteMovie(movie.movieId, activeAccount.id)
-  .then(res => {
-    addMovietoFavorites(movie);
-    decreaseFavCount();
-    let notifyReturn = alertme(genNotificationOpts('rem_fav', movie));
-  })
+    .then(res => {
+      addMovietoFavorites(movie);
+      decreaseFavCount();
+      let notifyReturn = alertme(genNotificationOpts('rem_fav', movie));
+    })
 }
 
 const checkFavorite = (props) => {
@@ -63,24 +63,24 @@ const checkFavorite = (props) => {
 const MovieCard = (props) => {
 
   const favClass = props.movie.isFavorited ? "favorite-movie-btn favorited-movie-active" : "favorite-movie-btn"
-  return(
+  return (
     <div className='movie-card'>
       <div className='button-container'>
         <button className={favClass}
-                type="button"
-                onClick={(e) => {
-                  e.preventDefault();
-                  checkFavorite(props);
-                }}
-                ></button>
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            checkFavorite(props);
+          }}
+        ></button>
       </div>
-      <img className='movie-poster' 
-           src={`https://image.tmdb.org/t/p/w500${props.movie.posterImg}`}
-           onClick={(e) => {
-             e.preventDefault();
-             props.changeRoute(`/fullmoviedetail/${props.movie.movieId}`);
-           }}
-            />
+      <img className='movie-poster'
+        src={`https://image.tmdb.org/t/p/w500${props.movie.posterImg}`}
+        onClick={(e) => {
+          e.preventDefault();
+          props.changeRoute(`/fullmoviedetail/${props.movie.movieId}`);
+        }}
+      />
     </div>
   )
 }
