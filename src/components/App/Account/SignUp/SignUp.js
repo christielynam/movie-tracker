@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { fetchSignInUser, fetchFavoriteMovies, fetchCreateUser } from '../../../../../utils/movieApi';
 import PropTypes from 'prop-types';
@@ -34,8 +34,8 @@ export default class SignUp extends Component {
 
   genNotifyOptsEmailExists = (email = 'invalid') => {
     let message = (email === 'invalid')
-                  ? 'Please try again'
-                  : `${email} already in use`
+      ? 'Please try again'
+      : `${email} already in use`
     return {
       title: 'Could not create your account',
       message: message,
@@ -93,7 +93,7 @@ export default class SignUp extends Component {
     const { name, email, password } = this.state
 
     let didMatch = this.validatePassword()
-    if(didMatch) {
+    if (didMatch) {
       fetchCreateUser(name, email, password)
         .then(res => {
           if (res.status === 'success') {
@@ -116,47 +116,47 @@ export default class SignUp extends Component {
 
     const { name, email, password, confirmPassword } = this.state
 
-    return(
+    return (
       <section>
         <form className='create-user-form'>
           <h3 className='create-account-heading'>
-              Create New Account
+            Create New Account
           </h3>
           <input className='newuser-name'
-                 type='text'
-                 placeholder='name'
-                 autoFocus value={name}
-                 onChange={(e) => this.handleChange(e, 'name')}
+            type='text'
+            placeholder='name'
+            autoFocus value={name}
+            onChange={(e) => this.handleChange(e, 'name')}
           />
           <input className='newuser-email'
-                 type='text'
-                 placeholder='email'
-                 value={email}
-                 onChange={(e) => this.handleChange(e, 'email')}
+            type='text'
+            placeholder='email'
+            value={email}
+            onChange={(e) => this.handleChange(e, 'email')}
           />
           <input className='newuser-password'
-                 type='text'
-                 placeholder='password'
-                 value={password}
-                 onChange={(e) => this.handleChange(e, 'password')}
+            type='text'
+            placeholder='password'
+            value={password}
+            onChange={(e) => this.handleChange(e, 'password')}
           />
           <input className='newuser-password confirm-password'
-                 type='text'
-                 placeholder='confirm password' value={confirmPassword}
-                 onChange={(e) => this.handleChange(e, 'confirmPassword')}
+            type='text'
+            placeholder='confirm password' value={confirmPassword}
+            onChange={(e) => this.handleChange(e, 'confirmPassword')}
           />
           <button className='signup-btn'
-                  type='submit'
-                  disabled={!this.state.name || !this.state.email || !this.state.password || !this.state.confirmPassword}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    this.testAddUser();
-                  }}>
-                  Sign Up
+            type='submit'
+            disabled={!this.state.name || !this.state.email || !this.state.password || !this.state.confirmPassword}
+            onClick={(e) => {
+              e.preventDefault();
+              this.testAddUser();
+            }}>
+            Sign Up
           </button>
           <Link className='cancel-signup'
-                to='/'>
-                Cancel
+            to='/'>
+            Cancel
           </Link>
         </form>
       </section>

@@ -8,7 +8,7 @@ const Modal = ({ action }) => {
 
   let modalClass = (action === 'fullmoviedetail') ? 'modal fullmovie-modal' : 'modal'
 
-  return(
+  return (
     <div className='modal-backdrop'>
       <section className={modalClass}>
         {action === 'signup' && <SignUp />}

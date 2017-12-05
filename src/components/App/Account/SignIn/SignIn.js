@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
-import { fetchSignInUser, fetchFavoriteMovies} from '../../../../../utils/movieApi'
+import { fetchSignInUser, fetchFavoriteMovies } from '../../../../../utils/movieApi'
 import { Link } from 'react-router-dom';
 
 import SignUp from '../SignUp/SignUp';
@@ -34,7 +34,7 @@ export default class SignIn extends Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    let result =  this.props !== nextProps;
+    let result = this.props !== nextProps;
     return true;
   }
 
@@ -50,29 +50,29 @@ export default class SignIn extends Component {
 
   retrieveFavoriteMovies() {
     fetchFavoriteMovies(this.props.activeAccount.id)
-    .then(data => {
-      if (data.status === 'success') {
-        if (data.data.length > 0) {
-          this.props.fetchUserFavorites(data.data)
-          this.props.setFavCount(data.data.length)
+      .then(data => {
+        if (data.status === 'success') {
+          if (data.data.length > 0) {
+            this.props.fetchUserFavorites(data.data)
+            this.props.setFavCount(data.data.length)
+          }
+        } else {
+          console.log('ERROR: grabbing favorites from db');
         }
-      } else {
-        console.log('ERROR: grabbing favorites from db');
-      }
-    })
+      })
   }
 
   signInUser(e) {
     e.preventDefault();
 
-    const {email, password} = this.state;
+    const { email, password } = this.state;
 
     fetchSignInUser(email, password)
-    .then(response => {
-      if (response.status === 'success') {
-        delete response.data.password;
-        this.props.handleSignInSuccess(response.data); // adds user to store
-        this.props.alertme(notificationOpts); // alert of new sign in
+      .then(response => {
+        if (response.status === 'success') {
+          delete response.data.password;
+          this.props.handleSignInSuccess(response.data); // adds user to store
+          this.props.alertme(notificationOpts); // alert of new sign in
           // this validates that the user we are trying to login as
           // actually got set to the store properly.
           if (this.props.activeAccount.email === email) {
@@ -89,53 +89,53 @@ export default class SignIn extends Component {
   }
 
   render() {
-    return(
+    return (
       <div>
 
-        { Object.keys(this.props.activeAccount).length > 0 &&
+        {Object.keys(this.props.activeAccount).length > 0 &&
           <Redirect to='/' />
         }
 
-        { Object.keys(this.props.activeAccount).length === 0 &&
+        {Object.keys(this.props.activeAccount).length === 0 &&
 
           <div>
             <form className='signin-form'>
               <h3 className='sign-in-heading'>Sign In</h3>
               <input className='signin-email'
-                     placeholder='Email'
-                     autoFocus
-                     required
-                     value={this.state.email}
-                     onChange={(e) => this.handleChange(e, 'email')}
+                placeholder='Email'
+                autoFocus
+                required
+                value={this.state.email}
+                onChange={(e) => this.handleChange(e, 'email')}
               />
               <input className='signin-password'
-                     placeholder='Password'
-                     required
-                     value={this.state.password}
-                     onChange={(e) => this.handleChange(e, 'password')}
+                placeholder='Password'
+                required
+                value={this.state.password}
+                onChange={(e) => this.handleChange(e, 'password')}
               />
               <button className='signin-btn'
-                      type='submit'
-                      disabled={!this.state.email || !this.state.password}
-                      onClick={this.signInUser.bind(this)}>
-                      Sign In
+                type='submit'
+                disabled={!this.state.email || !this.state.password}
+                onClick={this.signInUser.bind(this)}>
+                Sign In
               </button>
               <p className='new-user'>New to Movie Tracker?</p>
               <Link className='signup-link'
-                    to='/signup'>
-                    Sign up here
+                to='/signup'>
+                Sign up here
               </Link>
               <Link className='cancel-signin'
-                    to='/'>
-                    Cancel
+                to='/'>
+                Cancel
               </Link>
             </form>
-            </div>
-          }
           </div>
-        )
-      }
-    }
+        }
+      </div>
+    )
+  }
+}
 
 SignIn.contextTypes = {
   store: React.PropTypes.object
