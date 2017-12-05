@@ -10,28 +10,28 @@ const notificationOpts = {
 };
 
 const SignInSignOutButton = (props) => {
-  return(
+  return (
     <div className='btn-container'>
-      { Object.keys(props.activeAccount).length > 0 &&
+      {Object.keys(props.activeAccount).length > 0 &&
         <div className='signIn-signOut-container'>
           <p className='welcome-message'>{`Welcome, ${props.activeAccount.name}!`}</p>
           <Link className='sign-out'
-                to='/'
-                onClick={() => {
-                  props.handleSignOut();
-                  props.changeRoute('/');
-                  props.alertme(notificationOpts);
-                }}>
-                Sign Out
+            to='/'
+            onClick={() => {
+              props.handleSignOut();
+              props.changeRoute('/');
+              props.alertme(notificationOpts);
+            }}>
+            Sign Out
           </Link>
         </div>
       }
-      { Object.keys(props.activeAccount).length === 0 &&
+      {Object.keys(props.activeAccount).length === 0 &&
         <div className='signIn-signOut-container'>
           <p className='welcome-message'>Welcome!</p>
           <Link className='sign-in'
-                to='/signin'>
-                Sign In
+            to='/signin'>
+            Sign In
           </Link>
         </div>
       }
