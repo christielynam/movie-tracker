@@ -66,16 +66,16 @@ class App extends Component {
 
     if (Object.keys(activeAccount).length > 0) {
       return fetchFavoriteMovies(activeAccount.id)
-      .then(data => {
-        if (data.status === 'success') {
-          if (data.data.length > 0) {
-            this.props.fetchUserFavorites(data.data)
-            this.props.setFavCount(data.data.length)
+        .then(data => {
+          if (data.status === 'success') {
+            if (data.data.length > 0) {
+              this.props.fetchUserFavorites(data.data)
+              this.props.setFavCount(data.data.length)
+            }
+          } else {
+            console.log('ERROR: grabbing favorites from db');
           }
-        } else {
-          console.log('ERROR: grabbing favorites from db');
-        }
-      })
+        })
 
     } else {
       this.props.resetFavCounter();
@@ -90,20 +90,20 @@ class App extends Component {
 
   componentDidMount() {
     fetchAllMovies()
-    .then(data => {
-      this.props.fetchRecentMovies(data);
-      this.retrieveLocalStorage();
-      return this.retrieveFavoriteMovies()
-    })
-    .then(data => {
-      if (this.props.location.pathname === '/favorites') {
-        if (Object.keys(this.props.activeAccount).length > 0) {
-          this.props.usersFavoriteMovies();
-        } else {
-          console.log('MUST SIGN IN TO SEE FAVS')
+      .then(data => {
+        this.props.fetchRecentMovies(data);
+        this.retrieveLocalStorage();
+        return this.retrieveFavoriteMovies()
+      })
+      .then(data => {
+        if (this.props.location.pathname === '/favorites') {
+          if (Object.keys(this.props.activeAccount).length > 0) {
+            this.props.usersFavoriteMovies();
+          } else {
+            console.log('MUST SIGN IN TO SEE FAVS')
+          }
         }
-      }
-    })
+      })
   }
 
   componentWillMount() {
@@ -124,17 +124,17 @@ class App extends Component {
       <div className='app'>
         <Header />
         <Route exact path='/signin'
-              render={() => <Modal action='signin' />}
+          render={() => <Modal action='signin' />}
         />
         <Route exact path='/signup'
-              render={() => <Modal action='signup' />}
+          render={() => <Modal action='signup' />}
         />
         <Route exact path='/fullmoviedetail/:movieId'
-              render={() => <Modal action='fullmoviedetail' />}
+          render={() => <Modal action='fullmoviedetail' />}
         />
         <MovieDirectoryContainer />
         <Notifications notifications={this.props.notifications}
-                      style={notificationStyle}
+          style={notificationStyle}
         />
       </div>
     )
