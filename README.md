@@ -1,6 +1,3 @@
-[screencapture-localhost-3000-2018-10-07-11_52_30.png.zip](https://github.com/christielynam/movie-tracker/files/2454146/screencapture-localhost-3000-2018-10-07-11_52_30.png.zip)
-
-
 # Movie Tracker
 
   This project is working off the The Movie DB API (https://www.themoviedb.org/documentation/api - note you'll need to go create an account to get an API key). The idea of the project is to be able to sign in as a user and save favorite movies. Pretty simple right? HA HA not!
